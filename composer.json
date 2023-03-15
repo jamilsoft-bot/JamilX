@@ -1,0 +1,15 @@
+{
+    "name": "jamilsoft/jamilx",
+    "description": "Just Another PHP Web Application Framework for building RAD and Saas Applications",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/console": "6.0.x-dev",
+        "phpmailer/phpmailer": "dev-master"
+    }
+    "version":"0.1",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "stable",
+    "require": {}
+}
