@@ -1,15 +1,11 @@
 {
     "name": "jamilsoft/jamilx",
-    "description": "Just Another PHP Web Application Framework for building RAD and Saas Applications",
+    "description": "Jamilx is a powerful PHP web application framework that is designed to facilitate the rapid development of software as a service (SaaS) applications.",
     "type": "project",
     "license": "GPL-2.0-or-later",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "symfony/console": "6.0.x-dev",
         "phpmailer/phpmailer": "dev-master"
     }
-    "version":"0.1",
-    "license": "GPL-2.0-or-later",
-    "minimum-stability": "stable",
-    "require": {}
 }
