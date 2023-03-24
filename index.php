@@ -1,5 +1,5 @@
 <?php
-
+include "vendor/autoload.php";
 if(!file_exists("conf.php")){
     echo "<script>";
     echo "location.assign('installer')";
