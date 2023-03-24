@@ -1,3 +1,12 @@
+<?php
+    global $Url;
+
+$act = is_null($Url->get('action'))?"home":$Url->get('action');
+
+$action = new $act();
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -68,19 +77,8 @@
         <div class="col-md-10 ">
             <div class="w3-container w3-margin-top">
             <?php
-    global $Url;
-              
-
-
-$action = is_null($Url->get('action'))?"home":$Url->get('action');
-
-if(function_exists($this->$action())){
-    $this->$action();
-}
-
- 
-
-
+        
+        $action->getAction();
 
     ?>
             </div>

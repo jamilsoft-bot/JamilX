@@ -27,11 +27,7 @@ class admin extends JX_Serivce implements JX_service{
         }
 }
 
-    public function blog(){
-        
-        include('containers/admin/blog-list.php');
-        
-    }
+    
 
     public function viewbusiness(){
         global $JX_db, $Me, $Url;
@@ -69,12 +65,26 @@ class admin extends JX_Serivce implements JX_service{
         include('containers/admin/view-bus.php');
         
     }
+}
 
-    public function about(){
-        include "containers/admin/about.php";
+class home extends JX_Action implements JX_ActionI{
+    public function getAction()
+    {
+        include "containers/admin/home.php";
     }
 
-    public function updatecomp(){
+    public function addAction()
+    {
+
+        include "containers/admin/home.php";
+    }
+
+
+}
+
+class updatecomp extends JX_Action implements JX_ActionI{
+    public function getAction()
+    {
         global $JX_db;
         $data = null;
         $data2 = null;
@@ -103,15 +113,37 @@ class admin extends JX_Serivce implements JX_service{
         echo "</form>";
     }
 
-    public function createuser(){
-        $users = new Userserve();
-        if(isset($_POST['submit'])){
-            $users->reg();
-        }
-        include('containers/admin/userform.php');
+    public function addAction()
+    {
+
+        include "containers/admin/home.php";
     }
 
-    public function applist(){
+
+}
+
+class users extends JX_Action implements JX_ActionI{
+    public function getAction()
+    {
+        $this->setTitle("User List");
+        JX_delete_item('users');
+        include('containers/admin/user-list.php'); 
+    }
+
+    
+
+    public function addAction()
+    {
+
+        include "containers/admin/home.php";
+    }
+
+
+}
+
+class applist extends JX_Action implements JX_ActionI{
+    public function getAction()
+    {
         global $JX_db, $Url, $Apps;
         $insall = $Url->get('install');
         $uninsall = $Url->get('uninstall');
@@ -125,35 +157,39 @@ class admin extends JX_Serivce implements JX_service{
         include "containers/apps/app-list.php";
     }
 
-    public function home(){
+    public function applist(){
         
-        include('containers/admin/home.php');
     }
 
-    public function users(){
-        
-        $this->setTitle("User List");
-        JX_delete_item('users');
-        include('containers/admin/user-list.php');  
-    }
+    public function addAction()
+    {
 
-   
-
-    public function posts(){
-        include('containers/admin/post-list.php');  
-    }
-
-    public function products(){
-        include('containers/admin/product-list.php');  
-    }
-
-    public function offers(){
-        include('containers/admin/businesses.php');  
+        include "containers/admin/home.php";
     }
 
 
-    public function businesses(){
-        include('containers/admin/businesses.php');  
+}
+
+class createuser extends JX_Action implements JX_ActionI{
+    public function getAction()
+    {
+         $users = new Userserve();
+        if(isset($_POST['submit'])){
+            $users->reg();
+        }
+        include('containers/admin/userform.php');
+    
     }
+
+    public function addAction()
+    {
+
+        include "containers/admin/home.php";
+    }
+
+    public function createuser(){
+       
+    }
+
 
 }

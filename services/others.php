@@ -1,16 +1,5 @@
 <?php
-class aboutjx extends JX_Serivce implements JX_service{
-    public function __construct()
-    {
-        $this->setTitle('Business List');
-    }
-    public function main(){
-        include "containers/about/aboutjx.php";
-    }
-
-}
-
-class contactjx extends JX_Serivce implements JX_service{
+class contact extends JX_Serivce implements JX_service{
     public function __construct()
     {
         $this->setTitle('Business List');
@@ -22,72 +11,6 @@ class contactjx extends JX_Serivce implements JX_service{
 }
 
 
-// class demo extends JX_Serivce implements JX_service{
-//     public function __construct()
-//     {
-//         $this->setTitle('Business List');
-//     }
-//     public function main(){
-//         JX_get_container('sp.php');
-//     }
-
-// }
-class dhome extends JX_Serivce implements JX_service{
-    public function __construct()
-    {
-        $this->setTitle('Jamilsoft official Homepage');
-    }
-    public function main(){
-        global $Url;
-
-     $me = is_null($Url->get('action'))?'home':$Url->get('action');
-     
-        JX_get_container('home.php');
-    }
-
-}
-
-class campaign extends JX_Serivce implements JX_service{
-    public function __construct()
-    {
-        $this->setTitle('Jamilsoft official Homepage');
-    }
-    public function main(){
-        global $Url;
-
-     $me = is_null($Url->get('action'))?'home':$Url->get('action');
-     
-        JX_get_container('home.php');
-    }
-
-    public function posts(){
-        global $Url;
-
-        //echo "post center";
-        JX_get_container('dashboard/post-add.php');
-    }
-
-}
-class buslist extends JX_Serivce implements JX_service{
-    public function __construct()
-    {
-        global $Url;
-        $b = $Url->get('b');
-        if(isset($_SESSION['uid'])){
-
-        }else{
-        echo "<script>";
-        echo "location.assign('login&resume=buslist')";
-        echo "</script>";
-        }
-        $this->setTitle('Business List');
-    }
-    public function main(){
-        JX_get_container('buslist.php');
-    }
-
-}
-
 class about extends JX_Serivce implements JX_service{
     public function __construct()
     {
@@ -95,23 +18,18 @@ class about extends JX_Serivce implements JX_service{
     }
     public function main(){
         //$SessionMe = $_SESSION['uid'];
-        include('containers/about/about.php');
+        include('containers/about/aboutjx.php');
 
        
     }
 
-}
-// class admin extends JX_Serivce implements JX_service{
-//     public function __construct()
-//     {
-//         $this->setTitle('Admin Panel');
-//     }
-//     public function main(){
-//         //$SessionMe = $_SESSION['uid'];
-//         include('containers/admin/admin.php');
-//     }
+    public function getAction()
+    {
+        include "containers/admin/about.php";
+    }
 
-// }
+}
+
 
 
 class index extends JX_Serivce implements JX_service{
