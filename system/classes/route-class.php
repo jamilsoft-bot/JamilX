@@ -6,9 +6,9 @@ class JX_Route{
 
     public function __construct()
     {
-        global $Url;
+        global $Url, $INDEX;
         $this->_urls = $Url->get_paths();
-        $this->_serve = isset($_GET['serve'])? $_GET['serve']: 'about';;
+        $this->_serve = isset($_GET['serve'])? $_GET['serve']: $INDEX;
         $this->_action = isset($_GET['action'])? $_GET['action']: 'main';
         
      

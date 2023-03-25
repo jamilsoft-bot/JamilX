@@ -1,5 +1,6 @@
 <?php
 include "system/global.php";
+
 $services = scandir("services/");
 unset($services[0]);
 unset($services[1]);

@@ -1,37 +1,11 @@
 #!/usr/bin/env php
 <?php
 require_once 'vendor/autoload.php';
-require_once 'console/testcommand.php';
-require_once 'console/JXService.php';
+$console = scandir("console/");
+unset($console[0]);
+unset($console[1]);
 
-use Symfony\Component\Console\Application;
-use JXconsole\console\testcommand;
-use JXconsole\console\JXService;
-use Doctrine\ORM\Tools\Console\ConsoleRunner;
-use Doctrine\ORM\Tools\Console\EntityManagerProvider\SingleManagerProvider;
+foreach($console as $gets){
+    include "console/$gets";
+}
 
- 
-$app = new Application();
-$app->add(new TestCommand());
-$app->add(new JXService());
-
-$app->run();
-
-
-
-// replace with path to your own project bootstrap file
-require_once 'bootstrap.php';
-
-// replace with mechanism to retrieve EntityManager in your app
-$entityManager = GetEntityManager();
-
-$commands = [
-    new TestCommand()
-    // If you want to add your own custom console commands,
-    // you can do so here.
-];
-
-ConsoleRunner::run(
-    new SingleManagerProvider($entityManager),
-    $commands
-);

@@ -1,10 +1,5 @@
 <?php
 
-// class Login{
-//     public function main(){
-//  include "containers/users/login.php";
-// }
-// }
 
 class reg{
     public function checkuser(){

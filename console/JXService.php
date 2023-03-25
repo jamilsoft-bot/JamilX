@@ -1,25 +1,67 @@
 <?php
-namespace JXconsole\console;
- 
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Input\InputArgument;
- 
-class JXService extends Command
-{
-    protected function configure()
-    {
-        $this->setName('JXService')
-            ->setDescription('Prints Hello-World!')
-            ->setHelp('Demonstration of custom commands created by Symfony Console component.')
-            ->addArgument('filename', InputArgument::REQUIRED, 'Pass the filename.');
+$program = isset($argv[1])?$argv[1]:null;
+$service_name = isset($argv[2])?$argv[2]:null;
+$service_path = isset($argv[3])?$argv[3]:null;
+
+
+// echo "Program not found \n". $argv[1];
+
+
+
+
+if($program == "AddService"){
+     echo "\nOpening AddService Program ...";
+    if($service_path !== null){
+
+        $output =  <<<END
+
+class $service_name extends JX_Serivce implements JX_service{
+    public function main(){
+        
+        include "Apps/$service_path/containers/$service_name.php";
+
     }
- 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $output->writeln(sprintf('Hello World!, %s', $input->getArgument('filename')));
-        file_put_contents($input->getArgument('filename'),"Class created sucess");
-        return Command::SUCCESS;
+
+    
+}
+
+
+END;
+
+        echo "\nadded $service_name in $service_path";
+        $handle = fopen("Apps/$service_path/service.php", "a+");
+        $handle2 = fopen("Apps/$service_path/containers/$service_name.php", "a+");
+        fwrite($handle, $output);
+
+        echo "\nService was Created sucess in $service_path/services";
+        echo "\n$service_name 's Container was Created sucess in $service_path/containers";
+
+    }else{
+        $output =  <<<END
+        <?php
+        class $service_name extends JX_Serivce implements JX_service{
+            public function main(){
+                
+                include "containers/$service_name.php";
+        
+            }
+        
+            
+        }
+        
+        
+        END;
+        
+                echo "\nadded $service_name in Service Directory";
+                $handle = fopen("serivces/$service_name.php", "a+");
+                $handle2 = fopen("containers/$service_name.php", "a+");
+                fwrite($handle, $output);
+                fwrite($handle2, "This is Your $service_name's Container \nBuild Something Amazing Here");
+        
+                echo "\nService was Created sucess in $service_path/services";
+                echo "\n$service_name 's Container was Created sucess in $service_path/containers";
+                
     }
+}else{
+    // echo "Program not found \n". $argv[2];
 }

@@ -10,6 +10,24 @@ class contact extends JX_Serivce implements JX_service{
 
 }
 
+class aboutjx extends JX_Serivce implements JX_service{
+    public function __construct()
+    {
+        $this->setTitle('About');
+    }
+    public function main(){
+        //$SessionMe = $_SESSION['uid'];
+        include('containers/about/aboutjx.php');
+
+       
+    }
+
+    public function getAction()
+    {
+        include "containers/admin/about.php";
+    }
+
+}
 
 class about extends JX_Serivce implements JX_service{
     public function __construct()
@@ -18,7 +36,7 @@ class about extends JX_Serivce implements JX_service{
     }
     public function main(){
         //$SessionMe = $_SESSION['uid'];
-        include('containers/about/aboutjx.php');
+        include('containers/about/about.php');
 
        
     }

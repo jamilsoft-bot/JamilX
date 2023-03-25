@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+require_once 'vendor/autoload.php';
+require_once 'console/testcommand.php';
+require_once 'console/JXService.php';
+
+use Symfony\Component\Console\Application;
+use JXconsole\console\testcommand;
+use JXconsole\console\JXService;
+
+
+ 
+$app = new Application();
+$app->add(new TestCommand());
+$app->add(new JXService());
+
+$app->run();
+
+
