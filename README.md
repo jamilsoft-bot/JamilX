@@ -1,44 +1,62 @@
 
-# Jamilx Documentation
+## Introduction
 
-Jamilx is a PHP web application framework that provides a range of tools and components to simplify the development of SaaS applications. Its modular architecture and flexibility make it an attractive choice for developers looking to build scalable and robust applications.
+Jamilx is a PHP framework for building RAD and SaaS applications featuring the MVC format. It is designed to be easy to use, flexible, and extensible, with a focus on developer productivity.
 
-## Getting Started
+Jamilx uses a prototype-container-service (PCS) pattern for its MVC architecture, where the prototype is the model, the container is the view, and the service is the controller. It also includes many reusable components called actions that any service can access. The framework supports MySQL as a default database, but a developer can use a different database.
 
-To get started with Jamilx, you can download the latest version from the GitHub repository or use Composer. Once you have downloaded or installed Jamilx, you can follow the on-screen installation instructions to set up your application.
+## Features
 
-### Installation
+Some of the features of Jamilx include:
 
-To install Jamilx, you can follow these steps:
+-   MVC architecture
+-   PCS pattern
+-   Reusable components (actions)
+-   Command-line tools for code generation and database operations
+-   Built-in authentication and authorization
+-   User management
+-   Multilingual support
+-   Error handling and debugging
+-   Modular architecture
 
-1.  Download or install Jamilx using Composer.
-2.  Upload the necessary files to your server.
-3.  Navigate to the installer URL (`http://localhost/jamilx/installer`) and follow the on-screen instructions to set up your application.
+## Requirements
 
-### Configuration
+To use Jamilx, you need to have the following requirements installed on your system:
 
-Once you have installed Jamilx, you can configure your application settings by editing the `config.php` file. This file contains settings such as the database connection details, application URL, and other configuration options.
+-   PHP 7.2 or higher
+-   Apache or Nginx web server
+-   MySQL or MariaDB database
 
-### Apps
+## Download and Installation
 
-Jamilx provides a modular architecture that allows you to add and remove functionality to your application as needed. Apps can be added by placing them in the `Apps` directory, and they can be accessed using the URL structure `http://yourdomain.com/Apps`.
+You can download Jamilx from Github or install it using Composer. Once you have downloaded the Jamilx folder, place it in your server's public directory, such as `htdocs` or `public_html`. To install Jamilx, open your web browser and navigate to `http://localhost/jamilx/installer`. Follow the on-screen instructions to complete the installation.
 
-### Container
+## Creating an Application
 
-The view layer in Jamilx is called a Container. Containers are used to encapsulate HTML and display data. Containers can be created using the `Container` class, and they can be customized using the `main` method on any service class.
+To create an application or platform on Jamilx, you have three options:
 
-### Service
+1.  Use the command-line tool: Open CMD and navigate to your Jamilx folder and run the following command: `jamilx CreateApp "App Nickname" "App Name" "App Description"`. The tool will create a boilerplate for you in the `Apps` directory containing your app data.
+2.  Self-creation: Go to the `Apps` directory, create a new directory with your app nickname, inside the directory create a PHP file with the app nickname and create a PHP class that extends `JXService` and implements `JXServiceI`, create `conf.json` and fill the necessary fields for the app. Use the demo app for a sample.
+3.  GUI: Go to your admin interface, navigate to the "app creation button" and click it. Use the on-screen information to create your app.
 
-The controller layer in Jamilx is called a Service. Services are responsible for handling requests and returning responses. Services can be created using the `Service` class.
+## Directory Structure
 
-### Admin User Interface
+The Jamilx directory structure is as follows:
 
-Jamilx provides an intuitive and user-friendly Admin User Interface that allows you to manage modules, users, roles, and application settings with ease. This feature allows developers to quickly and easily make changes to their application without having to write complex code.
+-   `Apps`: This directory contains all the applications you create using Jamilx.
+-   `Core`: This directory contains the core files of Jamilx.
+-   `Vendors`: This directory contains the third-party libraries used by Jamilx.
+-   `assets`: This directory contains the public files of your web application, such as CSS, JavaScript, and images.
+-   `Containers`: This directory contains the templates used by your web application.
 
-### Login and Registration
+## Configuration
 
-Jamilx includes a built-in login and registration interface, which makes it easy to add user authentication and authorization to your application. This feature helps improve the security of your application and ensures that only authorized users can access your application's resources.
+Jamilx has no manual configuration. Once you run the installer, it will set everything for you.
+
+## Usage
+
+To use Jamilx, you can create controllers, models, and views. Controllers are responsible for handling user requests, models are responsible for data storage and retrieval, and views are responsible for displaying the data to the user. You can also create reusable components called actions that any service can access.
 
 ## Conclusion
 
-Jamilx is a powerful and flexible framework that simplifies the development process and allows developers to focus on building high-quality applications. Its modular architecture, built-in admin user interface, and easy-to-use installation wizard make it an excellent choice for building SaaS applications.
+Jamilx is a powerful PHP framework that simplifies web application development. Its MVC architecture, PCS pattern, and reusable components make it easy to build robust and scalable applications. With its built-in authentication and authorization, user management, multilingual support, and modular architecture, Jamilx is an excellent choice for building SaaS
