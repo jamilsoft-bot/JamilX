@@ -1,5 +1,13 @@
 <?php
-
+function Create_db_table($fields,$name){
+  global $JX_db;
+  $sql = "CREATE TABLE `".$name."`(".$fields .")";
+  if($JX_db->query($sql)){
+    return true;
+  }else{
+    return false;
+  }
+}
 function js_head(){
     global $APP;
     echo "<title> ".$APP->AppName."</title>";

@@ -39,6 +39,6 @@ class JS_Table{
 
     public function Create($fields,$name){
         $sql = "CREATE TABLE `".$name."`(".$fields .")";
-        return $sql;
+        return $sql; 
     }
 }

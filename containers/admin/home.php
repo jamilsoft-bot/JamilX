@@ -80,14 +80,14 @@
                 </div>
                 <div class="w3-container w3-border w3-border-blue w3-leftbar w3-margin">
                     <div class="w3-bar  w3-xlarge">
-                        <div class="w3-bar-item" >Welcome to Jamilsoft </div>
+                        <div class="w3-bar-item" >Welcome to Jamilx </div>
                     </div>
                     <div class="w3-container">
                         <p class="w3-opacity">We’ve assembled some links to get you started:</p>
                         <div class="row">
                             <div class="col-md-2">
                                 <h4><b>Get Started</b></h4>
-                                <a href="#" class="w3-button w3-blue w3-round-large">Add Business</a>
+                                <a href="?action=createapp" class="w3-button w3-blue w3-round-large">Create new App</a>
                             </div>
                             <div class="col-md-4">
                                 <div class="w3-bar-block w3-small">

@@ -46,7 +46,7 @@ $action = new $act();
                 <strong class="w3-large">Business Name</strong>
             </div> -->
            <div class="w3-margin">
-               <a href="?action=updatecomp" class="w3-button w3-card w3-round-xxlarge"><i class="fa fa-cog"></i> Update Business Info</a>
+               <a href="?action=createapp" class="w3-button w3-card w3-round-xxlarge"><i class="fa fa-cog"></i> Create App</a>
            </div>
            <hr>
             <div class="w3-bar-block ">
@@ -68,9 +68,9 @@ $action = new $act();
                     <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-plus w3-margin-right"></i> Add New</a>
                     <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-list w3-margin-right"></i> All Categories</a>
                 </div>
-                <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-cog w3-margin-right"></i> Setting</a>
-                <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-umbrella w3-margin-right"></i> About</a>
-                <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-question w3-margin-right"></i> Help</a>
+                <a href="?action=updatecomp" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-cog w3-margin-right"></i> Setting</a>
+                <a href="?action=about" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-umbrella w3-margin-right"></i> About</a>
+                <a href="jxdoc" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-question w3-margin-right"></i> Help</a>
     
             </div>
         </div>

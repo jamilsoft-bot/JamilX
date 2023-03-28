@@ -20,11 +20,10 @@ unset($classes[1]);
 foreach($classes as $gets){
     include "system/classes/$gets";
 }
-
-
-//Others
-include "functions/global.php";
 include "etc/global.php";
+include "functions/global.php";
+
+
 
 //databases
 $databases = scandir("system/databases/");
