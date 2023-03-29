@@ -16,7 +16,7 @@ class createapp extends JX_Action implements JX_ActionI{
 
 }
 
-class createapp extends JX_Action implements JX_ActionI{
+class createappx extends JX_Action implements JX_ActionI{
     public function getAction()
     {
         include "containers/createapp.php";
