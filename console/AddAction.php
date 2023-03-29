@@ -1,13 +1,4 @@
 <?php
-$program = isset($argv[1])?$argv[1]:null;
-$service_name = isset($argv[2])?$argv[2]:null;
-$service_path = isset($argv[3])?$argv[3]:null;
-
-
-// echo "Program not found \n". $argv[1];
-
-
-
 
 if($program == "AddAction"){
      echo "\nOpening AddAction Program ...";

@@ -1,6 +1,4 @@
 <?php
-$Pro = new JX_Prototype("testproto");
-$Pro->createTable("users varchar(100),email varchar(200)");
 
 function createApp(){
     

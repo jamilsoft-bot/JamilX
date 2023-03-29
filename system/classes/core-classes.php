@@ -24,6 +24,25 @@ class JX_Prototype{
             return false;
         }
     }
+    public function insert($fields,$values){
+        if(JXdb_insert($this->name,$fields,$values)){
+            return true;
+        }
+    }
+    public function delete($id){
+        if(JXdb_deleteRow($id,$this->name)){
+            return true;
+        }
+    }
+
+    public function read($id){
+        return JXdb_readRow($this->name,$id);
+    }
+
+    public function readall(){
+        return JXdb_readtable($this->name);
+    }
+
 }
 interface JX_service{
     public function main();
