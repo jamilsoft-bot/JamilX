@@ -12,7 +12,7 @@ if($program == "DB:Make"){
         }else{
         }
     }else{
-        echo "operation type not typed";
+        echo "\noperation type not entred";
     }
 }
 

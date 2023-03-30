@@ -4,6 +4,8 @@ function JXdb_insert($tableName,$names,$values){
     $sql = "INSERT INTO `$tableName`($names)VALUES($values)";
     if($JX_db->query($sql)){
         return true;
+    }else{
+      error_log("\n".$JX_db->error , 3, "logs/db-error.log");
     }
 }
 
@@ -20,11 +22,11 @@ function JXdb_readtable($tableName){
 }
 function Create_db_table($fields,$name){
     global $JX_db;
-    $sql = "CREATE TABLE `$name`(id int(11) PRIMARY KEY AUTO_INCREMENT, $fields )";
+    $sql = "CREATE TABLE `$name`(id int(11) PRIMARY KEY AUTO_INCREMENT, $fields, `date` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP )";
     if($JX_db->query($sql)){
       return true;
     }else{
-      return $JX_db->error;
+      error_log("\n".$JX_db->error , 3, "logs/db-error.log");
     }
   }
   function JXdb_deleteRow($id,$tableName){
@@ -32,5 +34,7 @@ function Create_db_table($fields,$name){
     $sql = "DELETE FROM `".$tableName."` WHERE `id` = '".$id."'";
     if($JX_db->query($sql)){
       return true;
+    }else{
+      error_log("\n".$JX_db->error , 3, "logs/db-error.log");
     }
   }
