@@ -3,6 +3,7 @@
 class installer {
 
     public function home(){
+        mkdir("../Apps/");
         include "main.php";
     }
     public function step1(){
@@ -37,7 +38,6 @@ END;
         }else{
             return "Database Information all set, click install to begin installation";
         }
-        mkdir("../Apps");
     }
 
 

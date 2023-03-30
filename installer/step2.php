@@ -1,7 +1,7 @@
 <div class="w3-center" style="width: 50%;">
             <div class="w3-container w3-center w3-margin">
                 <img src="../assets/images/jslogobird.png" style="height: 150px;width: 150px;" >
-                <h1>Jamilsoft</h1>
+                <h1>JamilX</h1>
             </div>
             <div class="w3-card-4 w3-margin-bottom">
                     <div class="w3-container w3-blue">
