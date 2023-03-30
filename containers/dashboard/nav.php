@@ -2,7 +2,7 @@
         <div class="w3-container w3-bar w3-large " style="margin-top: 5pt;">
             <div class="row ">
                 <div class="col-md-2">
-                    <a href="#" class="w3-button w3-bar-item" onclick="w3.toggleShow('#sidebar')"><i class="fa fa-bars"></i> </a>
+                    <!-- <a href="#" class="w3-button w3-bar-item" onclick="w3.toggleShow('#sidebar')"><i class="fa fa-bars"></i> </a> -->
                     <a href="?action=dashboardmain" class="w3-bar-item">
                     <img src="assets/images/jsbn2.png" class="" style="width: 100pt;height:16pt">
                     </a>                
@@ -44,7 +44,7 @@
                                     <div class="w3-container w3-small">
                                         <!-- <a href="#" class="w3-bar-item w3-text-blue" style="text-decoration: none;">Sections</a> -->
                                         <a href="?action=myprofile" class="w3-bar-item" style="text-decoration: none;">My Profile</a>
-                                        <a href="dashboard" class="w3-bar-item " style="text-decoration: none;">Setting</a>
+                                        <a href="?action=editmyprofile" class="w3-bar-item " style="text-decoration: none;">Setting</a>
                                         <a href="about" class="w3-bar-item" style="text-decoration: none;">Help</a>
                                         <a href="logout" class="w3-bar-item" style="text-decoration: none;">Sign out</a>
                                         

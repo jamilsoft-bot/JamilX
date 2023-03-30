@@ -4,7 +4,7 @@ class dashboardmain extends JX_Action implements JX_ActionI{
     
     public function __construct()
     {
-        $this->setTitle("Welcome to Jamilsoft Dashboard");
+        $this->setTitle("Welcome to JamilX Dashboard");
         $this->setText("");
     }
 

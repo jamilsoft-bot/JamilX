@@ -2,7 +2,7 @@
     <?php include "nav.php";?>
     <div class="w3-container">
         <div class="row">
-            <?php include "sidebar.php";?>
+            <?php //include "sidebar.php";?>
             <div class="col-md">
                 <div class="w3-container w3-margin-top">
                         <header class="w3-container w3-border-blue w3-bottombar">

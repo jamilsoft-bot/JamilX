@@ -1,5 +1,12 @@
 <?php
 include "system/global.php";
+$prototypes = scandir("prototypes/");
+unset($prototypes[0]);
+unset($prototypes[1]);
+
+foreach($prototypes as $gets){
+    include "prototypes/$gets";
+}
 
 $services = scandir("services/");
 unset($services[0]);

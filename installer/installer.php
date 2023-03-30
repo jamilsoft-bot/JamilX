@@ -37,6 +37,7 @@ END;
         }else{
             return "Database Information all set, click install to begin installation";
         }
+        mkdir("../Apps");
     }
 
 

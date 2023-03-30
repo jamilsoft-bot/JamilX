@@ -1,17 +1,17 @@
 <?php
 interface JX_PrototypeI{
-    public function createTable();
-    public function delete();
-    public function read();
-    public function create();
-    public function insert();
+    public function createTable($fields);
+    public function delete($id);
+    public function read($id);
+    // public function create();
+    public function insert($fields,$values);
 }
 class JX_Prototype{
     private $name,$fields;
     public function __construct($_name){
         $this->name = $_name;
     }
-
+ 
     public function setfields($_fields){
         
     }

@@ -11,6 +11,8 @@ if($program == "DB:Make"){
             echo "\n$name table was created ";
         }else{
         }
+    }else{
+        echo "operation type not typed";
     }
 }
 
@@ -25,7 +27,30 @@ if($program == "DB:Insert"){
         echo "\n\n";
         if(JXdb_insert($service_name,$names,$values)){
             echo "Record inserted";
+        }else{
+            echo "Record cannot inserted now";
         }
+    }else{
+        echo "Table name not typed";
+    }
+
+}
+
+if($program == "DB:Delete"){
+    echo "Welcome to Database Wizard";
+    if($service_name !== null){
+        echo "\n\n";
+        $idx = readline("Type the Row id:  ");
+        echo "\n\n";
+        echo "\n\n";
+        $id = intval($idx);
+        if(JXdb_deleteRow($id,$service_name)){
+            echo "Record Deleted";
+        }else{
+            echo "Record cannot be deleted now";
+        }
+    }else{
+        echo "Table Not Selected";
     }
 
 }
