@@ -1,20 +1,20 @@
 <?php
-$ProtoRoles = new JX_RolesP();
-class createrole extends JX_Action implements JX_ActionI{
+$ProtoCats = new JX_CatP();
+class createcat extends JX_Action implements JX_ActionI{
     public function getAction()
     {
         if(isset($_POST['rolebtn'])){
-            global $ProtoRoles;
+            global $ProtoCats;
             $name = $_POST['name'];
             $sum = $_POST['summary'];
-            $cat = $_POST['category'];
-            if($ProtoRoles->insert("name,summary,category","'$name','$sum','$cat'")){
-                JX_Alert("Role added to the record");
+            $cat = $_POST['cat'];
+            if($ProtoCats->insert("name,summary,parent","'$name','$sum','$cat'")){
+                JX_Alert("Category added to the record");
             }else{
-                JX_Alert("Role cannot be added now","","red");
+                JX_Alert("Category cannot be added now","","red");
             }
         }
-        include "containers/roles/create.php";
+        include "containers/cats/create.php";
     }
 
     
@@ -29,10 +29,10 @@ class createrole extends JX_Action implements JX_ActionI{
 
 }
 
-class readroles extends JX_Action implements JX_ActionI{
+class readcats extends JX_Action implements JX_ActionI{
     public function getAction()
     {
-        include "containers/roles/read.php";
+        include "containers/cats/read.php";
     }
 
     
@@ -42,10 +42,10 @@ class readroles extends JX_Action implements JX_ActionI{
 
     }
 
-    public function readroles(){
-        global $ProtoRoles;
+    public function readcats(){
+        global $ProtoCats;
         
-        $all = $ProtoRoles->readall();
+        $all = $ProtoCats->readall();
 
         foreach($all as $unit){
             echo "<tr>";

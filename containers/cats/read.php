@@ -9,7 +9,7 @@
                 <th>Actions</th>
             </tr>
             <?php
-            $this->readroles();
+            $this->readcats();
             ?>
         </table>
     </div>

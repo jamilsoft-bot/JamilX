@@ -59,14 +59,14 @@ $action = new $act();
                 </div>
                 <a href="#" onclick="jsShow('rolemenu')" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-star w3-margin-right"></i> Roles</a>
                 <div class="w3-container w3-hide" id="rolemenu">
-                    <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-plus w3-margin-right"></i> Add New</a>
-                    <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-list w3-margin-right"></i> All Roles</a>
+                    <a href="?action=createrole" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-plus w3-margin-right"></i> Add New</a>
+                    <a href="?action=readroles" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-list w3-margin-right"></i> All Roles</a>
                 </div>
                 <a href="?action=applist"  class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-th w3-margin-right"></i> Apps</a>
                 <a href="#" onclick="jsShow('catmenu')" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-code-branch w3-margin-right"></i> Categories</a>
                 <div class="w3-container w3-hide" id="catmenu">
-                    <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-plus w3-margin-right"></i> Add New</a>
-                    <a href="" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-list w3-margin-right"></i> All Categories</a>
+                    <a href="?action=createcat" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-plus w3-margin-right"></i> Add New</a>
+                    <a href="?action=readcats" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-list w3-margin-right"></i> All Categories</a>
                 </div>
                 <a href="?action=updatecomp" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-cog w3-margin-right"></i> Setting</a>
                 <a href="?action=about" class="w3-bar-item w3-hover-blue w3-round-xxlarge w3-text-black" style="text-decoration: none;"><i class="fa fa-umbrella w3-margin-right"></i> About</a>

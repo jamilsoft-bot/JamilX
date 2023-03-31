@@ -18,18 +18,18 @@
                                 <div class="w3-bar-block w3-small">
                                     <b class="w3-bar-item">Add content</b>
                                     <a href="?action=createuser" class="w3-bar-item" style="text-decoration:none">Create user</a>
-                                    <a class="w3-bar-item" style="text-decoration:none">Create Category</a>
-                                    <a class="w3-bar-item" style="text-decoration:none">Create Roles</a>
-                                    <a class="w3-bar-item" style="text-decoration:none">Create Messages</a>
+                                    <a href="?action=createcat" class="w3-bar-item" style="text-decoration:none">Create Category</a>
+                                    <a href="?action=createrole" class="w3-bar-item" style="text-decoration:none">Create Roles</a>
+                                    <!-- <a class="w3-bar-item" style="text-decoration:none">Create Messages</a> -->
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="w3-bar-block w3-small">
                                     <b class="w3-bar-item">Manage</b>
-                                    <a class="w3-bar-item" style="text-decoration:none">Users</a>
-                                    <a class="w3-bar-item" style="text-decoration:none">Categories</a>
-                                    <a class="w3-bar-item" style="text-decoration:none">Roles</a>
-                                    <a class="w3-bar-item" style="text-decoration:none">Messages</a>
+                                    <a href="?action=users" class="w3-bar-item" style="text-decoration:none">Users</a>
+                                    <a href="?action=readcats" class="w3-bar-item" style="text-decoration:none">Categories</a>
+                                    <a href="?action=readroles" class="w3-bar-item" style="text-decoration:none">Roles</a>
+                                    <!-- <a class="w3-bar-item" style="text-decoration:none">Messages</a> -->
                                 </div>
                             </div>
                         </div>
