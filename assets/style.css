@@ -13,28 +13,15 @@
 .s-message{
   display: none;
 }
-@media screen and (max-width: 800px) {
-  div{
-    display: none;
-  }
-  .s-message{
-    display: block;
-  }
-}
-.login-body{
-  /* background: radial-gradient(lightblue,white,coral,blue); */
-  background: repeating-radial-gradient(lightblue,white,coral,blue);
-  
-}
+
 .login-header{
   font-family: 'Calisto MT',Arial, Helvetica, sans-serif;
 }
 .login-container > div{
-  box-shadow: 0 4px 8px 0 rgba(247, 89, 89, 0.2);
+  /* box-shadow: 0 4px 8px 0 rgba(247, 89, 89, 0.2); */
   padding: 16px;
   width: 300pt;
   transition: 0.3s;
-  background: rgb(207, 138, 138);
 }
 .login-btn,.input-text{
   width: 200pt;

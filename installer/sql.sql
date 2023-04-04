@@ -17,9 +17,23 @@ CREATE TABLE `users` (
   `date_reg` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `date_updated` datetime DEFAULT NULL
 );
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `summary` varchar(50) DEFAULT NULL,
+  `category` varchar(50) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+);
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(100) DEFAULT NULL,
+  `parent` varchar(100) DEFAULT NULL,
+  `summary` varchar(100) DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+);
 
 CREATE TABLE `options` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `value` longtext NOT NULL,
   `others` longtext

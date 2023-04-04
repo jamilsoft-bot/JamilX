@@ -82,6 +82,8 @@ class home extends JX_Action implements JX_ActionI{
 
 }
 
+
+
 class updatecomp extends JX_Action implements JX_ActionI{
     public function getAction()
     {

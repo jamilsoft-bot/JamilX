@@ -3,7 +3,11 @@
 class installer {
 
     public function home(){
-        mkdir("../Apps/");
+        if(file_exists("../Apps/")){
+            //echo "File already exist";
+        }else{
+            mkdir("../Apps/");
+        }
         include "main.php";
     }
     public function step1(){
