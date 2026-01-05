@@ -1,2 +1,14 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Define the entire assets folder as vendored (ignored in stats)
+assets/** linguist-vendored
+
+# Explicitly ignore any minified files (often the cause of JS bloat)
+*.min.js linguist-vendored
+*.min.css linguist-vendored
+
+# If you have specific documentation that's being miscounted
+docs/** linguist-documentation
+
+# Ensure PHP is prioritized (optional, but reinforces the system)
+*.php linguist-detectable=true
