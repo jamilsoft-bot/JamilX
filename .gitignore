@@ -1,0 +1,11 @@
+# Ignore all files in assets
+assets/**/*
+
+# Do not ignore the .gitkeep file
+!assets/.gitkeep
+
+# Ignore all files in assets
+data/**/*
+
+# Do not ignore the .gitkeep file
+!data/.gitkeep
