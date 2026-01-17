@@ -17,15 +17,15 @@ $pageTitle = $pageTitle ?? 'Blog Admin';
             <h1 class="text-2xl font-semibold">Manage blog content</h1>
         </div>
         <div class="flex gap-2">
-            <a href="/blog" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">View Blog</a>
-            <a href="/admin/blog/new" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">New Post</a>
+            <a href="blog" class="rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-50">View Blog</a>
+            <a href="http://localhost/jamilx/admin/blog/new" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">New Post</a>
         </div>
     </div>
     <nav class="border-t border-slate-200 bg-slate-50">
         <div class="max-w-6xl mx-auto px-4 py-3 flex flex-wrap gap-4 text-sm font-medium">
-            <a href="/admin/blog" class="text-slate-600 hover:text-slate-900">Dashboard</a>
-            <a href="/admin/blog/categories" class="text-slate-600 hover:text-slate-900">Categories</a>
-            <a href="/admin/blog/tags" class="text-slate-600 hover:text-slate-900">Tags</a>
+            <a href="admin/blog" class="text-slate-600 hover:text-slate-900">Dashboard</a>
+            <a href="admin/blog/categories" class="text-slate-600 hover:text-slate-900">Categories</a>
+            <a href="admin/blog/tags" class="text-slate-600 hover:text-slate-900">Tags</a>
         </div>
     </nav>
 </header>
