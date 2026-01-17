@@ -1,0 +1,17 @@
+#!/usr/bin/env php
+<?php
+
+$program = isset($argv[1])?$argv[1]:null;
+$service_name = isset($argv[2])?$argv[2]:null;
+$service_path = isset($argv[3])?$argv[3]:null;
+
+
+include "core/index.php";
+$console = scandir("console/");
+unset($console[0]);
+unset($console[1]);
+
+foreach($console as $gets){
+    include "console/$gets";
+}
+

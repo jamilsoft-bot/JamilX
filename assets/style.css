@@ -1,0 +1,134 @@
+.login-container{
+  height: 400pt;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+.test{
+  background-color: rgb(221, 221, 223);
+}
+.s-message{
+  display: none;
+}
+
+.login-header{
+  font-family: 'Calisto MT',Arial, Helvetica, sans-serif;
+}
+.login-container > div{
+  /* box-shadow: 0 4px 8px 0 rgba(247, 89, 89, 0.2); */
+  padding: 16px;
+  width: 300pt;
+  transition: 0.3s;
+}
+.login-btn,.input-text{
+  width: 200pt;
+}
+.login-container > *{
+  text-align: center;
+  
+}
+
+.js-card{
+  
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 16px;
+  width: 300pt;
+  transition: 0.3s;
+}
+.course-list{
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  
+  transition: 0.3s;
+  background: rgb(240, 192, 240);
+}
+.js-card:hover {
+  box-shadow: 0 8px 16px 0 rgba(207, 129, 129, 0.2);
+}
+.js-container {
+  padding: 16px;
+}
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(89, 248, 102);
+    
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 50%;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+.widget-2{
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items:flex-start;
+    text-align: left;
+    height: 500pt;
+    overflow: auto;
+  }
+  .widget-2 > div{
+    background-color: #f1f1cf;
+    margin: 10px;
+    text-align: left;
+    
+  }
+.widget{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  text-align: center;
+  height: 500pt;
+  overflow: auto;
+}
+.btn-widget{
+  display: flex;
+  flex-direction: row;
+}
+
+.input-text{
+  width:300pt
+}
+
+
+.widget > div{
+  background-color: #f1f1cf;
+  margin: 10px;
+  text-align: center;
+  font-size: 30px;
+}
+  .main {
+     height: 500pt;
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .main > div {
+    background-color: #f1f1f1;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+
+  .main > div:hover {
+    background-color: #34f8f8;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+
