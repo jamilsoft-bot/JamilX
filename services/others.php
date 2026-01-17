@@ -57,7 +57,7 @@ class index extends JX_Serivce implements JX_service{
     }
     public function main(){
         //$SessionMe = $_SESSION['uid'];
-        include('containers/search/sc.php');
+        include('containers//admin/about.php');
     }
 
 }
