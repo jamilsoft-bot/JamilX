@@ -1,3 +1,0 @@
-- Consider adding scheduled background execution for the email queue worker (cron/systemd).
-- Add SMTP connection diagnostics with STARTTLS negotiation details in the self-test.
-- Expand email template branding to match the active theme assets.
