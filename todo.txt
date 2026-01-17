@@ -1,3 +1,5 @@
 TODO: Add CSRF token support to blog admin forms once the framework provides a shared CSRF helper.
 TODO: Confirm role casing for admin permissions ("admin" vs "Admin") and align with authentication policy.
 TODO: Consider integrating blog admin links into any shared dashboard navigation once a unified menu is available.
+TODO: Add CSRF token checks to file manager POST actions once a shared CSRF helper exists.
+TODO: Confirm whether the canonical service route should be /filemanager or /filemanger and remove the alias if unnecessary.
