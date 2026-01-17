@@ -1,6 +1,6 @@
 <?php
 
-class email extends JX_Serivce implements JX_service{
+class emailservice extends JX_Serivce implements JX_service{
     public function __construct()
     {
         $this->setTitle('Email Service');
