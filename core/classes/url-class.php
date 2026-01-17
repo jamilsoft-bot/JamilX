@@ -3,9 +3,9 @@
 class JS_URL{
     private $_serve, $_action;
 
-     public function __construct()
+    public function __construct()
     {
-        $this->_serve = isset($_GET['serve'])? $_GET['serve']: null;
+        $this->_serve = isset($_GET['serve'])? $_GET['serve']: (isset($_GET['route']) ? $_GET['route'] : null);
         $this->_action = isset($_GET['action'])? $_GET['action']: null;
        // $this->_serve = "";
     }
