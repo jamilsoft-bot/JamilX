@@ -1,0 +1,26 @@
+<?php
+/**
+ * {{class}} action entrypoint.
+ */
+class {{class}} extends JX_Action implements JX_ActionI
+{
+    /**
+     * Handles GET requests.
+     *
+     * @return void
+     */
+    public function getAction()
+    {
+        include "containers/{{container}}/index.php";
+    }
+
+    /**
+     * Handles POST requests.
+     *
+     * @return void
+     */
+    public function addAction()
+    {
+        include "containers/{{container}}/index.php";
+    }
+}

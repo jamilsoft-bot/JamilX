@@ -1,0 +1,16 @@
+<?php
+/**
+ * {{class}} service entrypoint.
+ */
+class {{class}} extends JX_Serivce implements JX_service
+{
+    /**
+     * Executes the service.
+     *
+     * @return void
+     */
+    public function main()
+    {
+        include "containers/{{container}}/index.php";
+    }
+}
