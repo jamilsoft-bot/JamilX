@@ -12,7 +12,7 @@ unset($aps[0]);
 unset($aps[1]);
 $status = [
     "icon" => "",
-    "link" => "",
+    "link" => "", 
 ];
 
 foreach($aps as $ap){

@@ -24,7 +24,7 @@ class AppData{
         class $appnick extends JX_Serivce implements JX_service{
             public function main(){
                 
-                include "Apps/$appnick/$appnick.php";
+                include "Apps/$appnick/containers/$appnick.php";
         
             }
         

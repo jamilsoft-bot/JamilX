@@ -50,6 +50,7 @@ if($program == "CreateApp"){
     $email = readline("Type Author email : ");
     $data['Email'] = $email;
     $data['logo'] = null;
+    $data['tag'] = 'jamilx, App, Saas';
 
     createApp($data);
 

@@ -22,8 +22,8 @@ class JS_APPS{
         }
     }
     public function Install($name){
-      global $CONF_APPS_DIR, $db;
-      $file = file_get_contents("$CONF_APPS_DIR$name/conf.json") or die("could not open the file");
+      global $CONF_APPS_DIR, $db, $JX_db;
+      $file = file_get_contents("Apps/$name/conf.json") or die("could not open the file");
       $app = json_decode($file) or die("something went wrong") ;
         
         $appname = isset($app->Nick) ?$app->Nick: null;
@@ -38,7 +38,7 @@ class JS_APPS{
         !is_null($appname) or die("app name cannot be null");
 
       $sql = "INSERT INTO `apps`( `app_name`,`app_fullname`, `app_summary`, `app_category`, `app_tags`, `app_authur`, `app_email`, `app_website`, `app_others`) VALUES ('$appname','$appfullname','$summary','$cat','$tags','$authur','$email','$website','$others')";
-        if($db->Query($sql)){
+        if($JX_db->query($sql)){
          return "Install Succes";
         }else{
             return  "App may be Already installed or contact the administrator";
@@ -83,7 +83,7 @@ class JS_APPS{
 
     public function getApp($name){
         global $APP,$CONF_APPS_DIR;
-        $data = json_decode(file_get_contents("$CONF_APPS_DIR/$name/conf.json"));
+        $data = json_decode(file_get_contents("Apps/$name/conf.json"));
         return $data;
     }
 }
