@@ -1,0 +1,8 @@
+<?php
+/**
+ * Container view for {{name}}.
+ */
+?><div>
+    <h1>{{name}} Container</h1>
+    <p>Build something amazing here.</p>
+</div>

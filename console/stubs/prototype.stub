@@ -1,0 +1,8 @@
+<?php
+/**
+ * Prototype for {{name}}.
+ */
+return [
+    'name' => '{{name}}',
+    'description' => 'Describe the {{name}} prototype here.',
+];
