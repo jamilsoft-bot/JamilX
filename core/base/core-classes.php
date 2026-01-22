@@ -84,6 +84,7 @@ class JX_Action{
         $this->title = $text;
     }
     public function addAction(){}
+    public function getApi(){}
 
     public function getText(){
         return $this->text;
