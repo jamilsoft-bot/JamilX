@@ -13,6 +13,9 @@ $dslist = $JXD_sidebar->get_list();
                <hr>
                 <div class="w3-bar-block">
                     <a href="?action=dashboardmain" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-home w3-margin-right"></i> Home</a>
+                    <a href="invoice" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-file-invoice-dollar w3-margin-right"></i> Invoices</a>
+                    <a href="billing" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-receipt w3-margin-right"></i> Billing</a>
+                    <a href="forum" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-comments w3-margin-right"></i> Forum</a>
                     <?php
 
                     if(count($dslist) !== 0){
