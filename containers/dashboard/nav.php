@@ -1,79 +1,52 @@
-<div class="w3-border">
-        <div class="w3-container w3-bar w3-large " style="margin-top: 5pt;">
-            <div class="row ">
-                <div class="col-md-2">
-                    <!-- <a href="#" class="w3-button w3-bar-item" onclick="w3.toggleShow('#sidebar')"><i class="fa fa-bars"></i> </a> -->
-                    <a href="?action=dashboardmain" class="w3-bar-item">
-                    <img src="assets/images/jsbn2.png" class="" style="width: 100pt;height:16pt">
-                    </a>                
-                </div>
-                <div class="col-md-7 ">
-                    <input type="text" class="w3-input w3-round-xlarge w3-light-grey w3-bar-item" placeholder="Search Apps" style="width: 600pt;">
-                </div>
-                <div class="col-md-2 ">
-                    <div class="w3-right">
-                        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-question-circle"></i></a>
-                        <!-- <a href="" class="w3-bar-item w3-button"><i class="fas fa-th"></i></a> -->
-                        <div class="w3-dropdown-click">
-                        <button class="w3-bar-item w3-button" onclick="shownav()"><i class="fas fa-th"></i></button>
-                            <div id="nav" class="w3-dropdown-content  w3-bar-block w3-border w3-border-blue" style="right:20pt;top:40pt;width:200pt">
-                                    <div class="w3-container w3-small">
-                                        <a href="#" class="w3-bar-item w3-text-blue" style="text-decoration: none;">Sections</a>
-                                        <a href="admin" class="w3-bar-item" style="text-decoration: none;">Admin</a>
-                                        <a href="dashboard" class="w3-bar-item " style="text-decoration: none;">Dashboard</a>
-                                        <a href="about" class="w3-bar-item" style="text-decoration: none;">About</a>
-                                        <a href="about" class="w3-bar-item" style="text-decoration: none;">Feedback</a>
-                                        
-                                    </div>
-                            </div>
-                        </div>
-                        <div class="w3-dropdown-click">
-                        <button class="w3-bar-item w3-button" onclick="shownavpic()">                            
-                                <img src="<?php
-                                    global $Me;
-                                    $logo = $Me->pic();
-                                    if($logo == null){
-                                        echo "assets/images/user.png";
-                                    }else{
-                                        echo "data/$logo";
-                                    }
-                        
-                        ?>" class="w3-circle" style="width: 25pt;">
-                        </button>
-                            <div id="navpic" class="w3-dropdown-content  w3-bar-block w3-border w3-border-blue" style="right:20pt;top:40pt;width:200pt">
-                                    <div class="w3-container w3-small">
-                                        <!-- <a href="#" class="w3-bar-item w3-text-blue" style="text-decoration: none;">Sections</a> -->
-                                        <a href="?action=myprofile" class="w3-bar-item" style="text-decoration: none;">My Profile</a>
-                                        <a href="?action=editmyprofile" class="w3-bar-item " style="text-decoration: none;">Setting</a>
-                                        <a href="about" class="w3-bar-item" style="text-decoration: none;">Help</a>
-                                        <a href="logout" class="w3-bar-item" style="text-decoration: none;">Sign out</a>
-                                        
-                                    </div>
-                            </div>
-                        </div>
-                        <!-- <a href="#" class="w3-bar-item">
-                        </a> -->
-                    </div>  
+<?php
+    global $Me;
+    $avatar = $Me->pic();
+    $avatarPath = $avatar == null ? 'assets/images/user.png' : "data/$avatar";
+?>
+<div class="sticky top-0 z-20 border-b border-slate-200 bg-white/95 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+        <div class="flex items-center gap-3">
+            <button class="rounded-lg border border-slate-200 bg-white p-2 text-slate-600 hover:bg-slate-50 lg:hidden" onclick="toggleDashboardSidebar()">
+                <i class="fa fa-bars"></i>
+            </button>
+            <a href="?action=dashboardmain" class="flex items-center gap-2">
+                <img src="assets/images/jsbn2.png" alt="JamilX" class="h-6 w-auto">
+                <span class="text-sm font-semibold text-slate-700">User Dashboard</span>
+            </a>
+        </div>
+        <div class="hidden flex-1 px-6 lg:block">
+            <label class="sr-only" for="dashboard-search">Search</label>
+            <div class="relative">
+                <span class="pointer-events-none absolute inset-y-0 left-3 flex items-center text-slate-400">
+                    <i class="fa fa-search"></i>
+                </span>
+                <input id="dashboard-search" type="search" placeholder="Search apps, pages, emails..." class="<?php echo $ui['input']; ?> pl-9">
+            </div>
+        </div>
+        <div class="flex items-center gap-3">
+            <button class="<?php echo $ui['btn_ghost']; ?>" aria-label="Notifications">
+                <i class="fa fa-bell"></i>
+            </button>
+            <div class="relative">
+                <button class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-2 py-1 text-sm font-medium text-slate-600" onclick="toggleDashboardMenu()">
+                    <img src="<?php echo $avatarPath; ?>" alt="User" class="h-8 w-8 rounded-full">
+                    <span class="hidden sm:block">Account</span>
+                    <i class="fa fa-chevron-down text-xs"></i>
+                </button>
+                <div id="dashboard-menu" class="absolute right-0 mt-2 hidden w-48 rounded-xl border border-slate-200 bg-white p-2 text-sm shadow-lg">
+                    <a href="?action=myprofile" class="block rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100">My Profile</a>
+                    <a href="?action=editmyprofile" class="block rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100">Settings</a>
+                    <a href="about" class="block rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100">Help Center</a>
+                    <a href="logout" class="block rounded-lg px-3 py-2 text-slate-600 hover:bg-slate-100">Sign out</a>
                 </div>
             </div>
         </div>
-    
+    </div>
 </div>
-    <script>
-function shownav() {
-    var x = document.getElementById("nav");
-    if (x.className.indexOf("w3-show") == -1) { 
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
+
+<script>
+    function toggleDashboardMenu() {
+        const menu = document.getElementById('dashboard-menu');
+        menu.classList.toggle('hidden');
     }
-}
-function shownavpic() {
-    var x = document.getElementById("navpic");
-    if (x.className.indexOf("w3-show") == -1) { 
-        x.className += " w3-show";
-    } else {
-        x.className = x.className.replace(" w3-show", "");
-    }
-}
 </script>
