@@ -1,7 +1,8 @@
 <?php
 
-$actions = isset($_GET['action'])?$_GET['action']:"dashboardmain";
+$actions = isset($_GET['action']) ? $_GET['action'] : "dashboardmain";
 $getAction = new $actions();
+include __DIR__ . '/../partials/ui-kit.php';
 
 ?>
 <!DOCTYPE html>
@@ -12,9 +13,7 @@ $getAction = new $actions();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $getAction->getTitle();?></title>
     <link rel="shortcut icon" href="assets/images/jslogobird.png" type="image/x-icon">
-    <link rel="stylesheet" href="assets/lib/bs5/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/lib/font/css/all.css">
-    <link rel="stylesheet" href="assets/lib/w3/w3.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    
+<body class="bg-slate-50 text-slate-900">
