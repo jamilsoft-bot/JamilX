@@ -1,7 +1,7 @@
-<header class="w3-container w3-blue">
-    <h2>Available Apps</h2>
+<header class="rounded-t-lg bg-blue-600 px-4 py-3 text-white">
+    <h2 class="text-lg font-semibold">Available Apps</h2>
 </header>
-<div class="w3-container w3-white">
+<div class="rounded-b-lg bg-white px-4 py-4 shadow-sm">
     <?php 
 
 
@@ -28,7 +28,7 @@ foreach($aps as $ap){
     $website = isset($info->website)?$info->website: "http://jamilsoft.com.ng";
     $version = isset($info->version)?$info->version: " null";
     
-    echo "<ul class='w3-ul'>";
+    echo "<ul class='space-y-4'>";
     include "containers/admin/app-card.php";
     echo "</ul>";
 }
