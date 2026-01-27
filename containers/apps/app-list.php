@@ -30,6 +30,7 @@ foreach($aps as $ap){
     
     echo "<ul class='space-y-4'>";
     include "containers/admin/app-card.php";
+	//echo "i see nothing";
     echo "</ul>";
 }
 

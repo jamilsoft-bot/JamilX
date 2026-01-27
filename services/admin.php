@@ -157,6 +157,7 @@ class applist extends JX_Action implements JX_ActionI{
             JX_Alert($Apps->Uninstall($uninsall));
           }
         include "containers/apps/app-list.php";
+	//echo "am i here";
     }
 
     // public function applist(){
