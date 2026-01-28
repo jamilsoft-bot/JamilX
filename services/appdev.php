@@ -11,9 +11,7 @@ class appdev extends JX_Serivce implements JX_service
     // Default Action: Dashboard / Overview
     public function main()
     {
-        global $Apps;
-        // Basic stats or intro could go here. For now, redirect or include list.
-        $this->list();
+        include "containers/appdev/appdev.php";
     }
 
     // List Apps
