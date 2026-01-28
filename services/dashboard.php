@@ -18,7 +18,7 @@ class Dashboard extends JX_Serivce implements JX_service
     }
     public function main()
     {
-        global $Url;
+        global $Url; 
 
         $action = is_null($Url->get('action')) ? 'home' : $Url->get('action');
         include('containers/dashboard/dashboard.php');

@@ -21,6 +21,13 @@ unset($scripts[1]);
 foreach($scripts as $gets){
     include "scripts/$gets/$gets.php";
 }
+
+$systemApps = $Apps->Get_Installed_Apps();
+foreach($systemApps as $apps){
+    $appname = $apps['app_name'];
+    include("Apps/".$appname."/".$appname.".php");
+} 
+
 include 'route/http.php';
 
 
