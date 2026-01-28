@@ -1,6 +1,6 @@
 <?php
 
-
+ 
 function createApp($data = []){
     
     $appnick = $data['Nick'];

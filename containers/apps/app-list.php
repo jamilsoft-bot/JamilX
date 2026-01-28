@@ -20,7 +20,7 @@ foreach($aps as $ap){
     $uninstall_display_option = "display:none";
     $path = "Apps/$ap/conf.json";
     $info = json_decode(file_get_contents($path));
-    $tags = str_getcsv($info->Tag);
+    $tags = str_getcsv($info->tag);
     $appdir = $ap;
     $appname = $info->Name;
     $logo = isset($info->logo)?$info->logo: null;

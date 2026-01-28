@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Boots and configures the Jamilx CLI application.
  */
@@ -92,7 +93,7 @@ class JX_ConsoleKernel
 
         $app->register(new JX_CommandLegacyScript('AddAction', 'console/AddAction.php'));
         $app->register(new JX_CommandLegacyScript('AddService', 'console/JXService.php'));
-        $app->register(new JX_CommandLegacyScript('CreateApp', 'console/CreateApp.php'));
+        $app->register(new JX_CommandLegacyScript('CreateApp', 'console/CreateAppLegacy.php'));
         $app->register(new JX_CommandLegacyScript('DB:Make', 'console/DB.php'));
         $app->register(new JX_CommandLegacyScript('DB:Insert', 'console/DB.php'));
         $app->register(new JX_CommandLegacyScript('DB:Delete', 'console/DB.php'));

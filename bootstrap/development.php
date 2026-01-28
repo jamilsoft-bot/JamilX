@@ -4,7 +4,7 @@ class Development extends Bootstrap{
     {
         parent::__construct("development");
     }
-
+ 
     public function init(){
         if(!file_exists(".env")){
             echo "<script>";
