@@ -1,4 +1,14 @@
-<header class="rounded-t-lg bg-blue-600 px-4 py-3 text-white">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <script src="assets/tailwindcss.js"></script>
+
+</head>
+<body>
+    <header class="rounded-t-lg bg-blue-600 px-4 py-3 text-white">
     <h2 class="text-lg font-semibold">Available Apps</h2>
 </header>
 <div class="rounded-b-lg bg-white px-4 py-4 shadow-sm">
@@ -44,3 +54,6 @@ foreach($aps as $ap){
 
 ?>
 </div>
+
+</body>
+</html>
