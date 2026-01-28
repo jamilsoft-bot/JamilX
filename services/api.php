@@ -41,23 +41,24 @@ class api extends JX_Serivce implements JX_service
         $resource = $paths[2] ?? null;
         $resourceId = $paths[3] ?? null;
 
-        switch ($resource) {
-            case 'health':
-                $this->respond(200, true, 'Service healthy.', [
-                    'service' => 'api',
-                    'version' => 'v1',
-                    'timestamp' => gmdate('c'),
-                ]);
-                return;
-            case 'notes':
-                if (!$this->authorizeRequest()) {
-                    return;
-                }
-                $this->handleNotes($resourceId);
-                return;
-            default:
+        if ($resource == 'health') {
+            $this->respond(200, true, 'Service healthy.', [
+                'service' => 'api',
+                'version' => 'v1',
+                'timestamp' => gmdate('c'),
+            ]);
+            return;
+        } else if (!$this->authorizeRequest()) {
+            return;
+        } else {
+            // $act = is_null($Url->get('action')) ? "apihome" : $Url->get('action');
+            if (class_exists($resource)) {
+                $action = new $resource();
+
+                $action->getApi();
+            } else {
                 $this->respond(404, false, 'Endpoint not found.', null, ['resource' => 'Unknown endpoint.']);
-                return;
+            }
         }
     }
 
@@ -322,7 +323,8 @@ class api extends JX_Serivce implements JX_service
             $raw = file_get_contents('php://input');
             $payload = json_decode($raw, true);
             if ($payload === null && json_last_error() !== JSON_ERROR_NONE) {
-                $this->respond(400, false, 'Invalid JSON payload.', null, ['payload' => json_last_error_msg()]);
+                $apic = new JX_API(400, false, 'Invalid JSON payload.', null, ['payload' => json_last_error_msg()]);
+                $apic->Respond();
                 return null;
             }
         } else {

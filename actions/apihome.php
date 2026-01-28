@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class apihome extends JX_Action implements JX_ActionI{
      public function __construct()
@@ -13,11 +13,13 @@ class apihome extends JX_Action implements JX_ActionI{
     }
     public function getApi()
     {
-        echo json_encode([
-            'status' => 1,
-            'data' => [
-                'message' =>" welcome to JamilX Api Service"
-            ]
+        $api = new JX_API(errors:'no error in api home');
+        $api->setMessage("Welcome to Jamilx Service");
+        $api->data([
+            'Endpoint' => 'apihome',
+            'Resquest type' => 'GET'
         ]);
+      $api->Respond();
+       
     }
 }

@@ -23,7 +23,7 @@ $navItemClass = function (string $action) use ($currentAction) {
     <title>Admin Dashboard</title>
     <link rel="shortcut icon" href="assets/images/jslogobird.png" type="image/x-icon">
     <link rel="stylesheet" href="assets/lib/font/css/all.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/tailwindcss.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
 <div class="min-h-screen">
