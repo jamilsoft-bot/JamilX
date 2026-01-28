@@ -20,4 +20,4 @@ class emailservice extends JX_Serivce implements JX_service{
         include 'containers/email/email.php';
     }
 
-}
+} 

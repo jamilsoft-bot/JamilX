@@ -1,19 +1,30 @@
 <?php include "header.php"; ?>
-<?php include "nav.php"; ?>
-        <div class="col-md-10">
-            <div class="w3-container w3-margin-top">
-                <header class="w3-container w3-border-blue w3-bottombar">
-                    <h3><?php echo $getAction->getTitle();?></h3>
-                </header>
-                <div class="w3-container w3-padding">
-                    <?php $getAction->getAction();?>
+
+<body class="bg-slate-50 min-h-screen">
+
+    <!-- Navigation Sidebar -->
+    <?php include "nav.php"; ?>
+
+    <!-- Main Content -->
+    <div class="lg:pl-64 flex flex-col flex-1">
+        <main class="flex-1 pb-8">
+            <!-- Page Header -->
+            <div class="bg-white shadow-sm border-b border-slate-200">
+                <div class="px-4 sm:px-6 lg:px-8 py-4">
+                    <h1 class="text-2xl font-bold leading-7 text-slate-900 sm:truncate sm:tracking-tight">
+                        <?php echo $getAction->getTitle(); ?>
+                    </h1>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<script src="assets/lib/bs5/js/bootstrap.bundle.min.js"></script>
-<script src="assets/lib/w3/w3.js"></script>
+            <!-- Page Content -->
+            <div class="px-4 sm:px-6 lg:px-8 py-8">
+                <?php $getAction->getAction(); ?>
+            </div>
+        </main>
+    </div>
+
+    <script src="assets/lib/bs5/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
