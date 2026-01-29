@@ -19,8 +19,9 @@ include __DIR__ . '/../partials/ui-kit.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo isset($getAction) ? $getAction->getTitle() : 'JamilX Dashboard'; ?></title>
     <link rel="shortcut icon" href="assets/images/jslogobird.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="assets/lib/font/css/all.min.css" />
     <script src="assets/tailwindcss.js"></script>
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {

@@ -39,7 +39,7 @@ class productupdate extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/product/product-update.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -76,7 +76,7 @@ class products extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/product/product-list.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -153,6 +153,6 @@ class productadd extends JX_Action implements JX_ActionI
                 echo "</div>";
             }
         }
-        include 'containers/product/product-add.php';
+        include 'containers/admin/error.php';
     }
 }

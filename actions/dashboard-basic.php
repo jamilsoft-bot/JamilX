@@ -1,6 +1,6 @@
 <?php
 
-class about extends JX_Action implements JX_ActionI
+class aboutno extends JX_Action implements JX_ActionI
 {
     public function getAction()
     {

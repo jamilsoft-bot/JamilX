@@ -37,7 +37,7 @@ class catadd extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/cat/cat-add.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -78,7 +78,7 @@ class catupdate extends JX_Action implements JX_ActionI
                 echo "</div>";
             }
         }
-        include 'containers/cat/cat-update.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -115,7 +115,7 @@ class cats extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/cat/cat-list.php';
+        include 'containers/admin/error.php';
     }
 }
 

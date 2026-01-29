@@ -1,0 +1,146 @@
+<header class="w3-container w3-blue ">
+                    <h3> <?php echo $this->getTitle(); ?></h3>
+</header>
+    <div class="w3-container content">
+<?php
+global $db, $Url;
+$name = null;
+$author = null;
+$content = null;
+$type = null;
+$btnText = null;
+$link = null;
+$owner = $Url->get('b');
+$oid = $Url->get('oid');
+$brand = null;
+$image = null;
+
+$sql = "SELECT *FROM  `offers` WHERE `id`=$oid";
+
+$result =$db->Query($sql);
+
+foreach($result as $r){
+    $name = $r['name'];
+    $link = $r['link'];
+    $type = $r['type'];
+    $brand = $r['brand'];
+    $content = $r['content'];
+}
+
+
+?>
+                <div class="w3-bar w3-border  w3-margin-top w3-light-grey">
+                    <a href="#" class="w3-bar-item  w3-border-right w3-mobile w3-button">Create</a>
+                    <a href="#" class="w3-bar-item  w3-border-right w3-mobile w3-button">List</a>
+                    <!-- <a href="#" class="w3-bar-item w3-btn">Create</a> -->
+                </div>
+           <form action="" method="post" enctype="multipart/form-data">
+                <div class="container">
+                    <label class="w3-text-blue w3-margin-top">Offer Name</label>
+                    <input type="text" value="<?php echo $name; ?>" name="name" placeholder="Type Offer name" class="w3-border w3-bottombar w3-border-blue w3-input" required>
+                    <!-- <label class="w3-text-blue w3-margin-top">Link</label>
+                    <input type="text" name="link" placeholder="http://" class="w3-border w3-bottombar w3-border-blue w3-input" required>
+                     -->
+                    <label class="w3-text-blue w3-margin-top">Offer Types</label>
+                    <div class="row">
+                        <div class="col-md-6">
+                    <!-- <input type="text" name="type" placeholder="regular price without Currency " class="w3-border w3-bottombar w3-border-blue w3-input" required> -->
+                    <select name="type" class="w3-border w3-bottombar w3-border-blue w3-input" required>
+                        <option value="visitation" <?php
+                    if($type == 'visitation'){
+                        echo "selected";
+                    }
+                    
+                    ?>>Visit Now</option>
+                        <option value="call" <?php
+                    if($type == 'call'){
+                        echo "selected";
+                    }
+                    
+                    ?>>Call Now</option>
+                        <option value="email" <?php
+                    if($type == 'email'){
+                        echo "selected";
+                    }
+                    
+                    ?>>Email Now</option>
+                        <option value="apointment" <?php
+                    if($type == 'apointment'){
+                        echo "selected";
+                    }
+                    
+                    ?>> Make an Appointment</option>
+                        <option value="install" <?php
+                    if($type == 'install'){
+                        echo "selected";
+                    }
+                    
+                    ?>> Install Now</option>
+                        <option value="buy" <?php
+                    if($type == 'buy'){
+                        echo "selected";
+                    }
+                    
+                    ?>> Buy Now</option>
+                        <option value="start" <?php
+                    if($type == 'start'){
+                        echo "selected";
+                    }
+                    
+                    ?>> Get Started</option>
+                    </select>
+                        </div>
+                        <div class="col-md-6">
+                    <input type="text" value="<?php echo $link; ?>" name="link" placeholder="values " class="w3-border w3-bottombar w3-border-blue w3-input" required>
+                    
+                        </div>
+                    </div>
+                    
+                    <label class="w3-text-blue w3-margin-top">Brand</label>
+                    <!-- <input type="text" name="title" placeholder="post Title" class="w3-border w3-bottombar w3-border-blue w3-input" required> -->
+                    
+                    <select name="parent" class="w3-border w3-bottombar w3-border-blue w3-input">
+                        <option value="jamilsoft">Default</option>
+                        <?php
+
+                        global $db;
+                        $sql = "SELECT *FROM `brands`";
+                        $result =$db->Query($sql);
+
+                        foreach($result as $r){
+                            $name = $r['name'];
+                            $brandcode = $r['code'];
+                            if($brandcode == $brand){
+                                echo "<option value='$brandcode' selected>$name</option>";
+                            }else{
+                                echo "<option value='$brandcode'>$name</option>";
+                            }
+                            // echo "<option value='$brandcode'>$name</option>";
+                        }
+                        
+
+                        ?>
+                    </select>
+                   
+                    <label class="w3-text-blue w3-margin-top">Featured Image</label>
+                    <input type="file" name="image" class="w3-border w3-bottombar w3-border-blue w3-input" required>
+                    <label class="w3-text-blue w3-margin-top">Offer Details</label>
+                    <div class="w3-border w3-leftbar w3-border-blue w3-input">
+                        <textarea name='content' id='pid' cols="60" rows="15" class="w3-input ">
+                            <?php echo $content;?>
+                        </textarea>
+                    </div>
+                    <label class="w3-text-blue w3-margin-top">Keywords</label>
+                    <input type="text" name="keywords" placeholder="e.g product, service, computer" class="w3-border w3-bottombar w3-border-blue w3-input" required>
+                    
+                    <input type="submit" name="update" class="w3-input w3-margin-top w3-blue" value="update">
+                </div>
+           </form>
+                
+         </div>
+
+
+
+
+
+

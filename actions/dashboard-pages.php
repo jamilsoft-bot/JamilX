@@ -4,7 +4,7 @@ class pages extends JX_Action implements JX_ActionI
 {
     public function __construct()
     {
-        $this->setTitle('blogs list');
+        $this->setTitle('Page list');
     }
 
     public function getAction()
@@ -34,7 +34,7 @@ class pages extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/blog/blog-list.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -42,7 +42,7 @@ class pageupdate extends JX_Action implements JX_ActionI
 {
     public function __construct()
     {
-        $this->setTitle('blogs list');
+        $this->setTitle('Update Page ');
     }
 
     public function getAction()
@@ -69,7 +69,7 @@ class pageupdate extends JX_Action implements JX_ActionI
                 }
             }
         }
-        include 'containers/blog/blog-update.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -112,7 +112,7 @@ class pageadd extends JX_Action implements JX_ActionI
 {
     public function __construct()
     {
-        $this->setTitle('Blog list');
+        $this->setTitle('Add new Page');
     }
 
     public function getAction()
@@ -151,6 +151,6 @@ class pageadd extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/blog/blog-add.php';
+        include 'containers/admin/error.php';
     }
 }

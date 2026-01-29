@@ -34,7 +34,7 @@ class emails extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/email/email-list.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -64,7 +64,7 @@ class emailupdate extends JX_Action implements JX_ActionI
                 echo "</div>";
             }
         }
-        include 'containers/email/email-update.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -135,6 +135,6 @@ class emailadd extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/email/email-add.php';
+        include 'containers/admin/error.php';
     }
 }

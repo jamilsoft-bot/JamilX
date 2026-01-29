@@ -9,7 +9,7 @@ class postview extends JX_Action implements JX_ActionI
 
     public function getAction()
     {
-        include 'containers/posts/post-view.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -51,7 +51,7 @@ class postupdate extends JX_Action implements JX_ActionI
                 echo "</div>";
             }
         }
-        include 'containers/posts/post-update.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -88,7 +88,7 @@ class postlist extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/posts/post-list.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -163,7 +163,7 @@ class postadd extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/posts/post-add.php';
+        include 'containers/admin/error.php';
     }
 }
 
@@ -200,6 +200,6 @@ class posts extends JX_Action implements JX_ActionI
             }
         }
 
-        include 'containers/posts/post-list.php';
+        include 'containers/admin/error.php';
     }
 }

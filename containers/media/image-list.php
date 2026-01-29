@@ -61,7 +61,7 @@
         $size = $intsize / 1000;
         $date = get_default_date($r['date']);
         include "image-card.php";
-    }
+    } 
     ?>
     
 </div>
