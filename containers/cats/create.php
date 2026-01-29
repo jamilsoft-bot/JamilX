@@ -1,16 +1,16 @@
-<div class="w3-container m-3">
-    <form action="" method="post" class="row">
-        <div class="col-md-6">
-            <label class="w3-text-blue">Category Name</label>
-            <input type="text" name="name" class="w3-border-blue w3-leftbar w3-border w3-input">
+<div class="mx-auto max-w-4xl px-6 py-8">
+    <form action="" method="post" class="grid gap-6 md:grid-cols-2">
+        <div>
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Category Name</label>
+            <input type="text" name="name" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
         </div>
-        <div class="col-md-6">
-            <label class="w3-text-blue"> Description</label>
-            <input type="text" name="summary" class="w3-border w3-leftbar w3-border-blue w3-input">
+        <div>
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Description</label>
+            <input type="text" name="summary" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
         </div>
-        <div class="col-md-6">
-            <label class="w3-text-blue">Parent Category</label>
-            <select name="cat" class="w3-input w3-border w3-border-blue w3-leftbar">
+        <div>
+            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Parent Category</label>
+            <select name="cat" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
                 <?php
                     global $JX_db;
                     $sql = "SELECT *FROM `categories`";
@@ -22,9 +22,8 @@
                 ?>
             </select>
         </div>
-        <div class="col-md-6">
-        <label class="w3-text-blue"></label>
-            <input type="submit" name="rolebtn" class="w3-button w3-hover-blue w3-border-blue w3-leftbar w3-border w3-block" value="Add Role">
+        <div class="flex items-end">
+            <input type="submit" name="rolebtn" class="inline-flex w-full items-center justify-center rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700" value="Add Category">
         </div>
     </form>
 </div>

@@ -1,91 +1,78 @@
 
-        <div class="row w3-container">
-            <div class="col-4 md-4">
-                <div class="w3-card-4 w3-margin">
-                    <img src="../data/images/<?php echo $users->avatar;?>" style="width: 100%; height: 200pt;" id="prid" alt="Norway">
-                    <div class="w3-container w3-center">
-                        <br>
-                        <p class="w3-input w3-btn"><?php echo $users->username;?></p>
-                   <br>
+        <div class="mx-auto max-w-6xl px-6 py-10">
+            <div class="grid gap-8 lg:grid-cols-[320px_1fr]">
+                <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                    <img src="../data/images/<?php echo $users->avatar;?>" class="h-64 w-full rounded-2xl object-cover" id="prid" alt="Profile avatar">
+                    <div class="mt-6 text-center">
+                        <p class="inline-flex items-center justify-center rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-700"><?php echo $users->username;?></p>
                     </div>
-                  </div> 
-                
-            </div>
-            <div class="col-8 md-8">
-                <div class="w3-card w3-margin">
-                    <header class="w3-blue w3-container">
-                        <h3>User Profile Page</h3>
+                </div>
+                <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+                    <header class="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-6">
+                        <div>
+                            <p class="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">Profile overview</p>
+                            <h3 class="mt-2 text-2xl font-semibold text-slate-900">User Profile Page</h3>
+                        </div>
+                        <span class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-semibold text-slate-500">
+                            Account details
+                        </span>
                     </header>
-                    <br>
-                    <div class="w3-container">
-                        
-                        <div class="row">
-                            <div class="col-4 md-4 w3-margin-top">
-                                <label class="w3-text-blue">Full Name</label>
-                                <p class="w3-input"><?php echo $users->name;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">Username</label>
-                            <p class="w3-input"><?php echo $users->username;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">Password</label>
-                            <p class="w3-input">*****</p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">Email</label>
-                            <p class="w3-input"><?php echo $users->email;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">Phone Number</label>
-                            <p class="w3-input"><?php echo $users->phone;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">Date of Birth</label>
-                            <p class="w3-input"><?php echo $users->dob;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">Gender</label>
-                            <p class="w3-input"><?php echo $users->gender;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">Home Address</label>
-                            <p class="w3-input"><?php echo $users->address;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">State</label>
-                            <p class="w3-input"><?php echo $users->state;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top"> 
-                            <label class="w3-text-blue">Country</label>
-                            <p class="w3-input"><?php echo $users->country;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">City/Hometown</label>
-                            <p class="w3-input"><?php echo $users->city;?></p>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                            <label class="w3-text-blue">User Role</label>
-                            <p class="w3-input"><?php echo $users->role;?></p>
-
-                            </div>
-                            
-                            <div class="col-4 md-4 w3-margin-top">
-                                <a class="w3-margin-bottom w3-blue w3-input w3-btn">Update </a>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                                <a class="w3-input w3-green w3-btn"> Done</a>
-                            </div>
-                            <div class="col-4 md-4 w3-margin-top">
-                                <a class="w3-input w3-red w3-btn">Delete</a>
-                            </div>
-                            
+                    <div class="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Full Name</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->name;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Username</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->username;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Password</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">*****</p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Email</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->email;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Phone Number</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->phone;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Date of Birth</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->dob;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Gender</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->gender;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Home Address</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->address;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">State</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->state;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Country</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->country;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">City/Hometown</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->city;?></p>
+                        </div>
+                        <div>
+                            <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">User Role</label>
+                            <p class="mt-2 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"><?php echo $users->role;?></p>
                         </div>
                     </div>
-                    
-                
+                    <div class="mt-8 grid gap-3 sm:grid-cols-3">
+                        <a class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700">Update</a>
+                        <a class="inline-flex items-center justify-center rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-100">Done</a>
+                        <a class="inline-flex items-center justify-center rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-100">Delete</a>
+                    </div>
                 </div>
-                
             </div>
         </div>
         

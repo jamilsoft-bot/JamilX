@@ -17,15 +17,21 @@ function drop(dropevent) {
 }
 
 </script>
-<div class="row">
-    <div class="col-md-6" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
-        <div class="d-flex p-3">
-            <h1 class="p-3" id="drg"  ondragstart="drag(event)" draggable="true">drag me</h1>
+<section class="bg-slate-50 py-10">
+    <div class="mx-auto max-w-5xl px-6">
+        <div class="grid gap-6 md:grid-cols-2">
+            <div class="rounded-3xl border border-dashed border-slate-300 bg-white p-6 shadow-sm" id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Source</p>
+                <div class="mt-6 flex items-center justify-center">
+                    <span class="inline-flex items-center rounded-2xl bg-slate-100 px-6 py-4 text-lg font-semibold text-slate-700" id="drg" ondragstart="drag(event)" draggable="true">drag me</span>
+                </div>
+            </div>
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-slate-500">Destination</p>
+                <div id="dg" class="mt-6 flex min-h-[180px] items-center justify-center rounded-2xl border border-dashed border-slate-200 bg-slate-50" ondrop="drop(event)" ondragover="allowDrop(event)" allowDrop="true">
+                    <span class="text-sm text-slate-400">Drop here</span>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="col-md-6 w3-red">
-    <div id="dg" class="d-flex p-3" ondrop="drop(event)" ondragover="allowDrop(event)" allowDrop="true">
-            
-        </div>
-    </div>
-</div>
+</section>

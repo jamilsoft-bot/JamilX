@@ -1,82 +1,89 @@
-<header class="w3-container w3-blue ">
-                    <h3> <?php echo $this->getTitle(); ?></h3>
-</header>
-    <div class="w3-container content">
+<section class="bg-slate-50 py-10">
+    <div class="mx-auto max-w-5xl px-6">
+        <header class="rounded-3xl bg-gradient-to-r from-indigo-600 via-blue-600 to-sky-500 p-8 text-white shadow-lg">
+            <h3 class="text-2xl font-semibold"> <?php echo $this->getTitle(); ?></h3>
+            <p class="mt-2 text-sm text-blue-100">Create engaging posts with rich metadata.</p>
+        </header>
+        <div class="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
 <?php
 
 
 
 ?>
-                <div class="w3-bar w3-border  w3-margin-top w3-light-grey">
-                    <a href="#" class="w3-bar-item  w3-border-right w3-mobile w3-button">Create</a>
-                    <a href="#" class="w3-bar-item  w3-border-right w3-mobile w3-button">List</a>
-                    <!-- <a href="#" class="w3-bar-item w3-btn">Create</a> -->
+            <div class="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600">
+                <a href="#" class="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">Create</a>
+                <a href="#" class="rounded-full px-4 py-2 text-slate-500 transition hover:bg-white hover:text-slate-700">List</a>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data" class="mt-6 space-y-6">
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Post Title</label>
+                    <input type="text" name="title" placeholder="Post Title" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" required>
                 </div>
-           <form action="" method="post" enctype="multipart/form-data">
-                <div class="container">
-                    <label class="w3-text-blue w3-margin-top">Post Title</label>
-                    <input type="text" name="title" placeholder="post Title" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                    <div class="row">
-                        <div class="col-md-6">
-                        <label class="w3-text-blue w3-margin-top">Category</label>
-                    <select name="cat" class="w3-border w3-bottombar w3-border-blue w3-input">
-                        <option value="uncategorized">Uncategorized</option>
-                        <?php
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div>
+                        <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Category</label>
+                        <select name="cat" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="uncategorized">Uncategorized</option>
+                            <?php
 
-                        global $db;
-                        $sql = "SELECT *FROM `categories`";
-                        $result =$db->Query($sql);
-                        $name = null;
-                        $brandcode = null;
-                        foreach($result as $r){
-                            $name = $r['name'];
-                           // $brandcode = $r['url'];
-                            echo "<option class='w3-light-blue' value='$name'>$name</option>";
-                        }
-                        
+                            global $db;
+                            $sql = "SELECT *FROM `categories`";
+                            $result =$db->Query($sql);
+                            $name = null;
+                            $brandcode = null;
+                            foreach($result as $r){
+                                $name = $r['name'];
+                               // $brandcode = $r['url'];
+                                echo "<option value='$name'>$name</option>";
+                            }
+                            
 
-                        ?>
-                    </select>
-                        </div>
-                        <div class="col-md-6">
-                        <label class="w3-text-blue w3-margin-top">Blog</label>
-                    <select name="parent" class="w3-border w3-bottombar w3-border-blue w3-input">
-                        <option value="none" disabled>none</option>
-                        <?php
-
-                        global $db;
-                        $sql = "SELECT *FROM `blogs`";
-                        $result =$db->Query($sql);
-                        $name = null;
-                        $brandcode = null;
-                        foreach($result as $r){
-                            $name = $r['name'];
-                            $brandcode = $r['url'];
-                            echo "<option class='w3-light-blue' value='$brandcode'>$name - $brandcode</option>";
-                        }
-                        
-
-                        ?>
-                    </select>
-                        </div>
+                            ?>
+                        </select>
                     </div>
-                    
-                   
-                    <label class="w3-text-blue w3-margin-top">Featured Image</label>
-                    <input type="file" name="image" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                    <label class="w3-text-blue w3-margin-top">Post Body</label>
-                    <div class="w3-border w3-leftbar w3-border-blue w3-input">
-                        <textarea name='content' id='pid' cols="60" rows="15" class="w3-input "></textarea>
+                    <div>
+                        <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Blog</label>
+                        <select name="parent" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+                            <option value="none" disabled>none</option>
+                            <?php
+
+                            global $db;
+                            $sql = "SELECT *FROM `blogs`";
+                            $result =$db->Query($sql);
+                            $name = null;
+                            $brandcode = null;
+                            foreach($result as $r){
+                                $name = $r['name'];
+                                $brandcode = $r['url'];
+                                echo "<option value='$brandcode'>$name - $brandcode</option>";
+                            }
+                            
+
+                            ?>
+                        </select>
                     </div>
-                    <label class="w3-text-blue w3-margin-top">Keywords</label>
-                    <input type="text" name="keywords" placeholder="Keywords" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                    
-                    <input type="submit" name="padd" class="w3-input w3-margin-top w3-blue" value="add">
                 </div>
-           </form>
-                
-         </div>
-
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Featured Image</label>
+                    <input type="file" name="image" class="mt-2 w-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-500" required>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Post Body</label>
+                    <div class="mt-2 rounded-2xl border border-slate-200 bg-white">
+                        <textarea name='content' id='pid' cols="60" rows="8" class="w-full rounded-2xl border-0 bg-transparent px-4 py-3 text-sm text-slate-700 focus:outline-none"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Keywords</label>
+                    <input type="text" name="keywords" placeholder="Keywords" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" required>
+                </div>
+                <div class="flex justify-end">
+                    <input type="submit" name="padd" class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700" value="Add Post">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
 
 

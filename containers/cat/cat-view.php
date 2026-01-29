@@ -23,22 +23,18 @@ foreach($row as $r){
 
 ?>
 
-<style>
-    .image{
-        width:100pt;
-        height:100pt;
-        float:left;
-    }
-</style>
-<header class="w3-container w3-blue ">
-                    <h3 id='tt'> <?php echo $title; ?></h3>
-</header>
-                <div class="w3-container content">
-                <?php
+<section class="bg-slate-50 py-10">
+    <div class="mx-auto max-w-5xl px-6">
+        <header class="rounded-3xl bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 p-8 text-white shadow-lg">
+            <h3 id='tt' class="text-2xl font-semibold"> <?php echo $title; ?></h3>
+            <p class="mt-2 text-sm text-blue-100">Category overview and details.</p>
+        </header>
+        <div class="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+        <?php
                                  
                                 
-                                            echo "<img src='$image' class='image'>";
-                                            echo $content;
+                                            echo "<img src='$image' class='mb-6 h-40 w-40 rounded-2xl object-cover shadow-sm'>";
+                                            echo "<div class='prose max-w-none text-slate-600'>".$content."</div>";
 
                                         // echo "<tr>";
                                         // echo "<td>". $r['id'] . "</td>";
@@ -50,7 +46,7 @@ foreach($row as $r){
                                     }
                                     
                                 ?>
-                     
-                </div>
-
+        </div>
+    </div>
+</section>
 

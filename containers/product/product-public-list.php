@@ -5,7 +5,7 @@
         $sql = "SELECT * FROM `products`";
 
         $row = $db->Query($sql);
-        echo "<div class='row'>";
+        echo "<div class='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>";
         foreach($row as $r){
             
               
@@ -17,10 +17,8 @@
                 $tc = $r['content'];
                 $rcontent = strip_tags($tc);
                 $content = substr($rcontent,0,50);
-                echo "<div class='col-md-6'>";
              include("containers/product/product-card.php");
-             echo "</div>";
         
         }
              echo "</div>";                       
-?>
+?>              

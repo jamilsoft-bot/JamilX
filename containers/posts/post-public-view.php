@@ -27,17 +27,25 @@ foreach($row as $r){
 
 // include "containers/blog/post-single.php";
 ?>
-<div class=" w3-container">
-            <header class="w3-container ">
-                    <h1><?php echo $title; ?></h1>
-                    <img src="<?php echo $image;?>" style="max-width: 70%;max-height:200pt;float:left">
+<section class="bg-slate-50 py-10">
+    <div class="mx-auto max-w-5xl px-6">
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <header class="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+                <div>
+                    <p class="text-xs font-semibold uppercase tracking-[0.3em] text-blue-600">Post</p>
+                    <h1 class="mt-2 text-3xl font-semibold text-slate-900"><?php echo $title; ?></h1>
+                    <p class="mt-2 text-sm text-slate-500">Published <?php echo $date; ?> · <?php echo $author; ?></p>
+                </div>
+                <img src="<?php echo $image;?>" class="h-48 w-full rounded-2xl object-cover lg:w-72" alt="<?php echo $title; ?>">
             </header>
-            <div class="w3-container" style="min-height: 300pt;">
-                    <?php echo $content;?>
+            <div class="prose mt-8 max-w-none text-slate-600">
+                <?php echo $content;?>
             </div>
-            <footer class="w3-container ">
+            <footer class="mt-10 border-t border-slate-100 pt-6">
                     <?php 
                     include "containers/comment/comment-public-list.php"
                     ?>
             </footer>
         </div>
+    </div>
+</section>

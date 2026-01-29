@@ -23,11 +23,16 @@ foreach($row as $r){
 
 
 ?>
-<div class=" w3-pale-blue w3-border w3-leftbar w3-border-blue">
-            <header class="w3-container w3-margin w3-blue">
-                    <h1><?php echo $title; ?></h1>
+<section class="bg-slate-50 py-10">
+    <div class="mx-auto max-w-5xl px-6">
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <header class="border-b border-slate-100 pb-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-purple-500">Offer</p>
+                <h1 class="mt-2 text-3xl font-semibold text-slate-900"><?php echo $title; ?></h1>
             </header>
-            <div class="w3-container" style="min-height: 300pt;">
-                    <?php echo $content;?>
+            <div class="prose mt-6 max-w-none text-slate-600">
+                <?php echo $content;?>
             </div>
         </div>
+    </div>
+</section>

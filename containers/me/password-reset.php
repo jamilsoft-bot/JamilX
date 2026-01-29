@@ -1,23 +1,3 @@
-
-    <style>
-input,select {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-}
-hr {
-  border: 1px solid lightgrey;
-}
-
-span.price {
-  float: right;
-  color: grey;
-}
-    </style>
-
-
 <?php
 $pag = isset($_GET['step'])?$_GET['step']: "";
 ?>
@@ -27,31 +7,22 @@ $pag = isset($_GET['step'])?$_GET['step']: "";
     if($pag == "sentmail"){
 
     ?>
-<form action="test.php"  method="post">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-2 md-2"></div>
-            <div class="col-7 md-7 w3-card w3-margin">
-                <div class="row">
-                    <div class="col-3 md-3 w3-green" style="text-align: center;">
-                    <div class="container-fluid">
-                        <span class="fa fa-walking w3-padding " style="font-size: 160pt;"></span>
-                    </div>
-                </div>
-                    <div class="col-8 md-8">
-                        <header class="js-container w3-border-green">
-                            <h1> Password Reset</h1>
-                            <p>Type A registered Email Address to recieve A password reset link</p>
-                        </header>
-                        <label>Email Address</label>
-                        <input type="email" name="Email" id="email" placeholder="Email Address">
-                     <input type="submit" class="w3-btn w3-brown" name="submit" id="submit">
-    
-                    </div>
-                </div>
+<form action="test.php"  method="post" class="mx-auto max-w-4xl px-6 py-12">
+    <div class="grid gap-6 lg:grid-cols-[220px_1fr]">
+        <div class="flex items-center justify-center rounded-3xl bg-emerald-500/10 p-8 text-emerald-600">
+            <span class="fa fa-walking text-[120px]"></span>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <header class="border-b border-slate-100 pb-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600">Password reset</p>
+                <h1 class="mt-2 text-2xl font-semibold text-slate-900">Reset your access</h1>
+                <p class="mt-2 text-sm text-slate-500">Type a registered email address to receive a secure reset link.</p>
+            </header>
+            <div class="mt-6 space-y-4">
+                <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Email Address</label>
+                <input type="email" name="Email" id="email" placeholder="Email Address" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+                <input type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700" name="submit" id="submit" value="Send reset link">
             </div>
-            <div class="col-2 md-2"></div>
-    
         </div>
     </div>
 </form>
@@ -60,35 +31,21 @@ elseif ($pag =="resetpass") {
 
 
 ?>
-<form action="test.php"  method="post">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-2 md-2"></div>
-            <div class="col-7 md-7 w3-card w3-margin">
-                <div class="row">
-                    <div class="col-3 md-3 w3-green" style="text-align: center;">
-                    <div class="container-fluid">
-                        <span class="fa fa-walking w3-padding " style="font-size: 160pt;"></span>
-                    </div>
-    
-                    </div>
-                    <div class="col-8 md-8">
-                        <header class="js-container w3-border-green">
-                            <h1> Password Reset</h1>
-                        </header>
-                        <label>New Password</label>
-                        <input type="password" name="password" id="email" placeholder="New Password">
-                        
-                    
-                    
-                
-                <input type="submit" class="w3-btn w3-brown" name="submit" id="submit">
-    
-                    </div>
-                </div>
+<form action="test.php"  method="post" class="mx-auto max-w-4xl px-6 py-12">
+    <div class="grid gap-6 lg:grid-cols-[220px_1fr]">
+        <div class="flex items-center justify-center rounded-3xl bg-emerald-500/10 p-8 text-emerald-600">
+            <span class="fa fa-walking text-[120px]"></span>
+        </div>
+        <div class="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+            <header class="border-b border-slate-100 pb-6">
+                <p class="text-xs font-semibold uppercase tracking-[0.3em] text-emerald-600">Password reset</p>
+                <h1 class="mt-2 text-2xl font-semibold text-slate-900">Create a new password</h1>
+            </header>
+            <div class="mt-6 space-y-4">
+                <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">New Password</label>
+                <input type="password" name="password" id="email" placeholder="New Password" class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-200">
+                <input type="submit" class="inline-flex w-full items-center justify-center rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-emerald-700" name="submit" id="submit" value="Save new password">
             </div>
-            <div class="col-2 md-2"></div>
-    
         </div>
     </div>
 </form>
