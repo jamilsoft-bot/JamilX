@@ -1,5 +1,5 @@
 <?php
-class contact extends JX_Serivce implements JX_service{
+class contactjx extends JX_Serivce implements JX_service{
     public function __construct()
     {
         $this->setTitle('Business List');
