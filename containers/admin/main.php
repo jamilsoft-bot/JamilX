@@ -1,97 +1,74 @@
-<div class="w3-container">
-    <header class="w3-container w3-blue">
-        <h3>Welcome to Admin</h3>
+<section class="space-y-6">
+    <header class="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-5 text-white shadow-sm">
+        <h3 class="text-xl font-semibold">Welcome to Admin</h3>
+        <p class="text-sm text-blue-100">Quickly access user and app administration tools.</p>
     </header>
-    <div class="w3-container w3-white">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="w3-card">
-                    <div class="w3-center">
-                        <h1><i class="fa fa-users"></i>/ <?php echo JX_get_total_users(); ?></h1>
-                        <div class="w3-bar">
-                            <a href="?action=createuser" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-plus"></i> </a>
-                            <a href="?action=users" class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-eye"></i> </a>
-                            <a class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-recycle"></i> </a>
 
-                        </div>
-                        <div class="w3-container w3-blue">
-                            <p>Users</p>
-                        </div>
-                    </div>
+    <div class="grid gap-6 lg:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-slate-500">Users</p>
+                    <h2 class="mt-2 text-3xl font-semibold text-slate-900">
+                        <i class="fa fa-users text-blue-500"></i>
+                        <?php echo JX_get_total_users(); ?>
+                    </h2>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="w3-card">
-                    <div class="w3-center">
-                        <h1><i class="fas fa-th"></i>/ <?php echo JX_get_total_apps(); ?></h1>
-                        <div class="w3-bar">
-                            <a class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-plus"></i> </a>
-                            <a class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-eye"></i> </a>
-                            <a class="w3-bar-item w3-button w3-hover-blue"><i class="fa fa-recycle"></i> </a>
-
-                        </div>
-                        <div class="w3-container w3-blue">
-                            <p>Apps</p>
-                        </div>
-                    </div>
+                <div class="flex gap-2">
+                    <a href="?action=createuser" class="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-600 hover:border-blue-200 hover:text-blue-600"><i class="fa fa-plus"></i></a>
+                    <a href="?action=users" class="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-600 hover:border-blue-200 hover:text-blue-600"><i class="fa fa-eye"></i></a>
+                    <a class="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-600 hover:border-blue-200 hover:text-blue-600"><i class="fa fa-recycle"></i></a>
                 </div>
             </div>
         </div>
-        <div class="row">
-        <div class="col-md-3">
-                <div class="w3-card">
-                        <a href="?action=createuser" style="color: black;text-decoration:none">
-                            <div class="w3-center w3-hover-blue">
-                                <h1><i class="fa fa-user-plus"></i></h1>
-                                    <p>Add New User</p>
-                            </div>
-                        </a>
+        <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm text-slate-500">Apps</p>
+                    <h2 class="mt-2 text-3xl font-semibold text-slate-900">
+                        <i class="fas fa-th text-indigo-500"></i>
+                        <?php echo JX_get_total_apps(); ?>
+                    </h2>
+                </div>
+                <div class="flex gap-2">
+                    <a class="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-600 hover:border-blue-200 hover:text-blue-600"><i class="fa fa-plus"></i></a>
+                    <a class="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-600 hover:border-blue-200 hover:text-blue-600"><i class="fa fa-eye"></i></a>
+                    <a class="rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-600 hover:border-blue-200 hover:text-blue-600"><i class="fa fa-recycle"></i></a>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="w3-card">
-                        <a href="">
-                            <div class="w3-center w3-hover-blue">
-                                <h1><i class="fa fa-cog"></i></h1>
-                                    <p>Setting</p>
-                            </div>
-                        </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="w3-card">
-                        <a href="">
-                            <div class="w3-center w3-hover-blue">
-                                <h1><i class="fa fa-info"></i></h1>
-                                    <p>System Status</p>
-                            </div>
-                        </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="w3-card">
-                        <a href="?action=about" style="color: black;text-decoration:none">
-                            <div class="w3-center w3-hover-blue">
-                                <h1><i class="fas fa-umbrella"></i></h1>
-                                    <p>About</p>
-                            </div>
-                        </a>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="w3-card">
-                        <a href="">
-                            <div class="w3-center w3-hover-blue">
-                                <h1><i class="fa fa-question"></i></h1>
-                                    <p>Help</p>
-                            </div>
-                        </a>
-                </div>
-            </div>
-
-
         </div>
     </div>
 
-
-</div>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <a href="?action=createuser" class="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-md">
+            <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                <i class="fa fa-user-plus"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-900">Add New User</p>
+        </a>
+        <a href="" class="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-md">
+            <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-slate-600">
+                <i class="fa fa-cog"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-900">Settings</p>
+        </a>
+        <a href="" class="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-md">
+            <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-amber-50 text-amber-600">
+                <i class="fa fa-info"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-900">System Status</p>
+        </a>
+        <a href="?action=about" class="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-md">
+            <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-indigo-50 text-indigo-600">
+                <i class="fas fa-umbrella"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-900">About</p>
+        </a>
+        <a href="" class="group rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:shadow-md">
+            <div class="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 text-emerald-600">
+                <i class="fa fa-question"></i>
+            </div>
+            <p class="text-sm font-semibold text-slate-900">Help</p>
+        </a>
+    </div>
+</section>

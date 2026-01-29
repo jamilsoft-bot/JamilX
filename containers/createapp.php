@@ -17,45 +17,44 @@ function createApp(){
 }
 createApp();
 ?>
-<div class="w3-container w3-bottombar w3-border-blue">
-    <h1 class="w3-text-blue">Create An App</h1>
-</div>
-<form action="" method="post">
-    <div class="w3-container m-2 p-2">
-        <div class="row">
-            <div class="col-md-5  m-2">
-                <label class="w3-text-blue">App Full Name</label>
-                <input type="text" name="Name"  class="w3-input w3-border  w3-border-blue w3-leftbar">
-            </div>
-            <div class="col-md-5  m-2">
-                <label class="w3-text-blue">App Nickname(no space)</label>
-                <input type="text" name="Nick"  class="w3-input w3-border w3-border-blue w3-leftbar">
-            </div>
-            <div class="col-md-5  m-2">
-                <label class="w3-text-blue">App Summary</label>
-                <input type="text" name="Summary"  class="w3-input w3-border w3-border-blue w3-leftbar">
-            </div>
-            <div class="col-md-5  m-2">
-                <label class="w3-text-blue">App Author</label>
-                <input type="text" name="author"  class="w3-input w3-border w3-border-blue w3-leftbar">
-            </div>
-            <div class="col-md-5  m-2">
-                <label class="w3-text-blue">App Website</label>
-                <input type="text" name="website"  class="w3-input w3-border w3-border-blue w3-leftbar">
-            </div>
-            <div class="col-md-5  m-2">
-                <label class="w3-text-blue">App Email</label>
-                <input type="text" name="email"  class="w3-input w3-border w3-border-blue w3-leftbar">
-            </div>
-            <div class="col-md-5  m-2">
-                <input type="hidden" name="version" value="0.1"  class="w3-input w3-border w3-border-blue w3-leftbar">
-                <input type="hidden" name="logo" value="path/to/your/logo"  class="w3-input w3-border w3-border-blue w3-leftbar">
-
-            </div>
-            <div class="col-md-5  m-2">
-                <input type="submit" name="createappbtn"  class="w3-button w3-hover-blue w3-white w3-input w3-border w3-border-blue w3-leftbar">
-            </div>
-
-        </div>
+<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <div class="border-b border-slate-100 pb-4">
+        <h1 class="text-2xl font-semibold text-slate-900">Create An App</h1>
+        <p class="text-sm text-slate-500">Define the app details and branding information.</p>
     </div>
-</form>
+    <form action="" method="post" class="mt-6 space-y-6">
+        <div class="grid gap-6 md:grid-cols-2">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">App Full Name</label>
+                <input type="text" name="Name" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            </div>
+            <div>
+                <label class="text-sm font-semibold text-slate-700">App Nickname (no space)</label>
+                <input type="text" name="Nick" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            </div>
+            <div>
+                <label class="text-sm font-semibold text-slate-700">App Summary</label>
+                <input type="text" name="Summary" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            </div>
+            <div>
+                <label class="text-sm font-semibold text-slate-700">App Author</label>
+                <input type="text" name="author" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            </div>
+            <div>
+                <label class="text-sm font-semibold text-slate-700">App Website</label>
+                <input type="text" name="website" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            </div>
+            <div>
+                <label class="text-sm font-semibold text-slate-700">App Email</label>
+                <input type="text" name="email" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            </div>
+            <div class="hidden">
+                <input type="hidden" name="version" value="0.1">
+                <input type="hidden" name="logo" value="path/to/your/logo">
+            </div>
+        </div>
+        <div class="flex justify-end">
+            <input type="submit" name="createappbtn" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700" value="Create App">
+        </div>
+    </form>
+</div>

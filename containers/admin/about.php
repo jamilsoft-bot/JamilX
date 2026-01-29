@@ -1,36 +1,21 @@
-<style>
-        .flex-containerx {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          min-height: 400pt;
-        }
-        
-        .flex-containerx > div {
-          width: 100%;
-          margin: 10px;
-          text-align: center;
-          line-height: 30px;
-          
-        }
-</style>
-<div class="w3-container ">
-    <header class="w3-container w3-center w3-blue" >
-            <h3>Thank You For Choosing Jamilx</h3>
+<div class="rounded-3xl border border-slate-200 bg-white shadow-sm">
+    <header class="rounded-t-3xl bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-8 text-center text-white">
+        <h3 class="text-2xl font-semibold">Thank You For Choosing JamilX</h3>
+        <p class="mt-2 text-sm text-blue-100">Building modern products with a lightweight PHP framework.</p>
     </header>
-        
-        <div class="flex-containerx w3-sand">
-            <div class="w3-center">
-                <img src="assets/images/jslogobird.png" style="height: 150px;width: 150px;" >
-                <h1>Jamilx</h1>
-                <h3>PHP Framework for Everyone</h3>
-                <a href="https://paystack.com/pay/jamilsoft" class="w3-button w3-blue w3-round-xlarge">Donate</a>
-            </div>
+
+    <div class="flex flex-col items-center gap-4 px-6 py-12 text-center">
+        <div class="flex h-24 w-24 items-center justify-center rounded-full bg-blue-50">
+            <img src="assets/images/jslogobird.png" class="h-16 w-16" alt="JamilX">
         </div>
-        
-        <footer class="w3-container w3-center w3-blue" >
-            <h4>&copy; <span id="copyr"></span> Jamilsoft All Right Researved</h4>
-        </footer>
+        <h1 class="text-3xl font-bold text-slate-900">JamilX</h1>
+        <p class="max-w-xl text-sm text-slate-500">PHP Framework for Everyone</p>
+        <a href="https://paystack.com/pay/jamilsoft" class="mt-2 inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700">Donate</a>
+    </div>
+
+    <footer class="rounded-b-3xl bg-slate-50 px-6 py-4 text-center text-sm text-slate-500">
+        &copy; <span id="copyr"></span> Jamilsoft All Right Researved
+    </footer>
 </div>
     
 <script>
