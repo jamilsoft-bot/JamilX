@@ -5,6 +5,7 @@
         $sql = "SELECT * FROM `offers`";
 
         $row = $db->Query($sql);
+        echo "<div class='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>";
 
         foreach($row as $r){
             
@@ -23,5 +24,6 @@
              include("containers/offer/offer-public-card.php");
         
         }
+        echo "</div>";
                                     
-?>
+?>              

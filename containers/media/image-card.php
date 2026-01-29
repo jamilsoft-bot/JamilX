@@ -1,50 +1,39 @@
-<div class="col-md-4 w3-margin-top" >
-    <div class="flip-card">
-            <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                        <img src="<?php
-                                        if($name == null){
-                                            echo "assets/images/user.png";
-                                        }else{
-                                            echo "data/$name";
-                                        }
-                                        //echo $logo;
-                                        
-                                        ?>" alt="Avatar"  style="width:100%;height:300px;">
-                        </div>
-                        <div class="flip-card-back w3-white">
+<div class="rounded-3xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+    <div class="overflow-hidden rounded-t-3xl">
+        <img src="<?php
+                        if($name == null){
+                            echo "assets/images/user.png";
+                        }else{
+                            echo "data/$name";
+                        }
+                        //echo $logo;
                         
-                            <header class="w3-container w3-centered">
-                                <strong>File Details</strong>
-                            </header>
-                            <div class="w3-responsive">
-                           <table class="w3-table  w3-table-all w3-hoverable">
-                            <tr class="w3-green">
-                                <th>Data</th>
-                                <th>Values</th>
-                            </tr>
-                            <tr>
-                                <td>File Name</td>
-                                <td><?php echo substr($name,0,9) . "..";?></td>
-                            </tr>
-                            <tr>
-                                <td>File Summary</td>
-                                <td><?php echo substr($text,0,9) . "..";?></td>
-                            </tr>
-                            <tr>
-                                <td>File Size</td>
-                                <td><?php echo $size;?>kb</td>
-                            </tr>
-                            <tr>
-                                <td>Date Uploaded</td>
-                                <td><?php echo $date;?></td>
-                            </tr>
-                           </table>
-                            </div>
-                            <footer class="w3-container w3-centered w3-margin">
-                                <a class="w3-button w3-blue">Manage</a>
-                            </footer>
-                        </div>
+                        ?>" alt="Avatar"  class="h-56 w-full object-cover">
+    </div>
+    <div class="space-y-4 p-6">
+        <header>
+            <strong class="text-sm font-semibold text-slate-900">File Details</strong>
+        </header>
+        <div class="space-y-2 text-sm text-slate-600">
+            <div class="flex items-center justify-between">
+                <span>File Name</span>
+                <span class="font-semibold text-slate-700"><?php echo substr($name,0,9) . "..";?></span>
             </div>
+            <div class="flex items-center justify-between">
+                <span>File Summary</span>
+                <span class="font-semibold text-slate-700"><?php echo substr($text,0,9) . "..";?></span>
+            </div>
+            <div class="flex items-center justify-between">
+                <span>File Size</span>
+                <span class="font-semibold text-slate-700"><?php echo $size;?>kb</span>
+            </div>
+            <div class="flex items-center justify-between">
+                <span>Date Uploaded</span>
+                <span class="font-semibold text-slate-700"><?php echo $date;?></span>
+            </div>
+        </div>
+        <footer>
+            <a class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-white shadow-sm transition hover:bg-blue-700">Manage</a>
+        </footer>
     </div>
 </div>

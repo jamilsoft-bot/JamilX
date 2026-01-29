@@ -1,48 +1,42 @@
-<header class="w3-container w3-blue ">
-                    <h3> <?php echo $this->getTitle(); ?></h3>
-</header>
-    <div class="w3-container content">
+<section class="bg-slate-50 py-10">
+    <div class="mx-auto max-w-5xl px-6">
+        <header class="rounded-3xl bg-gradient-to-r from-fuchsia-600 via-purple-500 to-indigo-500 p-8 text-white shadow-lg">
+            <h3 class="text-2xl font-semibold"> <?php echo $this->getTitle(); ?></h3>
+            <p class="mt-2 text-sm text-purple-100">Create new promotional offers with clear calls-to-action.</p>
+        </header>
+        <div class="mt-8 rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
 <?php
 
 
 
 ?>
-                <div class="w3-bar w3-border  w3-margin-top w3-light-grey">
-                    <a href="#" class="w3-bar-item  w3-border-right w3-mobile w3-button">Create</a>
-                    <a href="#" class="w3-bar-item  w3-border-right w3-mobile w3-button">List</a>
-                    <!-- <a href="#" class="w3-bar-item w3-btn">Create</a> -->
+            <div class="flex flex-wrap items-center gap-3 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-600">
+                <a href="#" class="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">Create</a>
+                <a href="#" class="rounded-full px-4 py-2 text-slate-500 transition hover:bg-white hover:text-slate-700">List</a>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data" class="mt-6 space-y-6">
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Offer Name</label>
+                    <input type="text" name="name" placeholder="Type Offer name" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200" required>
                 </div>
-           <form action="" method="post" enctype="multipart/form-data">
-                <div class="container">
-                    <label class="w3-text-blue w3-margin-top">Offer Name</label>
-                    <input type="text" name="name" placeholder="Type Offer name" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                    <!-- <label class="w3-text-blue w3-margin-top">Link</label>
-                    <input type="text" name="link" placeholder="http://" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                     -->
-                    <label class="w3-text-blue w3-margin-top">Offer Types</label>
-                    <div class="row">
-                        <div class="col-md-6">
-                    <!-- <input type="text" name="type" placeholder="regular price without Currency " class="w3-border w3-bottombar w3-border-blue w3-input" required> -->
-                    <select name="type" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                        <option value="visitation">Visit Now</option>
-                        <option value="call">Call Now</option>
-                        <option value="email">Email Now</option>
-                        <option value="apointment"> Make an Appointment</option>
-                        <option value="apointment"> Install Now</option>
-                        <option value="apointment"> Buy Now</option>
-                        <option value="apointment"> Get Started</option>
-                    </select>
-                        </div>
-                        <div class="col-md-6">
-                    <input type="text" name="link" placeholder="values " class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                    
-                        </div>
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Offer Types</label>
+                    <div class="mt-2 grid gap-4 md:grid-cols-2">
+                        <select name="type" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200" required>
+                            <option value="visitation">Visit Now</option>
+                            <option value="call">Call Now</option>
+                            <option value="email">Email Now</option>
+                            <option value="apointment"> Make an Appointment</option>
+                            <option value="apointment"> Install Now</option>
+                            <option value="apointment"> Buy Now</option>
+                            <option value="apointment"> Get Started</option>
+                        </select>
+                        <input type="text" name="link" placeholder="values" class="w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200" required>
                     </div>
-                    
-                    <label class="w3-text-blue w3-margin-top">Brand</label>
-                    <!-- <input type="text" name="title" placeholder="post Title" class="w3-border w3-bottombar w3-border-blue w3-input" required> -->
-                    
-                    <select name="parent" class="w3-border w3-bottombar w3-border-blue w3-input">
+                </div>
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Brand</label>
+                    <select name="parent" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200">
                         <option value="jamilsoft">Default</option>
                         <?php
 
@@ -59,22 +53,28 @@
 
                         ?>
                     </select>
-                   
-                    <label class="w3-text-blue w3-margin-top">Featured Image</label>
-                    <input type="file" name="image" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                    <label class="w3-text-blue w3-margin-top">Offer Details</label>
-                    <div class="w3-border w3-leftbar w3-border-blue w3-input">
-                        <textarea name='content' id='pid' cols="60" rows="15" class="w3-input "></textarea>
-                    </div>
-                    <label class="w3-text-blue w3-margin-top">Keywords</label>
-                    <input type="text" name="keywords" placeholder="e.g product, service, computer" class="w3-border w3-bottombar w3-border-blue w3-input" required>
-                    
-                    <input type="submit" name="oadd" class="w3-input w3-margin-top w3-blue" value="add">
                 </div>
-           </form>
-                
-         </div>
-
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Featured Image</label>
+                    <input type="file" name="image" class="mt-2 w-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-500" required>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Offer Details</label>
+                    <div class="mt-2 rounded-2xl border border-slate-200 bg-white">
+                        <textarea name='content' id='pid' cols="60" rows="8" class="w-full rounded-2xl border-0 bg-transparent px-4 py-3 text-sm text-slate-700 focus:outline-none"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Keywords</label>
+                    <input type="text" name="keywords" placeholder="e.g product, service, computer" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-200" required>
+                </div>
+                <div class="flex justify-end">
+                    <input type="submit" name="oadd" class="inline-flex items-center justify-center rounded-2xl bg-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-purple-700" value="Add Offer">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 
 
 

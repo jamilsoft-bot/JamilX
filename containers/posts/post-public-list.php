@@ -6,7 +6,7 @@ addHit("visitor",'posts');
         $sql = "SELECT * FROM `posts`";
 
         $row = $db->Query($sql);
-        echo "<div class='row'>";
+        echo "<div class='grid gap-6 md:grid-cols-2 lg:grid-cols-3'>";
         foreach($row as $r){
             
              $id = $r['id'];
@@ -25,4 +25,4 @@ addHit("visitor",'posts');
         
         }
         echo "</div>";                          
-?>
+?>              

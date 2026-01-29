@@ -1,51 +1,10 @@
-<style>
-.flip-card {
-  background-color: transparent;
-  width: 100%;
-  padding: 0pt;
-  height: 300px;
-  perspective: 500px;
-  
-}
-
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-  z-index: 2;
-}
-
-.flip-card-back {
-  background-color: #2980b9;
-  color: white;
-  transform: rotateY(180deg);
-  z-index: 1;
-}
-</style>
-<header class="w3-container w3-blue">
-    <h2>Gallary</h2>
-</header>
-<div class="row w3-margin-top">
+<section class="bg-slate-50 py-10">
+    <div class="mx-auto max-w-6xl px-6">
+        <header class="rounded-3xl bg-gradient-to-r from-blue-600 via-sky-500 to-cyan-400 p-8 text-white shadow-lg">
+            <h2 class="text-2xl font-semibold">Gallery</h2>
+            <p class="mt-2 text-sm text-blue-100">Review, preview, and manage uploaded assets.</p>
+        </header>
+        <div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
     <?php
     global $JX_db;
     $own = intval($_SESSION['uid']);
@@ -63,5 +22,6 @@
         include "image-card.php";
     } 
     ?>
-    
-</div>
+        </div>
+    </div>
+</section>
