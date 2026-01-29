@@ -1,5 +1,5 @@
 <?php
-
+ 
 class me extends JX_Serivce implements JX_service{
     public function __construct()
     {
