@@ -44,23 +44,21 @@
   text-align: center;
 }
 </style>
-<div class="w3-container">
-    <header class="w3-container">
-        <h3>Upload Your Profile Picture</h3>
+<div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <header class="border-b border-slate-100 pb-4">
+        <h3 class="text-lg font-semibold text-slate-900">Upload Your Profile Picture</h3>
+        <p class="text-sm text-slate-500">Drag and drop an image file or click to browse.</p>
     </header>
-    <div class="w3-container">
-        <div class="d-flex justify-content-center p-3 flex-row">
-            <div class="p-3" style="width: 400pt;">
+    <div class="mt-6 flex justify-center">
+        <div class="w-full max-w-2xl">
             <div class="drop-zone">
-                <span class="drop-zone__prompt"> drop file here</span>
+                <span class="drop-zone__prompt">Drop file here</span>
                 <input type="file" name="myfile" class="drop-zone__input">
-                
-            </div>
             </div>
         </div>
-        <div class="w3-container">
-            <input type="submit" class="w3-button w3-blue" name="submit" value="upload">
-        </div>
+    </div>
+    <div class="mt-6 flex justify-end">
+        <input type="submit" class="inline-flex items-center rounded-xl bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700" name="submit" value="Upload">
     </div>
 </div>
 

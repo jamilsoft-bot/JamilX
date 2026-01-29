@@ -19,27 +19,19 @@ $sql_update = "UPDATE `options` SET `value` = '' WHERE `name` = ''";
 
 ?>
 
-<header class="w3-container w3-flat-wet-asphalt">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-7 ">
-                    <h1>
-                        About
-
-                    </h1>
-            </div>
-        
-        </div>
-        
+<section class="rounded-3xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-6 py-10 text-white">
+    <div class="max-w-4xl">
+        <p class="text-sm font-semibold uppercase tracking-widest text-slate-300">About</p>
+        <h1 class="mt-2 text-3xl font-semibold">Learn more about your workspace</h1>
+        <p class="mt-3 text-sm text-slate-300">A quick snapshot of the business profile and operational overview.</p>
     </div>
-</header>
-<div class="w3-container content">
-
-    
-    <h1>
-           <?php
-            $test = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus iste culpa debitis dolor nobis cum excepturi quam et facere beatae, ab unde optio non tempora ratione blanditiis! Voluptates, voluptatum asperiores.";
-            echo substr($test,0,25) . "...";
-           ?>
-       </h1>
+</section>
+<div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+    <h2 class="text-xl font-semibold text-slate-900">
+       <?php
+        $test = "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus iste culpa debitis dolor nobis cum excepturi quam et facere beatae, ab unde optio non tempora ratione blanditiis! Voluptates, voluptatum asperiores.";
+        echo substr($test,0,25) . "...";
+       ?>
+   </h2>
+    <p class="mt-2 text-sm text-slate-500">Share a concise statement about the business or mission here.</p>
 </div>

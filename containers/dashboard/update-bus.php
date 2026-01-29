@@ -19,108 +19,90 @@ if($result){
 
 
 ?>
-<style>
-    label{
-        color:blue;
-        font-weight: bold;
-        margin-top: 12pt;
-        margin-bottom: 12pt;
-    }
-    
-</style>
-<header class="w3-container text-center w3-blue">
-    <h1>Business Updator </h1>
-</header>
-<div class="row">
-    
-    <div class="col-12 w3-card  w3-margin" >
-        <div class="w3-bar w3-margin-top">
-            <li class="w3-bar-item w3-right w3-button"><span class="fas fa-power-off"></span></li>
+<div class="rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <header class="rounded-t-2xl bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-5 text-center text-white">
+        <h1 class="text-xl font-semibold">Business Updator</h1>
+    </header>
+    <div class="p-6">
+        <div class="flex items-center justify-end">
+            <button type="button" class="rounded-full border border-slate-200 p-2 text-slate-500 hover:bg-slate-50">
+                <span class="fas fa-power-off"></span>
+            </button>
         </div>
-        <div class="w3-margin w3-padding">
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4 text-center">
-                <label>Business Logo</label>
-            <input type="file" class="w3-input w3-center w3-border w3-border-blue w3-bottombar"  name="logo" id="blogo">
-        
-                </div>
-                <div class="col-md-4"></div>
+
+        <div class="mt-6 grid gap-6">
+            <div class="rounded-xl border border-dashed border-slate-200 bg-slate-50 p-6 text-center">
+                <label class="block text-sm font-semibold text-slate-700">Business Logo</label>
+                <input type="file" class="mt-4 w-full rounded-lg border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600 file:mr-4 file:rounded-full file:border-0 file:bg-blue-50 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-blue-600" name="logo" id="blogo">
             </div>
-           
         </div>
-        <div class="row ">
-            <div class="col-md-6 w3-container">
-                <label>Business Name</label>
-                <input type="text" value="<?php echo $json->name;?>" class="w3-border w3-border-blue w3-bottombar w3-input"   name="name" placeholder="e.g Jamilsoft Technologies">
+
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Name</label>
+                <input type="text" value="<?php echo $json->name;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="name" placeholder="e.g Jamilsoft Technologies">
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business Description</label>
-                <input type="text" value="<?php echo $json->summary;?>" class="w3-border w3-border-blue w3-bottombar  w3-input"  name="summary" placeholder="Type Business Summary">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Description</label>
+                <input type="text" value="<?php echo $json->summary;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="summary" placeholder="Type Business Summary">
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business Industry</label>
-                <select name="industry" class="w3-input w3-border w3-border-blue w3-bottombar ">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Industry</label>
+                <select name="industry" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
                     <option>Health </option>
                     <option>Education </option>
                     <option>Technology </option>
                     <option>Other </option>
                 </select>
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business Street</label>
-                <input type="text" value="<?php echo $json->street;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="street" placeholder="e.g Gwallaga Street">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Street</label>
+                <input type="text" value="<?php echo $json->street;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="street" placeholder="e.g Gwallaga Street">
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business Country</label>
-                <select name="country" class="w3-input w3-border w3-border-blue w3-bottombar " id="cid"></select>
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Country</label>
+                <select name="country" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" id="cid"></select>
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business State/City</label>
-                <input type="text" value="<?php echo $json->city;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="city" placeholder="e.g Alkaleri/Bauchi">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business State/City</label>
+                <input type="text" value="<?php echo $json->city;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="city" placeholder="e.g Alkaleri/Bauchi">
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business Phone</label>
-                <input type="text" value="<?php echo $json->phone;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="phone" placeholder="with country code e.g +234">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Phone</label>
+                <input type="text" value="<?php echo $json->phone;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="phone" placeholder="with country code e.g +234">
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business Website</label>
-                <input type="text" value="<?php echo $json->website;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="website" placeholder="https://.....">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Website</label>
+                <input type="text" value="<?php echo $json->website;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="website" placeholder="https://.....">
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business Email</label>
-                <input type="email" value="<?php echo $json->email;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="email" placeholder="someone@something.com">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business Email</label>
+                <input type="email" value="<?php echo $json->email;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="email" placeholder="someone@something.com">
             </div>
-            <div class="col-md-6 w3-container">
-                <label>Business RC Code (optional)</label>
-                <input type="text" value="<?php echo $json->rc;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="rc" placeholder="RC, BN, Etc">
+            <div>
+                <label class="text-sm font-semibold text-slate-700">Business RC Code (optional)</label>
+                <input type="text" value="<?php echo $json->rc;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="rc" placeholder="RC, BN, Etc">
             </div>
-            <div class="col-md-6 w3-container">
-                <label><i class="fab fa-facebook"></i> Business facebook</label>
-                <input type="text" value="<?php echo $json->facebook;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="facebook" placeholder="https://fb.me/someone">
+            <div>
+                <label class="text-sm font-semibold text-slate-700"><i class="fab fa-facebook"></i> Business facebook</label>
+                <input type="text" value="<?php echo $json->facebook;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="facebook" placeholder="https://fb.me/someone">
             </div>
-            <div class="col-md-6 w3-container">
-                <label><i class="fab fa-twitter"></i> Business Twiter</label>
-                <input type="text" value="<?php echo $json->twitter;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="twitter" placeholder="https://t.co/someone ">
+            <div>
+                <label class="text-sm font-semibold text-slate-700"><i class="fab fa-twitter"></i> Business Twiter</label>
+                <input type="text" value="<?php echo $json->twitter;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="twitter" placeholder="https://t.co/someone ">
             </div>
-            <div class="col-md-6 w3-container">
-                <label><i class="fab fa-youtube"></i> Business Youtube </label>
-                <input type="text" value="<?php echo $json->youtube;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="youtube" placeholder="https://...">
+            <div>
+                <label class="text-sm font-semibold text-slate-700"><i class="fab fa-youtube"></i> Business Youtube</label>
+                <input type="text" value="<?php echo $json->youtube;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="youtube" placeholder="https://...">
             </div>
-            <div class="col-md-6 w3-container">
-                <label><i class="fab fa-instagram"></i> Business Instagram </label>
-                <input type="text" value="<?php echo $json->instagram;?>" class="w3-input w3-border w3-border-blue w3-bottombar " name="instagram" placeholder="https://instagram.com/someone ">
-            </div>
-            <div class="w3-margin w3-padding">
-                <div class="row">
-                    <div class="col-md-4"></div>
-                    <div class="col-md-4">
-                        <input type="submit" class="w3-input w3-button w3-blue"  name="submit" value="Update Now">
-                    </div>
-                    <div class="col-md-4"></div>
-                </div>
+            <div>
+                <label class="text-sm font-semibold text-slate-700"><i class="fab fa-instagram"></i> Business Instagram</label>
+                <input type="text" value="<?php echo $json->instagram;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="instagram" placeholder="https://instagram.com/someone ">
             </div>
         </div>
+
+        <div class="mt-8 flex justify-center">
+            <input type="submit" class="inline-flex w-full max-w-xs items-center justify-center rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700" name="submit" value="Update Now">
+        </div>
     </div>
-    
 </div>

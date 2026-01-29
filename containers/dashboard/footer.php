@@ -1,20 +1,19 @@
-<div id="id01" class="w3-modal w3-animate-zoom">
-  <div class="w3-modal-content">
+<div id="id01" class="hidden fixed inset-0 z-50 overflow-y-auto">
+  <div class="flex min-h-screen items-center justify-center bg-slate-900/50 px-4 py-8">
+    <div class="w-full max-w-3xl overflow-hidden rounded-2xl bg-white shadow-xl">
+      <header class="flex items-center justify-between bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-4 text-white">
+        <h2 class="text-lg font-semibold">Switch Business</h2>
+        <button onclick="document.getElementById('id01').classList.add('hidden')" class="rounded-full bg-white/10 p-2 text-white hover:bg-white/20">&times;</button>
+      </header>
 
-    <header class="w3-container w3-blue">
-      <span onclick="document.getElementById('id01').style.display='none'"
-      class="w3-button w3-display-topright">&times;</span>
-      <h2>Switch Business</h2>
-    </header>
+      <div class="p-6">
+        <?php include "containers/dashboard/buslist.php" ?>
+      </div>
 
-    <div class="w3-container">
-      <?php include "containers/dashboard/buslist.php" ?>
+      <footer class="bg-slate-50 px-6 py-4 text-sm text-slate-500">
+        &copy; Jamilsoft Technologies
+      </footer>
     </div>
-
-    <footer class="w3-container w3-blue">
-      <p>&copy; Jamilsoft Technologies</p>
-    </footer>
-
   </div>
 </div>
 <?php
@@ -33,8 +32,8 @@ get_main_scripts();
 var modal = document.getElementById('id01');
 
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target === modal) {
+    modal.classList.add("hidden");
   }
 }
      loadCountries("cid","Nigeria");

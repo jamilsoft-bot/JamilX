@@ -3,19 +3,20 @@ global $JXD_sidebar;
 $dslist = $JXD_sidebar->get_list();
 
 ?>
-<div class="col-md-2 w3-border w3-animate-left" id="sidebar" style="min-height: 400pt;">
-                <div class="w3-margin">
-                    <strong class="w3-large">Business Name</strong>
+<aside class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm" id="sidebar">
+                <div class="flex items-center justify-between gap-3">
+                    <strong class="text-sm font-semibold text-slate-700">Business Name</strong>
+                    <span class="rounded-full bg-emerald-50 px-2 py-1 text-xs font-medium text-emerald-700">Active</span>
                 </div>
-               <div class="w3-margin">
-                   <a href="" class="w3-button w3-card w3-round-xxlarge">Change Business</a>
+               <div class="mt-4">
+                   <a href="" class="inline-flex w-full items-center justify-center rounded-xl border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-white">Change Business</a>
                </div>
-               <hr>
-                <div class="w3-bar-block">
-                    <a href="?action=dashboardmain" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-home w3-margin-right"></i> Home</a>
-                    <a href="invoice" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-file-invoice-dollar w3-margin-right"></i> Invoices</a>
-                    <a href="billing" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-receipt w3-margin-right"></i> Billing</a>
-                    <a href="forum" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-comments w3-margin-right"></i> Forum</a>
+               <div class="my-4 h-px bg-slate-200"></div>
+                <div class="flex flex-col gap-1 text-sm">
+                    <a href="?action=dashboardmain" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-home"></i> Home</a>
+                    <a href="invoice" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-file-invoice-dollar"></i> Invoices</a>
+                    <a href="billing" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-receipt"></i> Billing</a>
+                    <a href="forum" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-comments"></i> Forum</a>
                     <?php
 
                     if(count($dslist) !== 0){
@@ -25,30 +26,32 @@ $dslist = $JXD_sidebar->get_list();
                     }
 
                     ?>
-                    <!-- <a href="?action=dashboardmain" class="w3-bar-item" style="text-decoration: none;"><i class="fas fa-th w3-margin-right"></i> App Menu</a> -->
-                    <!-- <a href="" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-edit w3-margin-right"></i> Customize</a> -->
-                    <!-- <a href="" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-business-time w3-margin-right"></i> Services</a> -->
-                    <a href="#" onclick="showprofile()" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-user w3-margin-right"></i> My Profile</a>
-                    <div class="w3-container w3-hide" id="profile">
-                        <a href="?action=myprofile" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-user w3-margin-right"></i> My Profile</a>
-                        <a href="?action=updatemyprofilepic" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-camera w3-margin-right"></i> Change Profile Pic</a>
-                        <a href="?action=editmyprofile" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-user-edit w3-margin-right"></i>Update Profile</a>
+                    <!-- <a href="?action=dashboardmain" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fas fa-th"></i> App Menu</a> -->
+                    <!-- <a href="" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-edit"></i> Customize</a> -->
+                    <!-- <a href="" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-business-time"></i> Services</a> -->
+                    <button type="button" onclick="showprofile()" class="flex items-center gap-3 rounded-lg px-3 py-2 text-left text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-user"></i> My Profile</button>
+                    <div class="mt-2 hidden flex-col gap-1 rounded-lg border border-slate-200 bg-slate-50 p-2" id="profile">
+                        <a href="?action=myprofile" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-white hover:text-slate-900"><i class="fa fa-user"></i> My Profile</a>
+                        <a href="?action=updatemyprofilepic" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-white hover:text-slate-900"><i class="fa fa-camera"></i> Change Profile Pic</a>
+                        <a href="?action=editmyprofile" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-white hover:text-slate-900"><i class="fa fa-user-edit"></i>Update Profile</a>
                     </div>
-                    <!-- <a href="" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-code-branch w3-margin-right"></i> Extensions</a> -->
-                    <a href="" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-cog w3-margin-right"></i> Setting</a>
-                    <a href="" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-umbrella w3-margin-right"></i> About</a>
-                    <a href="" class="w3-bar-item" style="text-decoration: none;"><i class="fa fa-question w3-margin-right"></i> Help</a>
+                    <!-- <a href="" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-code-branch"></i> Extensions</a> -->
+                    <a href="" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-cog"></i> Setting</a>
+                    <a href="" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-umbrella"></i> About</a>
+                    <a href="" class="flex items-center gap-3 rounded-lg px-3 py-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-900"><i class="fa fa-question"></i> Help</a>
 
                 </div>
-            </div>
+            </aside>
 
 <script>
 function showprofile() {
     var x = document.getElementById("profile");
-    if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
+    if (x.classList.contains("hidden")) {
+        x.classList.remove("hidden");
+        x.classList.add("flex");
     } else {
-        x.className = x.className.replace(" w3-show", "");
+        x.classList.add("hidden");
+        x.classList.remove("flex");
     }
 }
 </script>
