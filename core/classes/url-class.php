@@ -222,7 +222,7 @@ class JS_URL{
 
     public function __construct()
     {
-        $this->_serve = isset($_GET['serve'])? $_GET['serve']: 'index';
+        $this->_serve = isset($_GET['route'])? $_GET['route']: 'index';
         $this->_action = isset($_GET['action'])? $_GET['action']: null;
        // $this->_serve = "";
     }
