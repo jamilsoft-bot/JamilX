@@ -7,11 +7,11 @@ foreach($classes as $gets){
     include "classes/$gets";
 }
 
-$services = scandir("Apps/ADK/services/");
-unset($services[0]);
-unset($services[1]);
+$actions = scandir("Apps/ADK/actions/");
+unset($actions[0]);
+unset($actions[1]);
 
-foreach($services as $gets){
-    include "classes/$gets";
+foreach($actions as $gets){
+    include "actions/$gets";
 }
 

@@ -1,0 +1,1 @@
+Apps also can extend their code via ext - extensions

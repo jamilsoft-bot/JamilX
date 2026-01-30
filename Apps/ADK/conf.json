@@ -1,1 +1,11 @@
-{"Nick":"ADK","Name":"Application Development kit","Summary":"Build Any Saas with Jamilx","Version":"1.0","author":"Jamilsoft","Website":"https:\/\/jamilsoft.com.ng","Email":"myakububauchi@gmail.com","logo":null,"tag":"jamilx, App, Saas"}
+{
+  "Nick": "ADK",
+  "Name": "Application Development kit",
+  "Summary": "Build Any Saas with Jamilx",
+  "Version": "1.0",
+  "author": "Jamilsoft",
+  "Website": "https:\/\/jamilsoft.com.ng",
+  "Email": "myakububauchi@gmail.com",
+  "logo": null,
+  "tag": "jamilx, App, Saas"
+}
