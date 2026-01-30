@@ -18,7 +18,7 @@
 
 <body class="h-screen bg-white overflow-hidden">
     <?php
-    $resume = isset($_GET['resume']) ? $_GET['resume'] : 'saller';
+    $resume = isset($_GET['resume']) ? $_GET['resume'] : 'dashboard';
     $has_error = isset($_GET['msg']);
     $error_message = $has_error ? 'Invalid credentials. Please try again.' : '';
     ?>

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo installer_escape($productName); ?> Installer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../assets/tailwindcss.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
     <div class="min-h-screen flex flex-col">
