@@ -103,7 +103,7 @@ function invoice_store()
         return;
     }
 
-    Redirect('invoice/view/' . $invoiceId);
+    Redirect('invoice?action=view&id=' . $invoiceId);
 }
 
 function invoice_edit($id, $errors = [], $values = [])
@@ -189,7 +189,7 @@ function invoice_update($id)
         return;
     }
 
-    Redirect('invoice/view/' . $id);
+    Redirect('invoice?action=view&id=' . $id);
 }
 
 function invoice_delete($id)
@@ -209,7 +209,7 @@ function invoice_delete($id)
         return;
     }
     invoice_soft_delete($id);
-    Redirect('invoice');
+    Redirect('invoice?action=home');
 }
 
 function invoice_print($id)
@@ -330,7 +330,7 @@ function invoice_client_save($id = null)
         return;
     }
     invoice_upsert_client($id, $data);
-    Redirect('invoice/clients');
+    Redirect('invoice?action=clients');
 }
 
 function invoice_client_delete($id)
@@ -339,7 +339,7 @@ function invoice_client_delete($id)
         return;
     }
     invoice_delete_client($id);
-    Redirect('invoice/clients');
+    Redirect('invoice?action=clients');
 }
 
 function invoice_settings()
@@ -368,4 +368,165 @@ function invoice_settings()
     }
     $csrf = invoice_csrf_token();
     include 'containers/invoice/settings.php';
+}
+
+class invoiceindex extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Invoices');
+    }
+
+    public function getAction()
+    {
+        invoice_index();
+    }
+}
+
+class invoiceview extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Invoice');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        invoice_view((int) $Url->get('id'));
+    }
+}
+
+class invoicenew extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('New Invoice');
+    }
+
+    public function getAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_store();
+            return;
+        }
+        invoice_create();
+    }
+}
+
+class invoiceedit extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Edit Invoice');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_update($id);
+            return;
+        }
+        invoice_edit($id);
+    }
+}
+
+class invoicedelete extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        invoice_delete((int) $Url->get('id'));
+    }
+}
+
+class invoiceprint extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        invoice_print((int) $Url->get('id'));
+    }
+}
+
+class invoicesend extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        invoice_send((int) $Url->get('id'));
+    }
+}
+
+class invoiceclients extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Clients');
+    }
+
+    public function getAction()
+    {
+        invoice_clients();
+    }
+}
+
+class invoiceclientsnew extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('New Client');
+    }
+
+    public function getAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_client_save();
+            return;
+        }
+        invoice_client_create();
+    }
+}
+
+class invoiceclientsedit extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Edit Client');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_client_save($id);
+            return;
+        }
+        invoice_client_edit($id);
+    }
+}
+
+class invoiceclientsdelete extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        invoice_client_delete((int) $Url->get('id'));
+    }
+}
+
+class invoicesettings extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Invoice Settings');
+    }
+
+    public function getAction()
+    {
+        invoice_settings();
+    }
 }

@@ -11,78 +11,70 @@ class forum extends JX_Serivce implements JX_service
     {
         global $Url;
         $paths = $Url->get_paths();
-        $segment = $paths[1] ?? null;
+        $action = $Url->get('action');
         $isAdmin = false;
 
         if (($paths[0] ?? '') === 'admin' && ($paths[1] ?? '') === 'forum') {
             $isAdmin = true;
-            $segment = $paths[2] ?? null;
-        }
-
-        if ($segment === null && $Url->get('action') !== null) {
-            $segment = $Url->get('action');
-        }
-
-        if ($isAdmin) {
-            switch ($segment) {
-                case 'categories':
-                    forum_admin_categories();
-                    break;
-                case 'categories-save':
-                    $id = (int) ($paths[3] ?? $Url->get('id'));
-                    forum_admin_save_category($id ?: null);
-                    break;
-                default:
-                    forum_admin_categories();
-                    break;
+            if ($action === null && isset($paths[2])) {
+                $redirect = 'admin/forum?action=' . urlencode($paths[2]);
+                if (isset($paths[3])) {
+                    $redirect .= '&id=' . urlencode($paths[3]);
+                }
+                Redirect($redirect);
+                return;
             }
+        }
+
+        if (!$isAdmin && $action === null && isset($paths[1])) {
+            $redirect = 'forum?action=' . urlencode($paths[1]);
+            if (isset($paths[3])) {
+                $redirect .= '&id=' . urlencode($paths[2]);
+                $redirect .= '&slug=' . urlencode($paths[3]);
+            } elseif (isset($paths[2])) {
+                $redirect .= '&slug=' . urlencode($paths[2]);
+            }
+            Redirect($redirect);
             return;
         }
 
-        switch ($segment) {
-            case 'category':
-                forum_category($paths[2] ?? '');
-                break;
-            case 'topic':
-                forum_topic($paths[2] ?? '');
-                break;
-            case 'new':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    forum_store_topic($paths[2] ?? '');
-                } else {
-                    forum_new_topic($paths[2] ?? '');
-                }
-                break;
-            case 'reply':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    forum_reply($paths[2] ?? '');
-                } else {
-                    http_response_code(405);
-                }
-                break;
-            case 'search':
-                forum_search();
-                break;
-            case 'moderate-lock':
-                forum_admin_toggle_topic((int) ($paths[2] ?? $Url->get('id')), 'is_locked');
-                break;
-            case 'moderate-pin':
-                forum_admin_toggle_topic((int) ($paths[2] ?? $Url->get('id')), 'is_pinned');
-                break;
-            case 'post-delete':
-                forum_admin_delete_post((int) ($paths[2] ?? $Url->get('id')), $paths[3] ?? '');
-                break;
-            case 'post-restore':
-                forum_admin_restore_post((int) ($paths[2] ?? $Url->get('id')), $paths[3] ?? '');
-                break;
-            case 'home':
-            case null:
-                forum_index();
-                break;
-            default:
+        if ($isAdmin) {
+            $action = $action ?? 'categories';
+            $actionMap = [
+                'categories' => 'forumadmincategories',
+                'categories-save' => 'forumadmincategoriessave',
+            ];
+            $actionClass = $actionMap[$action] ?? null;
+            if (!$actionClass || !class_exists($actionClass)) {
                 http_response_code(404);
                 include 'containers/common/error.php';
-                break;
+                return;
+            }
+            $getAction = new $actionClass();
+            $getAction->getAction();
+            return;
         }
+
+        $action = $action ?? 'home';
+        $actionMap = [
+            'home' => 'forumindex',
+            'category' => 'forumcategory',
+            'topic' => 'forumtopic',
+            'new' => 'forumnewtopic',
+            'reply' => 'forumreply',
+            'search' => 'forumsearch',
+            'moderate-lock' => 'forummoderatelock',
+            'moderate-pin' => 'forummoderatepin',
+            'post-delete' => 'forumpostdelete',
+            'post-restore' => 'forumpostrestore',
+        ];
+        $actionClass = $actionMap[$action] ?? null;
+        if (!$actionClass || !class_exists($actionClass)) {
+            http_response_code(404);
+            include 'containers/common/error.php';
+            return;
+        }
+        $getAction = new $actionClass();
+        $getAction->getAction();
     }
 }

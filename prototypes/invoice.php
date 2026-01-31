@@ -425,7 +425,7 @@ function invoice_send_email($invoice, $items, $message)
     $html = '<p>' . invoice_html($message) . '</p>';
     $html .= '<p>Invoice Total: <strong>' . invoice_currency($invoice['total']) . '</strong></p>';
     $html .= '<p>Balance Due: <strong>' . invoice_currency($invoice['balance_due']) . '</strong></p>';
-    $html .= '<p>View invoice: <a href="/invoice/view/' . (int) $invoice['id'] . '">Invoice link</a></p>';
+    $html .= '<p>View invoice: <a href="/invoice?action=view&id=' . (int) $invoice['id'] . '">Invoice link</a></p>';
     return Email::send($recipient, $subject, $html, []);
 }
 

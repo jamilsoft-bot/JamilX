@@ -20,7 +20,7 @@ include __DIR__ . '/layout/header.php';
         </div>
         <div class="flex gap-2">
             <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Send Invoice</button>
-            <a href="invoice/view/<?php echo (int) $invoice['id']; ?>" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600">Back</a>
+            <a href="invoice?action=view&id=<?php echo (int) $invoice['id']; ?>" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600">Back</a>
         </div>
     </form>
 </section>

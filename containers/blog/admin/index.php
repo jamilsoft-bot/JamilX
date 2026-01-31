@@ -23,7 +23,7 @@ include __DIR__ . '/header.php';
 <section class="mt-8 rounded-xl border border-slate-200 bg-white">
     <div class="flex items-center justify-between border-b border-slate-200 px-6 py-4">
         <h2 class="text-lg font-semibold">Recent posts</h2>
-        <a href="/admin/blog/new" class="text-sm font-semibold text-indigo-600 hover:text-indigo-700">Create post</a>
+        <a href="admin/blog?action=new" class="text-sm font-semibold text-indigo-600 hover:text-indigo-700">Create post</a>
     </div>
     <div class="overflow-x-auto">
         <table class="w-full text-left text-sm">
@@ -63,8 +63,8 @@ include __DIR__ . '/header.php';
                             </td>
                             <td class="px-6 py-4">
                                 <div class="flex gap-2">
-                                    <a href="/admin/blog/edit/<?php echo blog_html($post['id']); ?>" class="text-indigo-600 hover:text-indigo-700">Edit</a>
-                                    <a href="/admin/blog/delete/<?php echo blog_html($post['id']); ?>" class="text-rose-600 hover:text-rose-700">Delete</a>
+                                    <a href="admin/blog?action=edit&id=<?php echo blog_html($post['id']); ?>" class="text-indigo-600 hover:text-indigo-700">Edit</a>
+                                    <a href="admin/blog?action=delete&id=<?php echo blog_html($post['id']); ?>" class="text-rose-600 hover:text-rose-700">Delete</a>
                                 </div>
                             </td>
                         </tr>
