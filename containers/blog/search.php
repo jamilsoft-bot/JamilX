@@ -23,12 +23,12 @@ include __DIR__ . '/layout/header.php';
         <?php foreach ($posts as $post): ?>
             <article class="rounded-xl border border-slate-200 bg-white p-6">
                 <h3 class="text-xl font-semibold">
-                    <a href="/blog/post/<?php echo blog_html($post['slug']); ?>" class="hover:text-indigo-600"><?php echo blog_html($post['title']); ?></a>
+                    <a href="blog?action=post&slug=<?php echo blog_html($post['slug']); ?>" class="hover:text-indigo-600"><?php echo blog_html($post['title']); ?></a>
                 </h3>
                 <p class="mt-2 text-sm text-slate-500"><?php echo blog_html($post['excerpt']); ?></p>
                 <div class="mt-3 flex flex-wrap gap-2 text-xs">
                     <?php foreach (($tagsMap[$post['id']] ?? []) as $tagItem): ?>
-                        <a href="/blog/tag/<?php echo blog_html($tagItem['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 hover:bg-slate-200"><?php echo blog_html($tagItem['name']); ?></a>
+                        <a href="blog?action=tag&slug=<?php echo blog_html($tagItem['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 hover:bg-slate-200"><?php echo blog_html($tagItem['name']); ?></a>
                     <?php endforeach; ?>
                 </div>
             </article>

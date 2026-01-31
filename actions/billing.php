@@ -69,7 +69,7 @@ function billing_store_payment()
         return;
     }
 
-    Redirect('billing/payments');
+    Redirect('billing?action=payments');
 }
 
 function billing_refund_form($paymentId, $errors = [], $values = [])
@@ -114,5 +114,67 @@ function billing_refund_save($paymentId)
         return;
     }
 
-    Redirect('billing/payments');
+    Redirect('billing?action=payments');
+}
+
+class billingdashboard extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Billing Dashboard');
+    }
+
+    public function getAction()
+    {
+        billing_dashboard();
+    }
+}
+
+class billingpayments extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Payments');
+    }
+
+    public function getAction()
+    {
+        billing_payments();
+    }
+}
+
+class billingnewpayment extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Record Payment');
+    }
+
+    public function getAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            billing_store_payment();
+            return;
+        }
+        billing_new_payment();
+    }
+}
+
+class billingrefund extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Refund Payment');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            billing_refund_save($id);
+            return;
+        }
+        billing_refund_form($id);
+    }
 }

@@ -19,12 +19,13 @@ function filemanager_json_response(array $payload, $status = 200)
 function filemanager_redirect_to_browser($scope, $path, $notice = null, $error = null)
 {
     $params = [
+        'action' => 'browse',
         'scope' => $scope,
         'path' => $path,
         'notice' => $notice,
         'error' => $error,
     ];
-    Redirect(filemanager_page_url('filemanager/browse', $params));
+    Redirect(filemanager_page_url('filemanager', $params));
 }
 
 function filemanager_parent_path($path)
@@ -107,7 +108,7 @@ function filemanager_browse()
     $scopeOptions = filemanager_scope_options();
     $isSearch = false;
     $searchQuery = '';
-    $baseUrl = 'filemanager/browse';
+    $baseUrl = 'filemanager';
 
     include 'containers/filemanager/index.php';
 }
@@ -151,7 +152,7 @@ function filemanager_search()
     $scopeOptions = filemanager_scope_options();
     $isSearch = true;
     $searchQuery = $query;
-    $baseUrl = 'filemanager/search';
+    $baseUrl = 'filemanager';
 
     include 'containers/filemanager/index.php';
 }
@@ -568,5 +569,116 @@ class filemanagerhome extends JX_Action implements JX_ActionI
     public function getAction()
     {
         filemanager_index();
+    }
+}
+
+class filemanagerbrowse extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Browse Files');
+    }
+
+    public function getAction()
+    {
+        filemanager_browse();
+    }
+}
+
+class filemanagersearch extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Search Files');
+    }
+
+    public function getAction()
+    {
+        filemanager_search();
+    }
+}
+
+class filemanagerupload extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_upload();
+    }
+}
+
+class filemanagernewfolder extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_create_folder();
+    }
+}
+
+class filemanagerrename extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_rename();
+    }
+}
+
+class filemanagerdelete extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_delete();
+    }
+}
+
+class filemanagermove extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_move();
+    }
+}
+
+class filemanagercopy extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_copy();
+    }
+}
+
+class filemanagerdownload extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_download();
+    }
+}
+
+class filemanagerpreview extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        filemanager_preview();
+    }
+}
+
+class filemanagerapi extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $apiAction = $Url->get('api');
+        switch ($apiAction) {
+            case 'list':
+                filemanager_api_list();
+                break;
+            case 'upload':
+                filemanager_api_upload();
+                break;
+            default:
+                http_response_code(404);
+                include 'containers/common/error.php';
+                break;
+        }
     }
 }

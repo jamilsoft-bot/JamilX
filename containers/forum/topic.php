@@ -11,7 +11,7 @@ include __DIR__ . '/layout/header.php';
         </div>
         <div class="flex flex-wrap gap-2">
             <?php if (forum_is_moderator()): ?>
-                <form method="post" action="forum/moderate-lock/<?php echo (int) $topic['id']; ?>" class="inline">
+                <form method="post" action="forum?action=moderate-lock&id=<?php echo (int) $topic['id']; ?>" class="inline">
                     <input type="hidden" name="csrf_token" value="<?php echo forum_html($csrf ?? ''); ?>">
                     <input type="hidden" name="slug" value="<?php echo forum_html($topic['slug']); ?>">
                     <input type="hidden" name="value" value="<?php echo $topic['is_locked'] ? 0 : 1; ?>">
@@ -19,7 +19,7 @@ include __DIR__ . '/layout/header.php';
                         <?php echo $topic['is_locked'] ? 'Unlock' : 'Lock'; ?>
                     </button>
                 </form>
-                <form method="post" action="forum/moderate-pin/<?php echo (int) $topic['id']; ?>" class="inline">
+                <form method="post" action="forum?action=moderate-pin&id=<?php echo (int) $topic['id']; ?>" class="inline">
                     <input type="hidden" name="csrf_token" value="<?php echo forum_html($csrf ?? ''); ?>">
                     <input type="hidden" name="slug" value="<?php echo forum_html($topic['slug']); ?>">
                     <input type="hidden" name="value" value="<?php echo $topic['is_pinned'] ? 0 : 1; ?>">
@@ -28,7 +28,7 @@ include __DIR__ . '/layout/header.php';
                     </button>
                 </form>
             <?php endif; ?>
-            <a href="forum/category/<?php echo forum_html($topic['category_slug']); ?>" class="rounded-lg border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-600">Back</a>
+            <a href="forum?action=category&slug=<?php echo forum_html($topic['category_slug']); ?>" class="rounded-lg border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-600">Back</a>
         </div>
     </div>
 
@@ -43,7 +43,7 @@ include __DIR__ . '/layout/header.php';
                     <?php echo forum_render_text($post['body']); ?>
                 </div>
                 <?php if (forum_is_moderator()): ?>
-                    <form method="post" action="forum/post-delete/<?php echo (int) $post['id']; ?>/<?php echo forum_html($topic['slug']); ?>" class="mt-3">
+                    <form method="post" action="forum?action=post-delete&id=<?php echo (int) $post['id']; ?>&slug=<?php echo forum_html($topic['slug']); ?>" class="mt-3">
                         <input type="hidden" name="csrf_token" value="<?php echo forum_html($csrf ?? ''); ?>">
                         <button type="submit" class="text-xs text-rose-600 hover:text-rose-800">Remove</button>
                     </form>
@@ -55,7 +55,7 @@ include __DIR__ . '/layout/header.php';
     <?php if ($pagination['total_pages'] > 1): ?>
         <div class="mt-4 flex gap-2">
             <?php for ($i = 1; $i <= $pagination['total_pages']; $i++): ?>
-                <a href="forum/topic/<?php echo forum_html($topic['slug']); ?>?page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
+                <a href="forum?action=topic&slug=<?php echo forum_html($topic['slug']); ?>&page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
                     <?php echo forum_html($i); ?>
                 </a>
             <?php endfor; ?>
@@ -78,7 +78,7 @@ include __DIR__ . '/layout/header.php';
         <?php if (!empty($topic['is_locked'])): ?>
             <p class="mt-2 text-sm text-slate-500">This topic is locked.</p>
         <?php else: ?>
-            <form method="post" action="forum/reply/<?php echo forum_html($topic['slug']); ?>" class="mt-4 space-y-3">
+            <form method="post" action="forum?action=reply&slug=<?php echo forum_html($topic['slug']); ?>" class="mt-4 space-y-3">
                 <input type="hidden" name="csrf_token" value="<?php echo forum_html($csrf ?? ''); ?>">
                 <textarea name="body" rows="4" class="w-full rounded-lg border border-slate-300 px-3 py-2 text-sm" required></textarea>
                 <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Post Reply</button>

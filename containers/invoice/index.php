@@ -58,9 +58,9 @@ include __DIR__ . '/layout/header.php';
                             <td class="px-4 py-3">$<?php echo invoice_currency($invoice['balance_due']); ?></td>
                             <td class="px-4 py-3">
                                 <div class="flex flex-wrap gap-2">
-                                    <a class="text-indigo-600 hover:text-indigo-800" href="invoice/view/<?php echo (int) $invoice['id']; ?>">View</a>
-                                    <a class="text-slate-600 hover:text-slate-800" href="invoice/edit/<?php echo (int) $invoice['id']; ?>">Edit</a>
-                                    <a class="text-rose-600 hover:text-rose-800" href="invoice/delete/<?php echo (int) $invoice['id']; ?>">Delete</a>
+                                    <a class="text-indigo-600 hover:text-indigo-800" href="invoice?action=view&id=<?php echo (int) $invoice['id']; ?>">View</a>
+                                    <a class="text-slate-600 hover:text-slate-800" href="invoice?action=edit&id=<?php echo (int) $invoice['id']; ?>">Edit</a>
+                                    <a class="text-rose-600 hover:text-rose-800" href="invoice?action=delete&id=<?php echo (int) $invoice['id']; ?>">Delete</a>
                                 </div>
                             </td>
                         </tr>

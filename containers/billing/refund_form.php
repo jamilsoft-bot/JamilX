@@ -9,7 +9,7 @@ $values = $values ?? [];
             <h2 class="text-xl font-semibold">Refund Payment</h2>
             <p class="text-sm text-slate-500">Refund a recorded payment.</p>
         </div>
-        <a href="billing/payments" class="text-sm text-slate-600 hover:text-slate-900">Back to payments</a>
+        <a href="billing?action=payments" class="text-sm text-slate-600 hover:text-slate-900">Back to payments</a>
     </div>
 
     <?php if (!empty($errors)): ?>
