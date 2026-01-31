@@ -3,9 +3,9 @@ $pageTitle = $pageTitle ?? 'JamilX Blog';
 $pageDescription = $pageDescription ?? 'News and updates from the JamilX community.';
 $navLinks = [
     ['label' => 'Home', 'href' => 'blog'],
-    ['label' => 'Categories', 'href' => 'blog/category'],
-    ['label' => 'Tags', 'href' => 'blog/tag'],
-    ['label' => 'Search', 'href' => 'blog/search'],
+    ['label' => 'Categories', 'href' => 'blog?action=category'],
+    ['label' => 'Tags', 'href' => 'blog?action=tag'],
+    ['label' => 'Search', 'href' => 'blog?action=search'],
 ];
 ?>
 <!DOCTYPE html>
@@ -24,7 +24,8 @@ $navLinks = [
             <p class="text-sm uppercase tracking-widest text-slate-500">JamilX Blog</p>
             <h1 class="text-2xl font-semibold">Stories, updates, and product releases</h1>
         </div>
-        <form action="blog/search" method="get" class="flex gap-2">
+        <form action="blog" method="get" class="flex gap-2">
+            <input type="hidden" name="action" value="search">
             <input type="text" name="q" value="<?php echo blog_html($searchQuery ?? ''); ?>" placeholder="Search posts" class="w-48 md:w-64 rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none">
             <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Search</button>
         </form>
@@ -36,7 +37,7 @@ $navLinks = [
                     <?php echo blog_html($link['label']); ?>
                 </a>
             <?php endforeach; ?>
-            <a href="admin/blog" class="text-slate-600 hover:text-slate-900">Admin</a>
+            <a href="admin/blog?action=index" class="text-slate-600 hover:text-slate-900">Admin</a>
         </div>
     </nav>
 </header>

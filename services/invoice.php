@@ -11,77 +11,39 @@ class invoice extends JX_Serivce implements JX_service
     {
         global $Url;
         $paths = $Url->get_paths();
-        $segment = $paths[1] ?? null;
+        $action = $Url->get('action');
 
-        if ($segment === null && $Url->get('action') !== null) {
-            $segment = $Url->get('action');
+        if ($action === null && isset($paths[1])) {
+            $redirect = 'invoice?action=' . urlencode($paths[1]);
+            if (isset($paths[2])) {
+                $redirect .= '&id=' . urlencode($paths[2]);
+            }
+            Redirect($redirect);
+            return;
         }
 
-        switch ($segment) {
-            case 'new':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    invoice_store();
-                } else {
-                    invoice_create();
-                }
-                break;
-            case 'view':
-                $id = (int) ($paths[2] ?? $Url->get('id'));
-                invoice_view($id);
-                break;
-            case 'edit':
-                $id = (int) ($paths[2] ?? $Url->get('id'));
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    invoice_update($id);
-                } else {
-                    invoice_edit($id);
-                }
-                break;
-            case 'delete':
-                $id = (int) ($paths[2] ?? $Url->get('id'));
-                invoice_delete($id);
-                break;
-            case 'print':
-                $id = (int) ($paths[2] ?? $Url->get('id'));
-                invoice_print($id);
-                break;
-            case 'send':
-                $id = (int) ($paths[2] ?? $Url->get('id'));
-                invoice_send($id);
-                break;
-            case 'clients':
-                invoice_clients();
-                break;
-            case 'clients-new':
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    invoice_client_save();
-                } else {
-                    invoice_client_create();
-                }
-                break;
-            case 'clients-edit':
-                $id = (int) ($paths[2] ?? $Url->get('id'));
-                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                    invoice_client_save($id);
-                } else {
-                    invoice_client_edit($id);
-                }
-                break;
-            case 'clients-delete':
-                $id = (int) ($paths[2] ?? $Url->get('id'));
-                invoice_client_delete($id);
-                break;
-            case 'settings':
-                invoice_settings();
-                break;
-            case 'home':
-            case null:
-                invoice_index();
-                break;
-            default:
-                http_response_code(404);
-                include 'containers/common/error.php';
-                break;
+        $action = $action ?? 'home';
+        $actionMap = [
+            'home' => 'invoiceindex',
+            'new' => 'invoicenew',
+            'view' => 'invoiceview',
+            'edit' => 'invoiceedit',
+            'delete' => 'invoicedelete',
+            'print' => 'invoiceprint',
+            'send' => 'invoicesend',
+            'clients' => 'invoiceclients',
+            'clients-new' => 'invoiceclientsnew',
+            'clients-edit' => 'invoiceclientsedit',
+            'clients-delete' => 'invoiceclientsdelete',
+            'settings' => 'invoicesettings',
+        ];
+        $actionClass = $actionMap[$action] ?? null;
+        if (!$actionClass || !class_exists($actionClass)) {
+            http_response_code(404);
+            include 'containers/common/error.php';
+            return;
         }
+        $getAction = new $actionClass();
+        $getAction->getAction();
     }
 }

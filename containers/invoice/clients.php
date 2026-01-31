@@ -34,8 +34,8 @@ include __DIR__ . '/layout/header.php';
                             <td class="px-4 py-3 text-slate-600"><?php echo invoice_html($client['phone']); ?></td>
                             <td class="px-4 py-3">
                                 <div class="flex gap-2 text-sm">
-                                    <a href="invoice?action=clients-edit/<?php echo (int) $client['id']; ?>" class="text-slate-600 hover:text-slate-900">Edit</a>
-                                    <a href="invoice?action=clients-delete/<?php echo (int) $client['id']; ?>" class="text-rose-600 hover:text-rose-800">Archive</a>
+                                    <a href="invoice?action=clients-edit&id=<?php echo (int) $client['id']; ?>" class="text-slate-600 hover:text-slate-900">Edit</a>
+                                    <a href="invoice?action=clients-delete&id=<?php echo (int) $client['id']; ?>" class="text-rose-600 hover:text-rose-800">Archive</a>
                                 </div>
                             </td>
                         </tr>

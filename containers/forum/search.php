@@ -14,7 +14,7 @@ include __DIR__ . '/layout/header.php';
     <?php else: ?>
         <div class="mt-4 space-y-3">
             <?php foreach ($topics as $topic): ?>
-                <a href="forum/topic/<?php echo forum_html($topic['slug']); ?>" class="block rounded-lg border border-slate-200 p-4 hover:border-indigo-300">
+                <a href="forum?action=topic&slug=<?php echo forum_html($topic['slug']); ?>" class="block rounded-lg border border-slate-200 p-4 hover:border-indigo-300">
                     <h3 class="text-lg font-semibold"><?php echo forum_html($topic['title']); ?></h3>
                     <p class="text-xs text-slate-400">Category: <?php echo forum_html($topic['category_name']); ?></p>
                 </a>
@@ -25,7 +25,7 @@ include __DIR__ . '/layout/header.php';
     <?php if ($pagination['total_pages'] > 1): ?>
         <div class="mt-4 flex gap-2">
             <?php for ($i = 1; $i <= $pagination['total_pages']; $i++): ?>
-                <a href="forum/search?q=<?php echo forum_html(urlencode($query)); ?>&page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
+                <a href="forum?action=search&q=<?php echo forum_html(urlencode($query)); ?>&page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
                     <?php echo forum_html($i); ?>
                 </a>
             <?php endfor; ?>

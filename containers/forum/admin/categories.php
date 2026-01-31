@@ -6,7 +6,7 @@ include __DIR__ . '/../layout/header.php';
     <h2 class="text-xl font-semibold">Manage Categories</h2>
     <p class="text-sm text-slate-500">Create and organize forum boards.</p>
 
-    <form method="post" action="admin/forum/categories-save" class="mt-6 grid gap-4 md:grid-cols-2">
+    <form method="post" action="admin/forum?action=categories-save" class="mt-6 grid gap-4 md:grid-cols-2">
         <input type="hidden" name="csrf_token" value="<?php echo forum_html($csrf ?? ''); ?>">
         <div>
             <label class="text-sm font-semibold">Name</label>

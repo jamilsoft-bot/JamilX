@@ -8,7 +8,7 @@ include __DIR__ . '/layout/header.php';
             <h2 class="text-xl font-semibold">Payments</h2>
             <p class="text-sm text-slate-500">Track incoming payments and refunds.</p>
         </div>
-        <a href="billing/new-payment" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Record Payment</a>
+        <a href="billing?action=new-payment" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Record Payment</a>
     </div>
 
     <?php if (empty($payments)): ?>
@@ -37,7 +37,7 @@ include __DIR__ . '/layout/header.php';
                             <td class="px-4 py-3"><?php echo billing_html($payment['method']); ?></td>
                             <td class="px-4 py-3">$<?php echo invoice_currency($payment['refunded_amount']); ?></td>
                             <td class="px-4 py-3">
-                                <a href="billing?action=refund/<?php echo (int) $payment['id']; ?>" class="text-rose-600 hover:text-rose-800">Refund</a>
+                                <a href="billing?action=refund&id=<?php echo (int) $payment['id']; ?>" class="text-rose-600 hover:text-rose-800">Refund</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

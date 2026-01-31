@@ -24,8 +24,8 @@ function listPosts()
     $pagination = [
         'page' => $page,
         'total_pages' => max(1, (int) ceil($total / $perPage)),
-        'base' => '/blog',
-        'params' => [],
+        'base' => 'blog',
+        'params' => ['action' => 'home'],
     ];
     include 'containers/blog/index.php';
 }
@@ -71,8 +71,8 @@ function listByCategory($slug = null)
     $pagination = [
         'page' => $page,
         'total_pages' => max(1, (int) ceil($total / $perPage)),
-        'base' => '/blog/category/' . $category['slug'],
-        'params' => [],
+        'base' => 'blog',
+        'params' => ['action' => 'category', 'slug' => $category['slug']],
     ];
     include 'containers/blog/category.php';
 }
@@ -103,8 +103,8 @@ function listByTag($slug = null)
     $pagination = [
         'page' => $page,
         'total_pages' => max(1, (int) ceil($total / $perPage)),
-        'base' => '/blog/tag/' . $tag['slug'],
-        'params' => [],
+        'base' => 'blog',
+        'params' => ['action' => 'tag', 'slug' => $tag['slug']],
     ];
     include 'containers/blog/tag.php';
 }
@@ -123,8 +123,8 @@ function search()
     $pagination = [
         'page' => $page,
         'total_pages' => max(1, (int) ceil(($total ?: 1) / $perPage)),
-        'base' => '/blog/search',
-        'params' => ['q' => $query],
+        'base' => 'blog',
+        'params' => ['action' => 'search', 'q' => $query],
     ];
     include 'containers/blog/search.php';
 }
@@ -146,8 +146,8 @@ function adminIndex()
     $pagination = [
         'page' => $page,
         'total_pages' => max(1, (int) ceil($total / $perPage)),
-        'base' => '/admin/blog',
-        'params' => [],
+        'base' => 'admin/blog',
+        'params' => ['action' => 'index'],
     ];
     include 'containers/blog/admin/index.php';
 }
@@ -233,7 +233,7 @@ function adminStore()
     $tagIds = blog_upsert_tags($tagNames);
     blog_set_post_tags($postId, $tagIds);
 
-    Redirect("admin/blog/edit/$postId?saved=1");
+    Redirect("admin/blog?action=edit&id=$postId&saved=1");
 }
 
 function adminEdit($id, $errors = [], $notice = null)
@@ -345,7 +345,7 @@ function adminUpdate($id)
     $tagIds = blog_upsert_tags($tagNames);
     blog_set_post_tags($id, $tagIds);
 
-    Redirect("admin/blog/edit/$id?saved=1");
+    Redirect("admin/blog?action=edit&id=$id&saved=1");
 }
 
 function adminDelete($id)
@@ -360,7 +360,7 @@ function adminDelete($id)
         $id = (int) $id;
         blog_db()->query("DELETE FROM `" . BLOG_TABLE_POST_TAGS . "` WHERE post_id = $id");
         blog_db()->query("DELETE FROM `" . BLOG_TABLE_POSTS . "` WHERE id = $id");
-        Redirect('admin/blog?deleted=1');
+        Redirect('admin/blog?action=index&deleted=1');
         return;
     }
     include 'containers/blog/admin/delete.php';
@@ -468,4 +468,186 @@ function uploadFeaturedImage()
         return;
     }
     echo json_encode(['success' => true, 'path' => $upload['path']]);
+}
+
+class bloglist extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Blog');
+    }
+
+    public function getAction()
+    {
+        listPosts();
+    }
+}
+
+class blogpost extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Blog Post');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        $slug = $Url->get('slug');
+        if (!$slug) {
+            http_response_code(404);
+            include 'containers/common/error.php';
+            return;
+        }
+        viewPost($slug);
+    }
+}
+
+class blogcategory extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Categories');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        listByCategory($Url->get('slug'));
+    }
+}
+
+class blogtag extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Tags');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        listByTag($Url->get('slug'));
+    }
+}
+
+class blogsearch extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Search');
+    }
+
+    public function getAction()
+    {
+        search();
+    }
+}
+
+class blogadminindex extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Blog Admin');
+    }
+
+    public function getAction()
+    {
+        adminIndex();
+    }
+}
+
+class blogadmincreate extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('New Post');
+    }
+
+    public function getAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            adminStore();
+            return;
+        }
+        adminCreate();
+    }
+}
+
+class blogadminedit extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Edit Post');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        if ($id <= 0) {
+            http_response_code(404);
+            include 'containers/common/error.php';
+            return;
+        }
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            adminUpdate($id);
+            return;
+        }
+        adminEdit($id);
+    }
+}
+
+class blogadmindelete extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Delete Post');
+    }
+
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        if ($id <= 0) {
+            http_response_code(404);
+            include 'containers/common/error.php';
+            return;
+        }
+        adminDelete($id);
+    }
+}
+
+class blogadmincategories extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Categories');
+    }
+
+    public function getAction()
+    {
+        adminCategories();
+    }
+}
+
+class blogadmintags extends JX_Action implements JX_ActionI
+{
+    public function __construct()
+    {
+        $this->setTitle('Tags');
+    }
+
+    public function getAction()
+    {
+        adminTags();
+    }
+}
+
+class blogadminupload extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        uploadFeaturedImage();
+    }
 }

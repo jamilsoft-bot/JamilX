@@ -9,7 +9,7 @@ include __DIR__ . '/layout/header.php';
             <p class="text-sm text-slate-500">Browse discussions by topic.</p>
         </div>
         <?php if (isset($_SESSION['uid'])): ?>
-            <a href="forum/search" class="text-sm text-slate-600 hover:text-slate-900">Search topics</a>
+            <a href="forum?action=search" class="text-sm text-slate-600 hover:text-slate-900">Search topics</a>
         <?php endif; ?>
     </div>
 
@@ -20,7 +20,7 @@ include __DIR__ . '/layout/header.php';
     <?php else: ?>
         <div class="mt-4 grid gap-4 md:grid-cols-2">
             <?php foreach ($categories as $category): ?>
-                <a href="forum/category/<?php echo forum_html($category['slug']); ?>" class="rounded-lg border border-slate-200 p-4 hover:border-indigo-300 hover:shadow-sm">
+                <a href="forum?action=category&slug=<?php echo forum_html($category['slug']); ?>" class="rounded-lg border border-slate-200 p-4 hover:border-indigo-300 hover:shadow-sm">
                     <h3 class="text-lg font-semibold"><?php echo forum_html($category['name']); ?></h3>
                     <p class="mt-2 text-sm text-slate-500"><?php echo forum_html($category['description']); ?></p>
                 </a>
