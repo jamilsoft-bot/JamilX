@@ -12,68 +12,41 @@ class filemanager extends JX_Serivce implements JX_service
         global $Url;
 
         $paths = $Url->get_paths();
-        $segment = $paths[1] ?? null;
+        $action = $Url->get('action');
 
-        if ($segment === null && $Url->get('action') !== null) {
-            $segment = $Url->get('action');
-        }
-
-        if ($segment === 'api') {
-            $apiAction = $paths[2] ?? $Url->get('api');
-            switch ($apiAction) {
-                case 'list':
-                    filemanager_api_list();
-                    break;
-                case 'upload':
-                    filemanager_api_upload();
-                    break;
-                default:
-                    http_response_code(404);
-                    include 'containers/common/error.php';
-                    break;
+        if ($action === null && isset($paths[1])) {
+            $redirect = 'filemanager?action=' . urlencode($paths[1]);
+            if ($paths[1] === 'api' && isset($paths[2])) {
+                $redirect .= '&api=' . urlencode($paths[2]);
             }
+            Redirect($redirect);
             return;
         }
 
-        switch ($segment) {
-            case 'browse':
-                filemanager_browse();
-                break;
-            case 'upload':
-                filemanager_upload();
-                break;
-            case 'new-folder':
-                filemanager_create_folder();
-                break;
-            case 'rename':
-                filemanager_rename();
-                break;
-            case 'delete':
-                filemanager_delete();
-                break;
-            case 'move':
-                filemanager_move();
-                break;
-            case 'copy':
-                filemanager_copy();
-                break;
-            case 'download':
-                filemanager_download();
-                break;
-            case 'preview':
-                filemanager_preview();
-                break;
-            case 'search':
-                filemanager_search();
-                break;
-            case 'home':
-            case null:
-                filemanager_index();
-                break;
-            default:
-                http_response_code(404);
-                include 'containers/common/error.php';
-                break;
+        $action = $action ?? 'home';
+        $actionMap = [
+            'home' => 'filemanagerhome',
+            'browse' => 'filemanagerbrowse',
+            'upload' => 'filemanagerupload',
+            'new-folder' => 'filemanagernewfolder',
+            'rename' => 'filemanagerrename',
+            'delete' => 'filemanagerdelete',
+            'move' => 'filemanagermove',
+            'copy' => 'filemanagercopy',
+            'download' => 'filemanagerdownload',
+            'preview' => 'filemanagerpreview',
+            'search' => 'filemanagersearch',
+            'api' => 'filemanagerapi',
+        ];
+
+        $actionClass = $actionMap[$action] ?? null;
+        if (!$actionClass || !class_exists($actionClass)) {
+            http_response_code(404);
+            include 'containers/common/error.php';
+            return;
         }
+
+        $getAction = new $actionClass();
+        $getAction->getAction();
     }
 }

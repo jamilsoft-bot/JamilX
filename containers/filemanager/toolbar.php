@@ -1,6 +1,7 @@
 <div class="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
     <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <form action="filemanager/browse" method="get" class="flex flex-wrap items-end gap-3">
+        <form action="filemanager" method="get" class="flex flex-wrap items-end gap-3">
+            <input type="hidden" name="action" value="browse">
             <div>
                 <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Scope</label>
                 <select name="scope" class="mt-1 w-40 rounded-lg border border-slate-300 px-3 py-2 text-sm">
@@ -16,7 +17,8 @@
         </form>
 
         <div class="flex flex-wrap gap-3">
-            <form action="filemanager/new-folder" method="post" class="flex flex-wrap items-end gap-2">
+            <form action="filemanager" method="post" class="flex flex-wrap items-end gap-2">
+                <input type="hidden" name="action" value="new-folder">
                 <input type="hidden" name="scope" value="<?php echo filemanager_html($scope); ?>">
                 <input type="hidden" name="path" value="<?php echo filemanager_html($currentPath ?? ''); ?>">
                 <div>
@@ -26,7 +28,8 @@
                 <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Create</button>
             </form>
 
-            <form action="filemanager/upload" method="post" enctype="multipart/form-data" class="flex flex-wrap items-end gap-2">
+            <form action="filemanager" method="post" enctype="multipart/form-data" class="flex flex-wrap items-end gap-2">
+                <input type="hidden" name="action" value="upload">
                 <input type="hidden" name="scope" value="<?php echo filemanager_html($scope); ?>">
                 <input type="hidden" name="path" value="<?php echo filemanager_html($currentPath ?? ''); ?>">
                 <div>
@@ -39,13 +42,14 @@
     </div>
 
     <div class="mt-4 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <form action="filemanager/search" method="get" class="flex flex-wrap items-center gap-2">
+        <form action="filemanager" method="get" class="flex flex-wrap items-center gap-2">
+            <input type="hidden" name="action" value="search">
             <input type="hidden" name="scope" value="<?php echo filemanager_html($scope); ?>">
             <input type="hidden" name="path" value="<?php echo filemanager_html($currentPath ?? ''); ?>">
             <input type="text" name="q" value="<?php echo filemanager_html($searchQuery ?? ''); ?>" placeholder="Search files" class="w-64 rounded-lg border border-slate-300 px-3 py-2 text-sm">
             <button type="submit" class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Search</button>
             <?php if ($isSearch): ?>
-                <a href="<?php echo filemanager_page_url('filemanager/browse', ['scope' => $scope, 'path' => $currentPath]); ?>" class="text-sm text-slate-500 underline">Clear</a>
+                <a href="<?php echo filemanager_page_url('filemanager', ['action' => 'browse', 'scope' => $scope, 'path' => $currentPath]); ?>" class="text-sm text-slate-500 underline">Clear</a>
             <?php endif; ?>
         </form>
 

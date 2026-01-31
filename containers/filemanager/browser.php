@@ -9,6 +9,7 @@ function filemanager_sort_link($column, $label, $sort, $direction, $baseUrl, $sc
 {
     $nextDir = ($sort === $column && $direction === 'asc') ? 'desc' : 'asc';
     $params = [
+        'action' => $isSearch ? 'search' : 'browse',
         'scope' => $scope,
         'path' => $currentPath,
         'sort' => $column,
@@ -42,7 +43,7 @@ function filemanager_sort_link($column, $label, $sort, $direction, $baseUrl, $sc
                                     <?php echo filemanager_html($entry['type']); ?>
                                 </span>
                                 <?php if ($entry['is_dir']): ?>
-                                    <a class="font-semibold text-indigo-600 hover:text-indigo-700" href="<?php echo filemanager_page_url('filemanager/browse', ['scope' => $scope, 'path' => $entry['path']]); ?>">
+                                    <a class="font-semibold text-indigo-600 hover:text-indigo-700" href="<?php echo filemanager_page_url('filemanager', ['action' => 'browse', 'scope' => $scope, 'path' => $entry['path']]); ?>">
                                         <?php echo filemanager_html($entry['name']); ?>
                                     </a>
                                 <?php else: ?>
@@ -59,31 +60,35 @@ function filemanager_sort_link($column, $label, $sort, $direction, $baseUrl, $sc
                                 <div class="mt-2 space-y-2 rounded-lg border border-slate-200 bg-slate-50 p-3">
                                     <?php if (!$entry['is_dir']): ?>
                                         <div class="flex flex-wrap gap-2">
-                                            <a class="text-sm font-semibold text-slate-700 underline" href="<?php echo filemanager_page_url('filemanager/download', ['scope' => $scope, 'path' => $entry['path']]); ?>">Download</a>
+                                            <a class="text-sm font-semibold text-slate-700 underline" href="<?php echo filemanager_page_url('filemanager', ['action' => 'download', 'scope' => $scope, 'path' => $entry['path']]); ?>">Download</a>
                                             <?php if (filemanager_is_previewable($entry['name'])): ?>
-                                                <a class="text-sm font-semibold text-slate-700 underline" href="<?php echo filemanager_page_url('filemanager/preview', ['scope' => $scope, 'path' => $entry['path']]); ?>" target="_blank" rel="noopener">Preview</a>
+                                                <a class="text-sm font-semibold text-slate-700 underline" href="<?php echo filemanager_page_url('filemanager', ['action' => 'preview', 'scope' => $scope, 'path' => $entry['path']]); ?>" target="_blank" rel="noopener">Preview</a>
                                             <?php endif; ?>
                                         </div>
                                     <?php endif; ?>
-                                    <form action="filemanager/rename" method="post" class="flex flex-wrap items-center gap-2">
+                                    <form action="filemanager" method="post" class="flex flex-wrap items-center gap-2">
+                                        <input type="hidden" name="action" value="rename">
                                         <input type="hidden" name="scope" value="<?php echo filemanager_html($scope); ?>">
                                         <input type="hidden" name="path" value="<?php echo filemanager_html($entry['path']); ?>">
                                         <input type="text" name="name" value="<?php echo filemanager_html($entry['name']); ?>" class="w-40 rounded border border-slate-300 px-2 py-1 text-sm">
                                         <button type="submit" class="rounded bg-slate-800 px-3 py-1 text-xs font-semibold text-white">Rename</button>
                                     </form>
-                                    <form action="filemanager/move" method="post" class="flex flex-wrap items-center gap-2">
+                                    <form action="filemanager" method="post" class="flex flex-wrap items-center gap-2">
+                                        <input type="hidden" name="action" value="move">
                                         <input type="hidden" name="scope" value="<?php echo filemanager_html($scope); ?>">
                                         <input type="hidden" name="path" value="<?php echo filemanager_html($entry['path']); ?>">
                                         <input type="text" name="target" placeholder="Target folder/path" class="w-48 rounded border border-slate-300 px-2 py-1 text-sm">
                                         <button type="submit" class="rounded bg-slate-700 px-3 py-1 text-xs font-semibold text-white">Move</button>
                                     </form>
-                                    <form action="filemanager/copy" method="post" class="flex flex-wrap items-center gap-2">
+                                    <form action="filemanager" method="post" class="flex flex-wrap items-center gap-2">
+                                        <input type="hidden" name="action" value="copy">
                                         <input type="hidden" name="scope" value="<?php echo filemanager_html($scope); ?>">
                                         <input type="hidden" name="path" value="<?php echo filemanager_html($entry['path']); ?>">
                                         <input type="text" name="target" placeholder="Target folder/path" class="w-48 rounded border border-slate-300 px-2 py-1 text-sm">
                                         <button type="submit" class="rounded bg-slate-700 px-3 py-1 text-xs font-semibold text-white">Copy</button>
                                     </form>
-                                    <form action="filemanager/delete" method="post" class="flex items-center gap-2" onsubmit="return confirm('Delete this item?');">
+                                    <form action="filemanager" method="post" class="flex items-center gap-2" onsubmit="return confirm('Delete this item?');">
+                                        <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="scope" value="<?php echo filemanager_html($scope); ?>">
                                         <input type="hidden" name="path" value="<?php echo filemanager_html($entry['path']); ?>">
                                         <button type="submit" class="rounded bg-rose-600 px-3 py-1 text-xs font-semibold text-white">Delete</button>
@@ -105,10 +110,10 @@ function filemanager_sort_link($column, $label, $sort, $direction, $baseUrl, $sc
         </div>
         <div class="flex gap-2">
             <?php if ($pagination['page'] > 1): ?>
-                <a class="rounded border border-slate-300 bg-white px-3 py-1 text-sm" href="<?php echo filemanager_page_url($baseUrl, ['scope' => $scope, 'path' => $currentPath, 'page' => $pagination['page'] - 1, 'sort' => $sort, 'dir' => $direction, 'q' => $searchQuery]); ?>">Previous</a>
+                <a class="rounded border border-slate-300 bg-white px-3 py-1 text-sm" href="<?php echo filemanager_page_url($baseUrl, ['action' => $isSearch ? 'search' : 'browse', 'scope' => $scope, 'path' => $currentPath, 'page' => $pagination['page'] - 1, 'sort' => $sort, 'dir' => $direction, 'q' => $searchQuery]); ?>">Previous</a>
             <?php endif; ?>
             <?php if ($pagination['page'] < $pagination['total_pages']): ?>
-                <a class="rounded border border-slate-300 bg-white px-3 py-1 text-sm" href="<?php echo filemanager_page_url($baseUrl, ['scope' => $scope, 'path' => $currentPath, 'page' => $pagination['page'] + 1, 'sort' => $sort, 'dir' => $direction, 'q' => $searchQuery]); ?>">Next</a>
+                <a class="rounded border border-slate-300 bg-white px-3 py-1 text-sm" href="<?php echo filemanager_page_url($baseUrl, ['action' => $isSearch ? 'search' : 'browse', 'scope' => $scope, 'path' => $currentPath, 'page' => $pagination['page'] + 1, 'sort' => $sort, 'dir' => $direction, 'q' => $searchQuery]); ?>">Next</a>
             <?php endif; ?>
         </div>
     </div>
