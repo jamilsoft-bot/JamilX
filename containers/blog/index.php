@@ -19,7 +19,7 @@ include __DIR__ . '/layout/header.php';
                             <?php echo blog_html($post['category_name'] ?? 'Uncategorized'); ?>
                         </div>
                         <h2 class="text-2xl font-semibold">
-                            <a href="/blog/post/<?php echo blog_html($post['slug']); ?>" class="hover:text-indigo-600">
+                            <a href="blog?action=post&slug=<?php echo blog_html($post['slug']); ?>" class="hover:text-indigo-600">
                                 <?php echo blog_html($post['title']); ?>
                             </a>
                         </h2>
@@ -28,7 +28,7 @@ include __DIR__ . '/layout/header.php';
                         </p>
                         <div class="flex flex-wrap gap-2 text-xs">
                             <?php foreach (($tagsMap[$post['id']] ?? []) as $tag): ?>
-                                <a href="/blog/tag/<?php echo blog_html($tag['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 hover:bg-slate-200">
+                                <a href="blog?action=tag&slug=<?php echo blog_html($tag['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 hover:bg-slate-200">
                                     <?php echo blog_html($tag['name']); ?>
                                 </a>
                             <?php endforeach; ?>
@@ -61,7 +61,7 @@ include __DIR__ . '/layout/header.php';
             <h3 class="text-lg font-semibold">Categories</h3>
             <ul class="mt-4 space-y-2 text-sm text-slate-600">
                 <?php foreach ($categories as $category): ?>
-                    <li><a href="/blog/category/<?php echo blog_html($category['slug']); ?>" class="hover:text-indigo-600"><?php echo blog_html($category['name']); ?></a></li>
+                    <li><a href="blog?action=category&slug=<?php echo blog_html($category['slug']); ?>" class="hover:text-indigo-600"><?php echo blog_html($category['name']); ?></a></li>
                 <?php endforeach; ?>
             </ul>
         </div>
@@ -69,7 +69,7 @@ include __DIR__ . '/layout/header.php';
             <h3 class="text-lg font-semibold">Tags</h3>
             <div class="mt-4 flex flex-wrap gap-2">
                 <?php foreach ($tags as $tag): ?>
-                    <a href="/blog/tag/<?php echo blog_html($tag['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600 hover:bg-slate-200">
+                    <a href="blog?action=tag&slug=<?php echo blog_html($tag['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-600 hover:bg-slate-200">
                         <?php echo blog_html($tag['name']); ?>
                     </a>
                 <?php endforeach; ?>
@@ -83,7 +83,7 @@ include __DIR__ . '/layout/header.php';
                     <?php echo blog_html($subscribeNotice['message']); ?>
                 </div>
             <?php endif; ?>
-            <form action="/blog" method="post" class="mt-4 flex flex-col gap-3">
+            <form action="blog?action=home" method="post" class="mt-4 flex flex-col gap-3">
                 <input type="email" name="subscribe_email" required placeholder="you@example.com" class="rounded-lg border border-slate-300 px-3 py-2 text-sm focus:border-indigo-500 focus:outline-none">
                 <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Subscribe</button>
             </form>

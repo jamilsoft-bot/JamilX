@@ -10,9 +10,9 @@ include __DIR__ . '/layout/header.php';
             <p class="text-sm text-slate-500">Status: <?php echo invoice_html($invoice['status']); ?></p>
         </div>
         <div class="flex flex-wrap gap-2">
-            <a href="invoice/print/<?php echo (int) $invoice['id']; ?>" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Print</a>
-            <a href="invoice/send/<?php echo (int) $invoice['id']; ?>" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Send</a>
-            <a href="invoice/edit/<?php echo (int) $invoice['id']; ?>" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Edit</a>
+            <a href="invoice?action=print&id=<?php echo (int) $invoice['id']; ?>" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Print</a>
+            <a href="invoice?action=send&id=<?php echo (int) $invoice['id']; ?>" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Send</a>
+            <a href="invoice?action=edit&id=<?php echo (int) $invoice['id']; ?>" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Edit</a>
         </div>
     </div>
 

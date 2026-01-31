@@ -2,7 +2,7 @@
 $pageTitle = $pageTitle ?? 'Forum';
 $navLinks = [
     ['label' => 'Forum Home', 'href' => 'forum'],
-    ['label' => 'Search', 'href' => 'forum/search'],
+    ['label' => 'Search', 'href' => 'forum?action=search'],
     ['label' => 'Invoices', 'href' => 'invoice'],
     ['label' => 'Billing', 'href' => 'billing'],
 ];
@@ -23,7 +23,8 @@ $navLinks = [
             <h1 class="text-2xl font-semibold">Forum</h1>
             <p class="text-sm text-slate-500">Start discussions, share ideas, and get help.</p>
         </div>
-        <form action="forum/search" method="get" class="flex gap-2">
+        <form action="forum" method="get" class="flex gap-2">
+            <input type="hidden" name="action" value="search">
             <input type="text" name="q" value="<?php echo forum_html($searchQuery ?? ''); ?>" placeholder="Search forum" class="w-48 rounded-lg border border-slate-300 px-3 py-2 text-sm">
             <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Search</button>
         </form>
@@ -36,7 +37,7 @@ $navLinks = [
                 </a>
             <?php endforeach; ?>
             <?php if (forum_is_moderator()): ?>
-                <a href="admin/forum/categories" class="text-slate-600 hover:text-slate-900">Manage Categories</a>
+                <a href="forum?action=admin-categories" class="text-slate-600 hover:text-slate-900">Manage Categories</a>
             <?php endif; ?>
         </div>
     </nav>

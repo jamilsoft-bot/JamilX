@@ -30,7 +30,7 @@ $tagValue = $postTagNames ?? ($values['tags'] ?? '');
     </div>
 <?php endif; ?>
 
-<form action="http://localhost/jamilx/<?php echo $isEditing ? 'admin/blog/edit/' . blog_html($post['id']) : 'admin/blog/new'; ?>" method="post" enctype="multipart/form-data" class="space-y-6">
+<form action="blog?action=<?php echo $isEditing ? 'admin-edit&id=' . blog_html($post['id']) : 'admin-new'; ?>" method="post" enctype="multipart/form-data" class="space-y-6">
     <div class="grid gap-6 lg:grid-cols-3">
         <div class="lg:col-span-2 space-y-6">
             <div class="rounded-xl border border-slate-200 bg-white p-6">

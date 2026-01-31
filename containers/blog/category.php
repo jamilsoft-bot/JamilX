@@ -10,7 +10,7 @@ include __DIR__ . '/layout/header.php';
         <p class="mt-2 text-sm text-slate-500">Explore topics across the JamilX blog.</p>
         <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <?php foreach ($categories as $item): ?>
-                <a href="/blog/category/<?php echo blog_html($item['slug']); ?>" class="rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-indigo-200">
+                <a href="blog?action=category&slug=<?php echo blog_html($item['slug']); ?>" class="rounded-xl border border-slate-200 bg-slate-50 p-4 hover:border-indigo-200">
                     <h3 class="font-semibold text-slate-800"><?php echo blog_html($item['name']); ?></h3>
                     <p class="mt-2 text-xs text-slate-500">View posts in <?php echo blog_html($item['name']); ?></p>
                 </a>
@@ -31,12 +31,12 @@ include __DIR__ . '/layout/header.php';
             <?php foreach ($posts as $post): ?>
                 <article class="rounded-xl border border-slate-200 bg-white p-6">
                     <h3 class="text-xl font-semibold">
-                        <a href="/blog/post/<?php echo blog_html($post['slug']); ?>" class="hover:text-indigo-600"><?php echo blog_html($post['title']); ?></a>
+                        <a href="blog?action=post&slug=<?php echo blog_html($post['slug']); ?>" class="hover:text-indigo-600"><?php echo blog_html($post['title']); ?></a>
                     </h3>
                     <p class="mt-2 text-sm text-slate-500"><?php echo blog_html($post['excerpt']); ?></p>
                     <div class="mt-3 flex flex-wrap gap-2 text-xs">
                         <?php foreach (($tagsMap[$post['id']] ?? []) as $tag): ?>
-                            <a href="/blog/tag/<?php echo blog_html($tag['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 hover:bg-slate-200"><?php echo blog_html($tag['name']); ?></a>
+                            <a href="blog?action=tag&slug=<?php echo blog_html($tag['slug']); ?>" class="rounded-full bg-slate-100 px-3 py-1 text-slate-600 hover:bg-slate-200"><?php echo blog_html($tag['name']); ?></a>
                         <?php endforeach; ?>
                     </div>
                 </article>

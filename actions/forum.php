@@ -106,7 +106,7 @@ function forum_store_topic($slug)
         return;
     }
 
-    Redirect('forum/topic/' . $topicResult['slug']);
+    Redirect('forum?action=topic&slug=' . urlencode($topicResult['slug']));
 }
 
 function forum_reply($slug)
@@ -152,7 +152,7 @@ function forum_reply($slug)
     }
 
     forum_add_reply($topic['id'], $body);
-    Redirect('forum/topic/' . $topic['slug']);
+    Redirect('forum?action=topic&slug=' . urlencode($topic['slug']));
 }
 
 function forum_search()
@@ -204,7 +204,7 @@ function forum_admin_save_category($id = null)
     } else {
         forum_create_category($data);
     }
-    Redirect('admin/forum/categories');
+    Redirect('forum?action=admin-categories');
 }
 
 function forum_admin_toggle_topic($topicId, $field)
@@ -220,7 +220,7 @@ function forum_admin_toggle_topic($topicId, $field)
     }
     $value = (int) $Url->post('value');
     forum_toggle_topic_flag($topicId, $field, $value === 1);
-    Redirect('forum/topic/' . forum_slugify((string) $Url->post('slug')));
+    Redirect('forum?action=topic&slug=' . urlencode(forum_slugify((string) $Url->post('slug'))));
 }
 
 function forum_admin_delete_post($postId, $slug)
@@ -235,7 +235,7 @@ function forum_admin_delete_post($postId, $slug)
         return;
     }
     forum_soft_delete_post($postId);
-    Redirect('forum/topic/' . $slug);
+    Redirect('forum?action=topic&slug=' . urlencode($slug));
 }
 
 function forum_admin_restore_post($postId, $slug)
@@ -250,5 +250,121 @@ function forum_admin_restore_post($postId, $slug)
         return;
     }
     forum_restore_post($postId);
-    Redirect('forum/topic/' . $slug);
+    Redirect('forum?action=topic&slug=' . urlencode($slug));
+}
+
+class forumhome extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        forum_index();
+    }
+}
+
+class forumcategory extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        forum_category((string) $Url->get('slug'));
+    }
+}
+
+class forumtopic extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        forum_topic((string) $Url->get('slug'));
+    }
+}
+
+class forumnewtopic extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $slug = (string) $Url->get('slug');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            forum_store_topic($slug);
+            return;
+        }
+        forum_new_topic($slug);
+    }
+}
+
+class forumreply extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $slug = (string) $Url->get('slug');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            forum_reply($slug);
+            return;
+        }
+        http_response_code(405);
+    }
+}
+
+class forumsearch extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        forum_search();
+    }
+}
+
+class forummoderatelock extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        forum_admin_toggle_topic((int) $Url->get('id'), 'is_locked');
+    }
+}
+
+class forummoderatepin extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        forum_admin_toggle_topic((int) $Url->get('id'), 'is_pinned');
+    }
+}
+
+class forumpostdelete extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        forum_admin_delete_post((int) $Url->get('id'), (string) $Url->get('slug'));
+    }
+}
+
+class forumpostrestore extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        forum_admin_restore_post((int) $Url->get('id'), (string) $Url->get('slug'));
+    }
+}
+
+class forumadmincategories extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        forum_admin_categories();
+    }
+}
+
+class forumadmincategoriessave extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        forum_admin_save_category($id ?: null);
+    }
 }

@@ -11,7 +11,7 @@ include __DIR__ . '/layout/header.php';
             <p class="text-sm text-slate-500"><?php echo forum_html($category['description']); ?></p>
         </div>
         <?php if (isset($_SESSION['uid'])): ?>
-            <a href="forum/new/<?php echo forum_html($category['slug']); ?>" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">New Topic</a>
+            <a href="forum?action=new&slug=<?php echo forum_html($category['slug']); ?>" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">New Topic</a>
         <?php endif; ?>
     </div>
 
@@ -25,7 +25,7 @@ include __DIR__ . '/layout/header.php';
                 <div class="rounded-lg border border-slate-200 p-4">
                     <div class="flex items-center justify-between">
                         <div>
-                            <a href="forum/topic/<?php echo forum_html($topic['slug']); ?>" class="text-lg font-semibold text-slate-800 hover:text-indigo-600">
+                            <a href="forum?action=topic&slug=<?php echo forum_html($topic['slug']); ?>" class="text-lg font-semibold text-slate-800 hover:text-indigo-600">
                                 <?php echo forum_html($topic['title']); ?>
                             </a>
                             <div class="text-xs text-slate-400">By <?php echo forum_html($topic['username'] ?? 'Unknown'); ?> • Replies <?php echo forum_html($topic['reply_count']); ?></div>
@@ -50,7 +50,7 @@ include __DIR__ . '/layout/header.php';
     <?php if ($pagination['total_pages'] > 1): ?>
         <div class="mt-4 flex gap-2">
             <?php for ($i = 1; $i <= $pagination['total_pages']; $i++): ?>
-                <a href="forum/category/<?php echo forum_html($category['slug']); ?>?page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
+                <a href="forum?action=category&slug=<?php echo forum_html($category['slug']); ?>&page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
                     <?php echo forum_html($i); ?>
                 </a>
             <?php endfor; ?>

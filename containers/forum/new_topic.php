@@ -8,7 +8,7 @@ include __DIR__ . '/layout/header.php';
             <h2 class="text-xl font-semibold">Start a New Topic</h2>
             <p class="text-sm text-slate-500">Post your question or idea in <?php echo forum_html($category['name']); ?>.</p>
         </div>
-        <a href="forum/category/<?php echo forum_html($category['slug']); ?>" class="text-sm text-slate-600 hover:text-slate-900">Back to category</a>
+        <a href="forum?action=category&slug=<?php echo forum_html($category['slug']); ?>" class="text-sm text-slate-600 hover:text-slate-900">Back to category</a>
     </div>
 
     <?php if (!empty($errors)): ?>

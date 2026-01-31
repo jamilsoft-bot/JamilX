@@ -18,7 +18,7 @@ include __DIR__ . '/header.php';
 <div class="grid gap-6 lg:grid-cols-3">
     <div class="rounded-xl border border-slate-200 bg-white p-6">
         <h2 class="text-lg font-semibold"><?php echo $editTag ? 'Edit Tag' : 'New Tag'; ?></h2>
-        <form action="/admin/blog/tags" method="post" class="mt-4 space-y-4">
+        <form action="blog?action=admin-tags" method="post" class="mt-4 space-y-4">
             <input type="hidden" name="tag_id" value="<?php echo blog_html($editTag['id'] ?? ''); ?>">
             <div>
                 <label class="text-sm font-semibold">Name</label>
@@ -49,8 +49,8 @@ include __DIR__ . '/header.php';
                             <p class="text-xs text-slate-500">/<?php echo blog_html($tag['slug']); ?></p>
                         </div>
                         <div class="flex gap-3 text-sm">
-                            <a href="/admin/blog/tags?edit=<?php echo blog_html($tag['id']); ?>" class="text-indigo-600 hover:text-indigo-700">Edit</a>
-                            <a href="/admin/blog/tags?delete=<?php echo blog_html($tag['id']); ?>" class="text-rose-600 hover:text-rose-700">Delete</a>
+                            <a href="blog?action=admin-tags&edit=<?php echo blog_html($tag['id']); ?>" class="text-indigo-600 hover:text-indigo-700">Edit</a>
+                            <a href="blog?action=admin-tags&delete=<?php echo blog_html($tag['id']); ?>" class="text-rose-600 hover:text-rose-700">Delete</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

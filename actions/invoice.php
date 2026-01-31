@@ -103,7 +103,7 @@ function invoice_store()
         return;
     }
 
-    Redirect('invoice/view/' . $invoiceId);
+    Redirect('invoice?action=view&id=' . $invoiceId);
 }
 
 function invoice_edit($id, $errors = [], $values = [])
@@ -189,7 +189,7 @@ function invoice_update($id)
         return;
     }
 
-    Redirect('invoice/view/' . $id);
+    Redirect('invoice?action=view&id=' . $id);
 }
 
 function invoice_delete($id)
@@ -330,7 +330,7 @@ function invoice_client_save($id = null)
         return;
     }
     invoice_upsert_client($id, $data);
-    Redirect('invoice/clients');
+    Redirect('invoice?action=clients');
 }
 
 function invoice_client_delete($id)
@@ -339,7 +339,133 @@ function invoice_client_delete($id)
         return;
     }
     invoice_delete_client($id);
-    Redirect('invoice/clients');
+    Redirect('invoice?action=clients');
+}
+
+class invoicehome extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        invoice_index();
+    }
+}
+
+class invoiceview extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        invoice_view($id);
+    }
+}
+
+class invoicenew extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_store();
+            return;
+        }
+        invoice_create();
+    }
+}
+
+class invoiceedit extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_update($id);
+            return;
+        }
+        invoice_edit($id);
+    }
+}
+
+class invoicedelete extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        invoice_delete($id);
+    }
+}
+
+class invoiceprint extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        invoice_print($id);
+    }
+}
+
+class invoicesend extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        invoice_send($id);
+    }
+}
+
+class invoiceclients extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        invoice_clients();
+    }
+}
+
+class invoiceclientsnew extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_client_save();
+            return;
+        }
+        invoice_client_create();
+    }
+}
+
+class invoiceclientsedit extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            invoice_client_save($id);
+            return;
+        }
+        invoice_client_edit($id);
+    }
+}
+
+class invoiceclientsdelete extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        global $Url;
+        $id = (int) $Url->get('id');
+        invoice_client_delete($id);
+    }
+}
+
+class invoicesettings extends JX_Action implements JX_ActionI
+{
+    public function getAction()
+    {
+        invoice_settings();
+    }
 }
 
 function invoice_settings()
