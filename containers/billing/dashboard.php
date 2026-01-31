@@ -21,7 +21,7 @@ include __DIR__ . '/layout/header.php';
     <h2 class="text-xl font-semibold">Next Steps</h2>
     <p class="text-sm text-slate-500">Record payments or review outstanding invoices.</p>
     <div class="mt-4 flex flex-wrap gap-2">
-        <a href="billing/new-payment" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Record a Payment</a>
+        <a href="billing?action=new-payment" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Record a Payment</a>
         <a href="invoice" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Review Invoices</a>
     </div>
 </section>

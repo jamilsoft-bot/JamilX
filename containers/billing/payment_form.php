@@ -9,7 +9,7 @@ $values = $values ?? [];
             <h2 class="text-xl font-semibold">Record Payment</h2>
             <p class="text-sm text-slate-500">Apply a payment to an invoice.</p>
         </div>
-        <a href="billing/payments" class="text-sm text-slate-600 hover:text-slate-900">Back to payments</a>
+        <a href="billing?action=payments" class="text-sm text-slate-600 hover:text-slate-900">Back to payments</a>
     </div>
 
     <?php if (!empty($errors)): ?>
@@ -47,7 +47,7 @@ $values = $values ?? [];
         </div>
         <div class="md:col-span-2 flex gap-2">
             <button type="submit" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Save Payment</button>
-            <a href="billing/payments" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600">Cancel</a>
+            <a href="billing?action=payments" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600">Cancel</a>
         </div>
     </form>
 </section>

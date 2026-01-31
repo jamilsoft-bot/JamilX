@@ -39,7 +39,7 @@ $values = $values ?? [];
         </div>
         <div class="md:col-span-2 flex gap-2">
             <button type="submit" class="rounded-lg bg-rose-600 px-4 py-2 text-sm font-semibold text-white hover:bg-rose-700">Process Refund</button>
-            <a href="billing/payments" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600">Cancel</a>
+            <a href="billing?action=payments" class="rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-600">Cancel</a>
         </div>
     </form>
 </section>

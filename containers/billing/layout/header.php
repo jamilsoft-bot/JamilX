@@ -2,9 +2,9 @@
 $pageTitle = $pageTitle ?? 'Billing';
 $navLinks = [
     ['label' => 'Billing', 'href' => 'billing'],
-    ['label' => 'Payments', 'href' => 'billing/payments'],
+    ['label' => 'Payments', 'href' => 'billing?action=payments'],
     ['label' => 'Invoices', 'href' => 'invoice'],
-    ['label' => 'Clients', 'href' => 'invoice/clients'],
+    ['label' => 'Clients', 'href' => 'invoice?action=clients'],
 ];
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ $navLinks = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo billing_html($pageTitle); ?></title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/tailwindcss.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
 <header class="border-b border-slate-200 bg-white">
@@ -24,7 +24,7 @@ $navLinks = [
             <p class="text-sm text-slate-500">Track payments and outstanding balances.</p>
         </div>
         <div class="flex flex-wrap gap-2">
-            <a href="billing/new-payment" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Record Payment</a>
+            <a href="billing?action=new-payment" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Record Payment</a>
             <a href="invoice" class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Invoices</a>
         </div>
     </div>

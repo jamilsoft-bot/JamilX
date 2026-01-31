@@ -4,7 +4,7 @@ JamilX is a lightweight PHP SaaS framework that uses a Service/Action/Container/
 
 > **Important:** JamilX does **not** use Composer. The framework loads classes by scanning `prototypes/`, `services/`, and `actions/` from `autoload.php`.
 
-Source: index.php, session.php, init.php, autoload.php, .htaccess.
+<!-- Source: index.php, session.php, init.php, autoload.php, .htaccess. -->
 
 ## 1) What JamilX Is
 
@@ -17,7 +17,7 @@ JamilX uses four core building blocks:
 | **Container** | View template rendered by Services or Actions. | `containers/` |
 | **Prototype** | Data helper / DB helper. | `prototypes/` |
 
-Source: core/base/core-classes.php, services/, actions/, containers/, prototypes/.
+Source:  services/, actions/, containers/, prototypes/.
 
 ## 2) Quick Start
 
@@ -27,13 +27,10 @@ Source: core/base/core-classes.php, services/, actions/, containers/, prototypes
    ```bash
    http://your-domain/installer
    ```
-2. Follow the steps. The wizard:
-   - checks PHP 7.4+, `mysqli`, `json`, `mbstring`
-   - writes `conf.php`
-   - runs `installer/sql.sql`
-   - creates `data/installed.lock`
+2. Follow the steps.:
+  
 
-Source: installer/index.php, installer/includes/installer_logic.php, installer/sql.sql.
+
 
 ### B) CLI Setup (manual path)
 
@@ -52,7 +49,7 @@ Source: installer/index.php, installer/includes/installer_logic.php, installer/s
    php jamilx db:seed
    ```
 
-Source: .env, console/commands/JX_CommandDoctor.php, console/commands/JX_CommandServe.php, console/commands/JX_CommandDbMigrate.php, console/commands/JX_CommandDbSeed.php.
+<!-- Source: .env, console/commands/JX_CommandDoctor.php, console/commands/JX_CommandServe.php, console/commands/JX_CommandDbMigrate.php, console/commands/JX_CommandDbSeed.php. -->
 
 ## 3) Requirements
 
@@ -61,7 +58,7 @@ Source: .env, console/commands/JX_CommandDoctor.php, console/commands/JX_Command
 - Apache rewrite enabled (see `.htaccess`)
 - MySQL/MariaDB
 
-Source: installer/includes/installer_logic.php, .htaccess.
+<!-- Source: installer/includes/installer_logic.php, .htaccess. -->
 
 ## 4) Folder Structure Overview
 
@@ -79,7 +76,7 @@ Source: installer/includes/installer_logic.php, .htaccess.
 | `logs/` | Error log output |
 | `data/` | Runtime storage (lock, API data, etc.) |
 
-Source: repository tree, index.php, init.php, services/, actions/, containers/, prototypes/.
+<!-- Source: repository tree, index.php, init.php, services/, actions/, containers/, prototypes/. -->
 
 ## 5) Routing Basics
 
@@ -97,17 +94,17 @@ Examples:
 
 Special case: `/admin/blog` is routed to the `blog` Service.
 
-Source: .htaccess, core/classes/route-class.php, core/classes/url-class.php, route/http.php.
+<!-- Source: .htaccess, core/classes/route-class.php, core/classes/url-class.php, route/http.php. -->
 
 ## 6) Configuration
 
 - `.env` is parsed with `parse_ini_file()`.
 - `MODE` selects the bootstrap class (`Development`, `Production`, `Maintainance`).
-- `conf.php` is created by the installer and stores DB credentials.
-
-> **Legacy note:** `conf.php` still points to `system/configs`. Those paths are legacy references; the current folder is `core/configs/`.
-
-Source: core/etc/vars.php, core/hooks/init.php, bootstrap/*.php, conf.php, installer/includes/installer_logic.php.
+- `.env` is created by the installer and stores DB credentials.
+<!-- 
+> **Legacy note:** `conf.php` still points to `system/configs`. Those paths are legacy references; the current folder is `core/configs/`. -->
+<!-- 
+Source: core/etc/vars.php, core/hooks/init.php, bootstrap/*.php, conf.php, installer/includes/installer_logic.php. -->
 
 ## 7) Core Concepts (with minimal examples)
 
@@ -127,7 +124,7 @@ class Billing extends JX_Serivce implements JX_service
 ```
 **How to run/test:** Visit `/billing` in the browser.
 
-Source: core/base/core-classes.php, console/stubs/service.stub, services/.
+<!-- Source: core/base/core-classes.php, console/stubs/service.stub, services/. -->
 
 ### Action
 
@@ -145,7 +142,7 @@ class apihome extends JX_Action implements JX_ActionI
 ```
 **How to run/test:** Trigger via a Service method or container that calls `$action->getAction()`.
 
-Source: core/base/core-classes.php, actions/apihome.php.
+<!-- Source: core/base/core-classes.php, actions/apihome.php. -->
 
 ### Container
 
@@ -159,7 +156,7 @@ Source: core/base/core-classes.php, actions/apihome.php.
 ```
 **How to run/test:** Include it from a Service or Action.
 
-Source: console/stubs/container.stub, containers/.
+<!-- Source: console/stubs/container.stub, containers/. -->
 
 ### Prototype
 
@@ -207,8 +204,8 @@ Source: jamilx, console/commands/*.
 - Installer runs `installer/sql.sql` to build base tables.
 - Migrations live in `database/migrations`.
 - Seeders live in `database/seeders`.
-
-Source: core/configs/databases.php, installer/sql.sql, database/migrations, database/seeders/README.md.
+<!-- 
+Source: core/configs/databases.php, installer/sql.sql, database/migrations, database/seeders/README.md. -->
 
 ## 10) Security Notes
 
@@ -228,14 +225,14 @@ Source: .htaccess, console/commands/JX_CommandDoctor.php.
 
 ## 12) Troubleshooting
 
-- **Missing `.env`:** Create it manually (no `.env.example` in repo).
+- **Missing `.env`:** Create it manually ( `.env.example` in repo).
 - **Rewrite not working:** Confirm Apache mod_rewrite + `.htaccess` are enabled.
 - **`conf.php` missing:** Run installer or create the file manually.
 - **`installed.lock` present:** Remove `data/installed.lock` to re-run installer.
 
-Source: bootstrap/*.php, containers/needs/n001.php, installer/index.php.
+<!-- Source: bootstrap/*.php, containers/needs/n001.php, installer/index.php. -->
 
 ## 13) Contributing / License
 
-- Contributing guidelines: NOT FOUND
-- License: NOT FOUND
+- Contributing guidelines: contact myakububauchi@gmail.com
+- License: Dual License 

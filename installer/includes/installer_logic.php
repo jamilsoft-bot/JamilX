@@ -19,9 +19,9 @@ function installer_write_config(string $appRoot, array $dbConfig): string
     $output = <<<END
 <?php
 \$INDEX = "about";
-\$CONF_DIR = "system/configs";
+\$CONF_DIR = "core/configs";
 \$CONF_APPS_DIR = "Apps/";
-\$CONF_SETTING = "system/configs/setting.json";
+\$CONF_SETTING = "core/configs/setting.json";
 \$CONF_SERVICE_DIR = "services/";
 
 \$DB_Data = [

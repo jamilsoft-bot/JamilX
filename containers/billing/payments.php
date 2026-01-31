@@ -37,7 +37,7 @@ include __DIR__ . '/layout/header.php';
                             <td class="px-4 py-3"><?php echo billing_html($payment['method']); ?></td>
                             <td class="px-4 py-3">$<?php echo invoice_currency($payment['refunded_amount']); ?></td>
                             <td class="px-4 py-3">
-                                <a href="billing/refund/<?php echo (int) $payment['id']; ?>" class="text-rose-600 hover:text-rose-800">Refund</a>
+                                <a href="billing?action=refund/<?php echo (int) $payment['id']; ?>" class="text-rose-600 hover:text-rose-800">Refund</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -49,7 +49,7 @@ include __DIR__ . '/layout/header.php';
     <?php if ($pagination['total_pages'] > 1): ?>
         <div class="mt-4 flex gap-2">
             <?php for ($i = 1; $i <= $pagination['total_pages']; $i++): ?>
-                <a href="billing/payments?page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
+                <a href="billing?action=payments&page=<?php echo $i; ?>" class="rounded-lg px-3 py-2 text-sm <?php echo $i === $pagination['page'] ? 'bg-indigo-600 text-white' : 'bg-white text-slate-600 border border-slate-200'; ?>">
                     <?php echo billing_html($i); ?>
                 </a>
             <?php endfor; ?>
