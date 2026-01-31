@@ -1,53 +1,73 @@
-# Security
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Security | JamilX Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a class="flex items-center gap-3" href="README.md">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
+        <div>
+          <p class="text-lg font-semibold">JamilX</p>
+          <p class="text-xs text-slate-300">Framework Documentation</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex">
+        <a class="hover:text-white" href="overview.md">Overview</a>
+        <a class="hover:text-white" href="installation.md">Installation</a>
+        <a class="hover:text-white" href="configuration.md">Configuration</a>
+        <a class="hover:text-white" href="routing.md">Routing</a>
+        <a class="hover:text-white" href="services.md">Services</a>
+        <a class="hover:text-white" href="cli.md">CLI</a>
+      </nav>
+      <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="deployment.md">Next: Deployment</a>
+    </div>
+  </header>
 
-## What it is
-This section highlights built-in security behaviors and safe defaults.
+  <main class="mx-auto max-w-6xl px-6 pb-20 pt-12">
+    <section class="rounded-3xl border border-slate-800 bg-slate-900/60 p-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">Security</p>
+      <h1 class="mt-3 text-3xl font-semibold text-white md:text-4xl">Reliable sessions, installer protection, and API guards.</h1>
+      <p class="mt-4 text-lg text-slate-300">JamilX ships with session management, installer locks, and API access controls that help protect production environments.</p>
+    </section>
 
-## Where it lives (folder)
-- Sessions: `session.php`
-- API checks: `services/api.php`
-- Installer lock: `data/installed.lock`
-- Error logging: `logs/errors.log`
+    <section class="mt-10 grid gap-6 lg:grid-cols-3">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-lg font-semibold text-white">Sessions</h2>
+        <p class="mt-2 text-sm text-slate-300">Sessions start early in the request lifecycle via <code class="text-indigo-200">session.php</code>, ensuring authenticated flows are always available.</p>
+        <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
+          <code>session_start();</code>
+        </div>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-lg font-semibold text-white">Installer Lock</h2>
+        <p class="mt-2 text-sm text-slate-300">After setup, <code class="text-indigo-200">data/installed.lock</code> prevents the installer from running in production.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-lg font-semibold text-white">API Security</h2>
+        <p class="mt-2 text-sm text-slate-300">API requests validate keys, enforce CORS allowlists, and apply rate limits via the API service.</p>
+      </div>
+    </section>
 
-## Minimal example
-```text
-session_start();
-```
+    <section class="mt-10 rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
+      <h2 class="text-xl font-semibold text-white">Operational Tips</h2>
+      <ul class="mt-4 space-y-3 text-sm text-slate-300">
+        <li>Keep <code class="text-indigo-200">logs/errors.log</code> writable to capture runtime issues.</li>
+        <li>Use <code class="text-indigo-200">php jamilx logs:tail</code> for live monitoring during deployments.</li>
+        <li>Store sensitive credentials in <code class="text-indigo-200">.env</code> and keep it out of version control.</li>
+      </ul>
+    </section>
+  </main>
 
-## How to run / test
-- Verify sessions by logging in and checking `$_SESSION` values.
-- Use `php jamilx logs:tail` to watch errors.
-
-Source: session.php, console/commands/JX_CommandLogsTail.php.
-
----
-
-## Sessions
-
-Sessions are started in `session.php` on every request.
-
-Source: session.php.
-
----
-
-## Admin Checks
-
-Some features check for admin roles before allowing actions.
-
-Source: core/classes/email-class.php.
-
----
-
-## API Access
-
-API requests require valid keys (from `.env`) and respect CORS allowlists and rate limits.
-
-Source: services/api.php.
-
----
-
-## Installer Lock
-
-After installation, `data/installed.lock` prevents re-running the installer. Delete it only if you intentionally want to reinstall.
-
-Source: installer/index.php.
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <span>Next: deployment guidance for production.</span>
+      <a class="font-semibold text-indigo-300 hover:text-indigo-200" href="deployment.md">Next: Deployment →</a>
+    </div>
+  </footer>
+</body>
+</html>

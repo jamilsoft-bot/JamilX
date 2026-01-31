@@ -1,75 +1,93 @@
-# API
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>API | JamilX Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a class="flex items-center gap-3" href="README.md">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
+        <div>
+          <p class="text-lg font-semibold">JamilX</p>
+          <p class="text-xs text-slate-300">Framework Documentation</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex">
+        <a class="hover:text-white" href="overview.md">Overview</a>
+        <a class="hover:text-white" href="installation.md">Installation</a>
+        <a class="hover:text-white" href="configuration.md">Configuration</a>
+        <a class="hover:text-white" href="routing.md">Routing</a>
+        <a class="hover:text-white" href="services.md">Services</a>
+        <a class="hover:text-white" href="cli.md">CLI</a>
+      </nav>
+      <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="security.md">Next: Security</a>
+    </div>
+  </header>
 
-## What it is
-The API is served by the `api` Service. It returns JSON responses and supports API keys, CORS allowlists, and rate limiting.
+  <main class="mx-auto max-w-6xl px-6 pb-20 pt-12">
+    <section class="rounded-3xl border border-slate-800 bg-slate-900/60 p-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">API Service</p>
+      <h1 class="mt-3 text-3xl font-semibold text-white md:text-4xl">Deliver JSON APIs with keys, CORS, and rate limits.</h1>
+      <p class="mt-4 text-lg text-slate-300">The <code class="text-indigo-200">api</code> Service returns JSON responses through <code class="text-indigo-200">services/api.php</code> and helper classes in <code class="text-indigo-200">core/classes/api-class.php</code>.</p>
+    </section>
 
-## Where it lives (folder)
-- Service: `services/api.php`
-- JSON helper: `core/classes/api-class.php`
-- API containers: `containers/api/`
-- API storage: `data/api_notes.json`, `data/api_rate_limit.json`
+    <section class="mt-10 grid gap-6 lg:grid-cols-2">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-lg font-semibold text-white">Health Endpoint</h2>
+        <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
+          <code>/api/v1/health</code>
+        </div>
+        <p class="mt-3 text-sm text-slate-300">Use it to validate availability and response shape.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-lg font-semibold text-white">Authentication</h2>
+        <p class="mt-2 text-sm text-slate-300">Supply an API key using:</p>
+        <ul class="mt-3 space-y-2 text-sm text-slate-300">
+          <li><code class="text-indigo-200">Authorization: Bearer &lt;key&gt;</code></li>
+          <li><code class="text-indigo-200">X-API-Key: &lt;key&gt;</code></li>
+          <li><code class="text-indigo-200">?api_key=&lt;key&gt;</code></li>
+        </ul>
+      </div>
+    </section>
 
-## Minimal example
-```text
-/api/v1/health
-```
+    <section class="mt-10 grid gap-6 lg:grid-cols-3">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Response Shape</h3>
+        <ul class="mt-3 space-y-2 text-sm text-slate-300">
+          <li><code class="text-indigo-200">success</code></li>
+          <li><code class="text-indigo-200">message</code></li>
+          <li><code class="text-indigo-200">data</code></li>
+          <li><code class="text-indigo-200">errors</code></li>
+          <li><code class="text-indigo-200">meta</code></li>
+        </ul>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">CORS</h3>
+        <p class="mt-2 text-sm text-slate-300">Configure <code class="text-indigo-200">API_CORS_ALLOWLIST</code> in <code class="text-indigo-200">.env</code> to allow all origins or specify a list.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Rate Limits</h3>
+        <p class="mt-2 text-sm text-slate-300">Set <code class="text-indigo-200">API_RATE_LIMIT</code> and <code class="text-indigo-200">API_RATE_WINDOW</code> for API usage control.</p>
+      </div>
+    </section>
 
-## How to run / test
-1. Add API keys in `.env`:
-   ```ini
-   API_KEYS="your-key-1,your-key-2"
-   ```
-2. Request a protected endpoint with a key:
-   ```bash
-   curl -H "X-API-Key: your-key-1" http://localhost/api/v1/notes
-   ```
+    <section class="mt-10 rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
+      <h2 class="text-xl font-semibold text-white">Quick Request</h2>
+      <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
+        <code>curl -H "X-API-Key: your-key" http://localhost/api/v1/notes</code>
+      </div>
+    </section>
+  </main>
 
-Source: services/api.php, core/classes/api-class.php.
-
----
-
-## JSON Response Shape
-
-Responses include:
-- `success`
-- `message`
-- `data`
-- `errors`
-- `meta`
-
-Source: services/api.php, core/classes/api-class.php.
-
----
-
-## API Keys
-
-The API checks for keys in:
-- `Authorization: Bearer <key>`
-- `X-API-Key` header
-- `api_key` query param
-
-Keys are loaded from `API_KEYS` in `.env`.
-
-Source: services/api.php.
-
----
-
-## CORS Allowlist
-
-CORS settings are controlled by `API_CORS_ALLOWLIST` in `.env`.
-- Use `*` to allow all origins.
-- Use a comma-separated list for specific origins.
-
-Source: services/api.php.
-
----
-
-## Rate Limiting
-
-Rate limiting uses:
-- `API_RATE_LIMIT`
-- `API_RATE_WINDOW`
-
-Data is stored in `data/api_rate_limit.json`.
-
-Source: services/api.php.
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <span>Next: review security fundamentals.</span>
+      <a class="font-semibold text-indigo-300 hover:text-indigo-200" href="security.md">Next: Security →</a>
+    </div>
+  </footer>
+</body>
+</html>
