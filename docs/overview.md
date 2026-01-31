@@ -1,50 +1,91 @@
-# Overview
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Overview | JamilX Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a class="flex items-center gap-3" href="README.md">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
+        <div>
+          <p class="text-lg font-semibold">JamilX</p>
+          <p class="text-xs text-slate-300">Framework Documentation</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex">
+        <a class="hover:text-white" href="overview.md">Overview</a>
+        <a class="hover:text-white" href="installation.md">Installation</a>
+        <a class="hover:text-white" href="configuration.md">Configuration</a>
+        <a class="hover:text-white" href="routing.md">Routing</a>
+        <a class="hover:text-white" href="services.md">Services</a>
+        <a class="hover:text-white" href="cli.md">CLI</a>
+      </nav>
+      <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="installation.md">Get Started</a>
+    </div>
+  </header>
 
-## What it is
-JamilX is a PHP SaaS framework with a simple request lifecycle and a Service/Action/Container/Prototype architecture.
+  <main class="mx-auto max-w-6xl px-6 pb-20 pt-12">
+    <section class="rounded-3xl border border-slate-800 bg-slate-900/60 p-10 shadow-2xl">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">Architecture Overview</p>
+      <h1 class="mt-3 text-3xl font-semibold text-white md:text-4xl">Request lifecycle, project layout, and runtime flow.</h1>
+      <p class="mt-4 text-lg text-slate-300">JamilX is a PHP SaaS framework with a Service/Action/Container/Prototype architecture and a straightforward runtime chain that stays close to plain PHP.</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-6">
+          <h2 class="text-lg font-semibold text-white">Runtime Entry</h2>
+          <p class="mt-2 text-sm text-slate-300">Requests enter through <code class="text-indigo-200">index.php</code>, load sessions, initialize the framework, and route to a Service.</p>
+          <pre class="mt-4 overflow-hidden rounded-xl bg-slate-950 p-4 text-xs text-slate-200"><code>Request → index.php → session.php → init.php → route/http.php → Service → Container</code></pre>
+        </div>
+        <div class="rounded-2xl border border-slate-800 bg-slate-950/70 p-6">
+          <h2 class="text-lg font-semibold text-white">Core Layout</h2>
+          <ul class="mt-3 space-y-2 text-sm text-slate-300">
+            <li><span class="font-semibold text-slate-100">core/</span> — runtime engine, base classes, hooks</li>
+            <li><span class="font-semibold text-slate-100">services/</span> — route-owned service classes</li>
+            <li><span class="font-semibold text-slate-100">actions/</span> — action handlers invoked by services</li>
+            <li><span class="font-semibold text-slate-100">containers/</span> — view templates and UI output</li>
+            <li><span class="font-semibold text-slate-100">prototypes/</span> — data helpers and DB utilities</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-## Where it lives (folder)
-- Core runtime: `core/`
-- Runtime entry: `index.php`, `session.php`, `init.php`
+    <section class="mt-12 grid gap-6 lg:grid-cols-3">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Autoloading</h3>
+        <p class="mt-2 text-sm text-slate-300">JamilX scans Services, Actions, and Prototypes to load PHP classes automatically. This keeps the runtime lightweight and predictable.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Environment Modes</h3>
+        <p class="mt-2 text-sm text-slate-300">The <code class="text-indigo-200">MODE</code> value in <code class="text-indigo-200">.env</code> selects the bootstrap class: <code class="text-indigo-200">development</code>, <code class="text-indigo-200">production</code>, or <code class="text-indigo-200">maintainance</code>.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Apps & Modules</h3>
+        <p class="mt-2 text-sm text-slate-300">Installed apps load at boot, while modules scaffold Services, Actions, Containers, and Prototypes for rapid feature delivery.</p>
+        <a class="mt-4 inline-flex text-sm font-semibold text-indigo-300 hover:text-indigo-200" href="apps-and-modules.md">Learn about apps →</a>
+      </div>
+    </section>
 
-## Minimal example
-```text
-Request → index.php → session.php → init.php → route/http.php → Service → Container
-```
+    <section class="mt-12 rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <h2 class="text-xl font-semibold text-white">Start a local build</h2>
+          <p class="mt-2 text-sm text-slate-300">Spin up the local server and explore services in your browser.</p>
+        </div>
+        <div class="rounded-2xl bg-slate-950 px-6 py-4 text-sm text-slate-200">
+          <code>php jamilx serve</code>
+        </div>
+      </div>
+    </section>
+  </main>
 
-## How to run / test
-1. Ensure `.env` is in the root.
-2. Start the local server:
-   ```bash
-   php jamilx serve
-   ```
-3. Visit `http://127.0.0.1:8000/`.
-
-## Request Lifecycle (high level)
-
-1. **Entry**: `index.php` loads `session.php`, then `init.php`.
-2. **Bootstrap**: `init.php` loads `core/system.php`, then `bootstrap.php`.
-3. **Autoload**: `autoload.php` scans `prototypes/`, `services/`, and `actions/`.
-4. **Hooks/Scripts**: `core/hooks/*` and `scripts/*` are included.
-5. **Apps**: Installed apps are loaded from DB via `Apps->Get_Installed_Apps()`.
-6. **Routing**: `route/http.php` resolves the Service class from the URL.
-
-Source: index.php, session.php, init.php, core/system.php, bootstrap.php, autoload.php, core/hooks/init.php, scripts/, core/classes/apps-class.php, route/http.php.
-
-## Autoloading Behavior
-
-JamilX does not use Composer. It includes PHP files by scanning these folders:
-- `prototypes/`
-- `services/`
-- `actions/`
-
-Source: autoload.php.
-
-## Environment Modes
-
-`MODE` in `.env` selects a bootstrap class:
-- `development` → `Development`
-- `production` → `Production`
-- `maintainance` → `Maintainance`
-
-Source: core/hooks/init.php, bootstrap/*.php.
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <span>Continue with routing, services, and configuration to complete your setup.</span>
+      <a class="font-semibold text-indigo-300 hover:text-indigo-200" href="routing.md">Next: Routing →</a>
+    </div>
+  </footer>
+</body>
+</html>
