@@ -1,4 +1,4 @@
-<?php
+<?php 
 return [
     'up' => [
         "CREATE TABLE IF NOT EXISTS `invoice_clients` (

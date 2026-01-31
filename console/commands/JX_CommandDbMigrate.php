@@ -102,5 +102,5 @@ class JX_CommandDbMigrate extends JX_ConsoleCommand
             return [$statements];
         }
         return [];
-    }
+    } 
 }

@@ -1,5 +1,5 @@
 <?php
-
+ 
 class updatemyprofilepic extends JX_Action implements JX_ActionI
 {
 

@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class myprofile extends JX_Action implements JX_ActionI
 {

@@ -2,7 +2,7 @@
 $pageTitle = $pageTitle ?? 'Invoices';
 $navLinks = [
     ['label' => 'Invoices', 'href' => 'invoice'],
-    ['label' => 'Clients', 'href' => 'invoice/clients'],
+    ['label' => 'Clients', 'href' => 'invoice?action=clients'],
     ['label' => 'Billing', 'href' => 'billing'],
     ['label' => 'Forum', 'href' => 'forum'],
 ];
@@ -13,7 +13,7 @@ $navLinks = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo invoice_html($pageTitle); ?></title>
-    <script src="assets/tailwindcss.js"></script>
+    <script src="http://localhost/jamilx/assets/tailwindcss.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
 <header class="border-b border-slate-200 bg-white">
@@ -25,7 +25,7 @@ $navLinks = [
         </div>
         <div class="flex flex-wrap gap-2">
             <a href="dashboard" class="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-600 hover:bg-slate-100">Dashboard</a>
-            <a href="invoice/new" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">New Invoice</a>
+            <a href="invoice?action=new" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">New Invoice</a>
         </div>
     </div>
     <nav class="border-t border-slate-200 bg-slate-100">
@@ -36,7 +36,7 @@ $navLinks = [
                 </a>
             <?php endforeach; ?>
             <?php if (invoice_is_admin()): ?>
-                <a href="invoice/settings" class="text-slate-600 hover:text-slate-900">Settings</a>
+                <a href="invoice?action=settings" class="text-slate-600 hover:text-slate-900">Settings</a>
             <?php endif; ?>
         </div>
     </nav>

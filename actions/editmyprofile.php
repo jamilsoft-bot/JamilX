@@ -1,5 +1,5 @@
 <?php
-
+ 
 class editmyprofile extends JX_Action implements JX_ActionI
 {
     private $users;
@@ -9,23 +9,23 @@ class editmyprofile extends JX_Action implements JX_ActionI
         $this->users = new JS_Users();
     }
 
-    public function addAction()
-    {
-        global $JX_db, $Me;
-        $this->update();
-        $id = intval($_SESSION['uid']);
-        $sql = "SELECT * FROM `users` WHERE `id`=$id";
-        $row = $JX_db->query($sql);
-        $username = null;
-        $password = null;
-        $email = null;
-        foreach ($row as $r) {
-            $username = $r['username'];
-        }
-        echo "<form action='' method='post'>";
-        include "containers/dashboard/myprofile-edit.php";
-        echo "</form";
-    }
+    // public function addAction()
+    // {
+    //     global $JX_db, $Me;
+    //     $this->update();
+    //     $id = intval($_SESSION['uid']);
+    //     $sql = "SELECT * FROM `users` WHERE `id`=$id";
+    //     $row = $JX_db->query($sql);
+    //     $username = null;
+    //     $password = null;
+    //     $email = null;
+    //     foreach ($row as $r) {
+    //         $username = $r['username'];
+    //     }
+    //     echo "<form action='' method='post'>";
+    //     include "containers/dashboard/myprofile-edit.php";
+    //     echo "</form";
+    // }
 
     public function getAction()
     {

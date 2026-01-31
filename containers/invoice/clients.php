@@ -8,7 +8,7 @@ include __DIR__ . '/layout/header.php';
             <h2 class="text-xl font-semibold">Clients</h2>
             <p class="text-sm text-slate-500">Keep your billing contacts organized.</p>
         </div>
-        <a href="invoice/clients-new" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Add Client</a>
+        <a href="invoice?action=clients-new" class="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">Add Client</a>
     </div>
 
     <?php if (empty($clients)): ?>
@@ -34,8 +34,8 @@ include __DIR__ . '/layout/header.php';
                             <td class="px-4 py-3 text-slate-600"><?php echo invoice_html($client['phone']); ?></td>
                             <td class="px-4 py-3">
                                 <div class="flex gap-2 text-sm">
-                                    <a href="invoice/clients-edit/<?php echo (int) $client['id']; ?>" class="text-slate-600 hover:text-slate-900">Edit</a>
-                                    <a href="invoice/clients-delete/<?php echo (int) $client['id']; ?>" class="text-rose-600 hover:text-rose-800">Archive</a>
+                                    <a href="invoice?action=clients-edit/<?php echo (int) $client['id']; ?>" class="text-slate-600 hover:text-slate-900">Edit</a>
+                                    <a href="invoice?action=clients-delete/<?php echo (int) $client['id']; ?>" class="text-rose-600 hover:text-rose-800">Archive</a>
                                 </div>
                             </td>
                         </tr>
