@@ -1,59 +1,78 @@
-# Database
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Database | JamilX Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100">
+  <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a class="flex items-center gap-3" href="README.md">
+        <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
+        <div>
+          <p class="text-lg font-semibold">JamilX</p>
+          <p class="text-xs text-slate-300">Framework Documentation</p>
+        </div>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex">
+        <a class="hover:text-white" href="overview.md">Overview</a>
+        <a class="hover:text-white" href="installation.md">Installation</a>
+        <a class="hover:text-white" href="configuration.md">Configuration</a>
+        <a class="hover:text-white" href="routing.md">Routing</a>
+        <a class="hover:text-white" href="services.md">Services</a>
+        <a class="hover:text-white" href="cli.md">CLI</a>
+      </nav>
+      <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="api.md">Next: API</a>
+    </div>
+  </header>
 
-## What it is
-JamilX connects to MySQL/MariaDB using credentials from `.env`. It supports installer SQL, migrations, and seeders.
+  <main class="mx-auto max-w-6xl px-6 pb-20 pt-12">
+    <section class="rounded-3xl border border-slate-800 bg-slate-900/60 p-10">
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-indigo-300">Database</p>
+      <h1 class="mt-3 text-3xl font-semibold text-white md:text-4xl">Manage schema changes and seed data with migrations.</h1>
+      <p class="mt-4 text-lg text-slate-300">JamilX connects to MySQL or MariaDB via <code class="text-indigo-200">.env</code> credentials, ships an installer SQL file, and supports migrations and seeders.</p>
+    </section>
 
-## Where it lives (folder)
-- `.env` (DB credentials)
-- `installer/sql.sql`
-- `database/migrations/`
-- `database/seeders/`
-- `database/blog.sql`
+    <section class="mt-10 grid gap-6 lg:grid-cols-2">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-lg font-semibold text-white">Run Migrations</h2>
+        <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
+          <code>php jamilx db:migrate</code>
+        </div>
+        <p class="mt-3 text-sm text-slate-300">Ensure <code class="text-indigo-200">DB_HOST</code>, <code class="text-indigo-200">DB_USER</code>, <code class="text-indigo-200">DB_PASS</code>, and <code class="text-indigo-200">DB_NAME</code> are set before running migrations.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h2 class="text-lg font-semibold text-white">Seed Data</h2>
+        <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
+          <code>php jamilx db:seed</code>
+        </div>
+        <p class="mt-3 text-sm text-slate-300">Seeders can return a callable or an array of SQL statements for quick setup.</p>
+      </div>
+    </section>
 
-## Minimal example
-```bash
-php jamilx db:migrate
-```
+    <section class="mt-10 grid gap-6 lg:grid-cols-3">
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Installer SQL</h3>
+        <p class="mt-2 text-sm text-slate-300">The installer runs <code class="text-indigo-200">installer/sql.sql</code> to create core tables.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Migration Files</h3>
+        <p class="mt-2 text-sm text-slate-300">Each migration returns <code class="text-indigo-200">up</code> and <code class="text-indigo-200">down</code> arrays, tracked in <code class="text-indigo-200">jx_migrations</code>.</p>
+      </div>
+      <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
+        <h3 class="text-lg font-semibold text-white">Blog Tables</h3>
+        <p class="mt-2 text-sm text-slate-300">Sample blog tables live in <code class="text-indigo-200">database/blog.sql</code> for prototypes.</p>
+      </div>
+    </section>
+  </main>
 
-## How to run / test
-1. Set `DB_HOST`, `DB_USER`, `DB_PASS`, `DB_NAME` in `.env`.
-2. Run:
-   ```bash
-   php jamilx db:migrate
-   ```
-
-Source: core/configs/databases.php, console/commands/JX_CommandDbMigrate.php.
-
----
-
-## Installer SQL
-
-The installer uses `installer/sql.sql` to create core tables when you run the wizard.
-
-Source: installer/includes/installer_logic.php, installer/sql.sql.
-
----
-
-## Migrations
-
-- Location: `database/migrations/`
-- Each file returns `['up' => [...], 'down' => [...]]`
-- Migration history is stored in `jx_migrations`
-
-Source: console/commands/JX_CommandDbMigrate.php, console/JX_ConsoleDatabase.php, database/migrations/2025_09_01_000001_invoice_billing_forum.php.
-
----
-
-## Seeders
-
-Seeders return a callable or array of SQL statements.
-
-Source: database/seeders/README.md, console/commands/JX_CommandDbSeed.php.
-
----
-
-## Blog SQL
-
-`database/blog.sql` contains table definitions used by the blog prototype.
-
-Source: database/blog.sql, prototypes/blog.php.
+  <footer class="border-t border-slate-800 bg-slate-950/80">
+    <div class="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between">
+      <span>Next: explore the built-in API service.</span>
+      <a class="font-semibold text-indigo-300 hover:text-indigo-200" href="api.md">Next: API →</a>
+    </div>
+  </footer>
+</body>
+</html>
