@@ -34,44 +34,16 @@ function dashboardIconClass($actionName, $currentAction)
 <!-- Mobile Menu -->
 <div class="hidden lg:hidden bg-white border-b border-slate-200 px-4 py-2 fixed w-full z-20 shadow-lg" id="mobile-menu">
     <nav class="space-y-1">
-        <a href="?action=dashboardmain" class="<?php echo dashboardNavClass('dashboardmain', $currentAction); ?>">
-            <i class="fas fa-home <?php echo dashboardIconClass('dashboardmain', $currentAction); ?>"></i>
-            Overview
-        </a>
-        <a href="?action=emails" class="<?php echo dashboardNavClass('emails', $currentAction); ?>">
-            <i class="fas fa-envelope <?php echo dashboardIconClass('emails', $currentAction); ?>"></i>
-            Email Campaigns
-        </a>
-        <a href="?action=pages" class="<?php echo dashboardNavClass('pages', $currentAction); ?>">
-            <i class="fas fa-file-alt <?php echo dashboardIconClass('pages', $currentAction); ?>"></i>
-            Pages
-        </a>
-        <a href="?action=cats" class="<?php echo dashboardNavClass('cats', $currentAction); ?>">
-            <i class="fas fa-tags <?php echo dashboardIconClass('cats', $currentAction); ?>"></i>
-            Categories
-        </a>
-        <a href="?action=products" class="<?php echo dashboardNavClass('products', $currentAction); ?>">
-            <i class="fas fa-box <?php echo dashboardIconClass('products', $currentAction); ?>"></i>
-            Products
-        </a>
-        <a href="?action=posts" class="<?php echo dashboardNavClass('posts', $currentAction); ?>">
-            <i class="fas fa-pen-nib <?php echo dashboardIconClass('posts', $currentAction); ?>"></i>
-            Posts
-        </a>
-        <a href="?action=myprofile" class="<?php echo dashboardNavClass('myprofile', $currentAction); ?>">
-            <i class="fas fa-user <?php echo dashboardIconClass('myprofile', $currentAction); ?>"></i>
-            My Profile
-        </a>
-        <a href="?action=updatesetting" class="<?php echo dashboardNavClass('updatesetting', $currentAction); ?>">
-            <i class="fas fa-cog <?php echo dashboardIconClass('updatesetting', $currentAction); ?>"></i>
-            Business Settings
-        </a>
         <a href="login?action=logout" class="text-red-600 hover:bg-red-50 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full mt-4 border-t border-slate-100 pt-4">
             <i class="fas fa-sign-out-alt mr-3 text-red-400"></i> Logout
         </a>
 
         <div class="mt-6 border-t border-slate-200 pt-4">
             <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Services</p>
+            <a href="?action=myprofile" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+                <i class="fas fa-user mr-3 text-slate-400"></i>
+                Profile
+            </a>
             <a href="apiservice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-plug mr-3 text-slate-400"></i>
                 API Service
@@ -88,10 +60,6 @@ function dashboardIconClass($actionName, $currentAction)
                 <i class="fas fa-folder-open mr-3 text-slate-400"></i>
                 File Manager
             </a>
-            <a href="emailservice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-paper-plane mr-3 text-slate-400"></i>
-                Email Service
-            </a>
             <a href="blog/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-blog mr-3 text-slate-400"></i>
                 Blog
@@ -103,22 +71,6 @@ function dashboardIconClass($actionName, $currentAction)
             <a href="billing/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-credit-card mr-3 text-slate-400"></i>
                 Billing
-            </a>
-        </div>
-
-        <div class="mt-6 border-t border-slate-200 pt-4">
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Apps</p>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-cubes mr-3 text-slate-400"></i>
-                Inventory
-            </a>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-project-diagram mr-3 text-slate-400"></i>
-                Projects
-            </a>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-chart-line mr-3 text-slate-400"></i>
-                Analytics
             </a>
         </div>
     </nav>
@@ -133,79 +85,11 @@ function dashboardIconClass($actionName, $currentAction)
 
     <div class="flex-1 flex flex-col overflow-y-auto px-4">
         <nav class="flex-1 space-y-1">
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-2">Core</p>
-
-            <a href="?action=dashboardmain" class="<?php echo dashboardNavClass('dashboardmain', $currentAction); ?>">
-                <i class="fas fa-home <?php echo dashboardIconClass('dashboardmain', $currentAction); ?>"></i>
-                Overview
-            </a>
-
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">Content</p>
-
-            <a href="?action=pages" class="<?php echo dashboardNavClass('pages', $currentAction); ?>">
-                <i class="fas fa-file-alt <?php echo dashboardIconClass('pages', $currentAction); ?>"></i>
-                Pages
-            </a>
-            <a href="?action=posts" class="<?php echo dashboardNavClass('posts', $currentAction); ?>">
-                <i class="fas fa-pen-nib <?php echo dashboardIconClass('posts', $currentAction); ?>"></i>
-                Posts
-            </a>
-            <a href="?action=cats" class="<?php echo dashboardNavClass('cats', $currentAction); ?>">
-                <i class="fas fa-tags <?php echo dashboardIconClass('cats', $currentAction); ?>"></i>
-                Categories
-            </a>
-            <a href="?action=medialist" class="<?php echo dashboardNavClass('medialist', $currentAction); ?>">
-                <i class="fas fa-images <?php echo dashboardIconClass('medialist', $currentAction); ?>"></i>
-                Media Library
-            </a>
-
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">Marketing</p>
-
-            <a href="?action=emails" class="<?php echo dashboardNavClass('emails', $currentAction); ?>">
-                <i class="fas fa-envelope <?php echo dashboardIconClass('emails', $currentAction); ?>"></i>
-                Email Campaigns
-            </a>
-            <a href="?action=products" class="<?php echo dashboardNavClass('products', $currentAction); ?>">
-                <i class="fas fa-box <?php echo dashboardIconClass('products', $currentAction); ?>"></i>
-                Products
-            </a>
-            <a href="?action=offers" class="<?php echo dashboardNavClass('offers', $currentAction); ?>">
-                <i class="fas fa-percent <?php echo dashboardIconClass('offers', $currentAction); ?>"></i>
-                Offers
-            </a>
-
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">Settings</p>
-
-            <a href="?action=updatesetting" class="<?php echo dashboardNavClass('updatesetting', $currentAction); ?>">
-                <i class="fas fa-cog <?php echo dashboardIconClass('updatesetting', $currentAction); ?>"></i>
-                Business Settings
-            </a>
-            <a href="?action=myprofile" class="<?php echo dashboardNavClass('myprofile', $currentAction); ?>">
-                <i class="fas fa-user <?php echo dashboardIconClass('myprofile', $currentAction); ?>"></i>
-                My Profile
-            </a>
-
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">HR</p>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-user-friends mr-3 text-slate-400"></i>
-                Team Directory
-            </a>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-calendar-check mr-3 text-slate-400"></i>
-                Time Off
-            </a>
-
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">CRM</p>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-user-tag mr-3 text-slate-400"></i>
-                Leads
-            </a>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-handshake mr-3 text-slate-400"></i>
-                Deals
-            </a>
-
             <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">Services</p>
+            <a href="?action=myprofile" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+                <i class="fas fa-user mr-3 text-slate-400"></i>
+                Profile
+            </a>
             <a href="apiservice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-plug mr-3 text-slate-400"></i>
                 API Service
@@ -222,10 +106,6 @@ function dashboardIconClass($actionName, $currentAction)
                 <i class="fas fa-folder-open mr-3 text-slate-400"></i>
                 File Manager
             </a>
-            <a href="emailservice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-paper-plane mr-3 text-slate-400"></i>
-                Email Service
-            </a>
             <a href="blog/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-blog mr-3 text-slate-400"></i>
                 Blog
@@ -237,20 +117,6 @@ function dashboardIconClass($actionName, $currentAction)
             <a href="billing/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-credit-card mr-3 text-slate-400"></i>
                 Billing
-            </a>
-
-            <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">Apps</p>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-cubes mr-3 text-slate-400"></i>
-                Inventory
-            </a>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-project-diagram mr-3 text-slate-400"></i>
-                Projects
-            </a>
-            <a href="#" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
-                <i class="fas fa-chart-line mr-3 text-slate-400"></i>
-                Analytics
             </a>
         </nav>
     </div>
