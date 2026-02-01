@@ -1,6 +1,6 @@
 # JamilX Framework v1.0 Release Notes
 
-**Release date:** 2026-03-01
+**Release date:** 2026-02-01
 
 ## Highlights
 - Expanded CLI tooling with generators, app-aware scaffolding, cache utilities, and shell completion scripts.
