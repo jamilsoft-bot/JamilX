@@ -12,7 +12,7 @@
             </thead>
             <tbody class="divide-y divide-slate-100">
                 <?php
-                $this->readcats();
+                $this->readcats(); 
                 ?>
             </tbody>
         </table>

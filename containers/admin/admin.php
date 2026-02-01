@@ -15,7 +15,7 @@ $navItemClass = function (string $action) use ($currentAction) {
 };
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -100,11 +100,11 @@ $navItemClass = function (string $action) use ($currentAction) {
                         <i class="fa fa-th"></i>
                         Apps
                     </a>
-                    <a href="?action=createcat" class="<?php echo $navItemClass('createcat'); ?>">
+                    <a href="?action=catadd" class="<?php echo $navItemClass('createcat'); ?>">
                         <i class="fa fa-plus"></i>
                         Add Category
                     </a>
-                    <a href="?action=readcats" class="<?php echo $navItemClass('readcats'); ?>">
+                    <a href="?action=cats" class="<?php echo $navItemClass('readcats'); ?>">
                         <i class="fa fa-code-branch"></i>
                         Categories
                     </a>

@@ -171,7 +171,7 @@ $statValue = function ($value) {
                             </div>
                         </div>
                     </a>
-                    <a href="?action=readcats" class="rounded-xl border border-slate-200 p-4 transition hover:border-blue-200 hover:bg-blue-50">
+                    <a href="?action=cats" class="rounded-xl border border-slate-200 p-4 transition hover:border-blue-200 hover:bg-blue-50">
                         <div class="flex items-center gap-3">
                             <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                                 <i class="fa fa-code-branch"></i>

@@ -25,29 +25,29 @@
                             
                             global $JX_db;
                                 $code = $_SESSION['uid'];
-                                $sql = "SELECT * FROM `categories` WHERE  `owner`='$code'";
+                                $sql = "SELECT * FROM `roles`";
 
                                 $row = $JX_db->query($sql);
 
                                 foreach($row as $r){
                                     
                                     $id = $r['id'];
-                                    $code = $_SESSION['uid'];
-                                    $blog = $r['parent'];
+                                    // $code = $_SESSION['uid'];
+                                    // $blog = $r['parent'];
                                    // $sql2 = "SELECT *FROM `comments` WHERE `post_id`=$id";
                                    // $re = $db->Query($sql2);
                                     //$count = 0;//$re->num_rows;
                                     echo "<tr class='hover:bg-slate-50'>";
                                     echo "<td class='px-4 py-3 text-slate-600'>". $r['id'] . "</td>";
                                     echo "<td class='px-4 py-3 font-semibold text-slate-800'>". $r['name']. "</td>";
-                                    echo "<td class='px-4 py-3 text-slate-600'>". $r['parent'] . "</td>";
+                                    echo "<td class='px-4 py-3 text-slate-600'>". $r['summary'] . "</td>";
                                     //echo "<td style='align:center'>$count</td>";
                                     echo "<td class='px-4 py-3 text-slate-600'>". get_default_date($r['date']) . "</td>";
                                     echo "<td class='px-4 py-3'>
                                         <div class='flex items-center gap-2'>
                                             <a href='#' class='inline-flex items-center justify-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700'><i class='fa fa-eye'></i></a>
-                                            <a href='admin?b=$code&action=catupdate&cid=$id' class='inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-600'><i class='fa fa-edit'></i></a>
-                                            <a href='admin?b=$code&action=cats&del=$id' class='inline-flex items-center justify-center rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-600'><i class='fa fa-trash'></i></a>
+                                            <a href='#' class='inline-flex items-center justify-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-semibold text-slate-600'><i class='fa fa-edit'></i></a>
+                                            <a href='admin?b=$code&action=roles&del=$id' class='inline-flex items-center justify-center rounded-full border border-rose-200 bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-600'><i class='fa fa-trash'></i></a>
                                         </div>
                                     </td>";
                                 }

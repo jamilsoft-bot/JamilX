@@ -10,8 +10,9 @@
         </div>
         <div>
             <label class="text-xs font-semibold uppercase tracking-wide text-slate-500">Parent Category</label>
-            <select name="cat" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
+            <select name="parent" class="mt-2 w-full rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
                 <?php
+                    echo "<option>root</option>";
                     global $JX_db;
                     $sql = "SELECT *FROM `categories`";
                     $ee = $JX_db->query($sql);
@@ -23,7 +24,7 @@
             </select>
         </div>
         <div class="flex items-end">
-            <input type="submit" name="rolebtn" class="inline-flex w-full items-center justify-center rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700" value="Add Category">
+            <input type="submit" name="catbtn" class="inline-flex w-full items-center justify-center rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700" value="Add Category">
         </div>
     </form>
 </div>

@@ -13,15 +13,15 @@ $blog = null;
 $body = null;
 $keywords = null;
 
-$sql = "SELECT *FROM `categories` WHERE `id`='$id'";
+$sql = "SELECT *FROM `roles` WHERE `id`='$id'";
 
 $result = $JX_db->query($sql);
 
 foreach($result as $r){
     $title = $r['name'];
-    $keywords = $r['keywords'];
+    $keywords = $r['summary'];
     $blog = $r['parent'];
-    $body = $r['description'];
+    $body = $r['summary'];
 }
 
 

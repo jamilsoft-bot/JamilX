@@ -19,7 +19,7 @@
                         $name = $e['name'];
                         echo "<option>$name</option>";
                     }
-                ?>
+                ?> 
             </select>
         </div>
         <div class="flex items-end">
