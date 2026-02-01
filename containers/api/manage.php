@@ -11,7 +11,7 @@ $action = new $act();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($action->getTitle(), ENT_QUOTES, 'UTF-8'); ?></title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/tailwindcss.js"></script>
 </head>
 <body class="bg-white text-slate-900">
     <div class="max-w-6xl mx-auto px-6 py-10">
