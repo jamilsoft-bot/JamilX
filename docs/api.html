@@ -9,7 +9,7 @@
 <body class="bg-slate-950 text-slate-100">
   <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <a class="flex items-center gap-3" href="README.html">
+      <a class="flex items-center gap-3" href="index.html">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
         <div>
           <p class="text-lg font-semibold">JamilX</p>
@@ -23,6 +23,7 @@
         <a class="hover:text-white" href="routing.html">Routing</a>
         <a class="hover:text-white" href="services.html">Services</a>
         <a class="hover:text-white" href="cli.html">CLI</a>
+        <a class="hover:text-white" href="pricing.html">Pricing</a>
       </nav>
       <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="security.html">Next: Security</a>
     </div>
@@ -51,6 +52,15 @@
           <li><code class="text-indigo-200">X-API-Key: &lt;key&gt;</code></li>
           <li><code class="text-indigo-200">?api_key=&lt;key&gt;</code></li>
         </ul>
+        <p class="mt-3 text-sm text-slate-300">Keys are read from <code class="text-indigo-200">API_KEYS</code> in <code class="text-indigo-200">.env</code> (comma-separated).</p>
+      </div>
+    </section>
+
+    <section class="mt-10 rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
+      <h2 class="text-xl font-semibold text-white">Resource Routing</h2>
+      <p class="mt-3 text-sm text-slate-300">After <code class="text-indigo-200">/api/v1</code>, the next segment is treated as an Action class name. If the class exists, JamilX calls <code class="text-indigo-200">getApi()</code> to render JSON.</p>
+      <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
+        <code>/api/v1/apihome → class apihome → getApi()</code>
       </div>
     </section>
 
@@ -67,18 +77,18 @@
       </div>
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
         <h3 class="text-lg font-semibold text-white">CORS</h3>
-        <p class="mt-2 text-sm text-slate-300">Configure <code class="text-indigo-200">API_CORS_ALLOWLIST</code> in <code class="text-indigo-200">.env</code> to allow all origins or specify a list.</p>
+        <p class="mt-2 text-sm text-slate-300">Configure <code class="text-indigo-200">API_CORS_ALLOWLIST</code> in <code class="text-indigo-200">.env</code> to allow all origins (<code class="text-indigo-200">*</code>) or specify a comma-separated list.</p>
       </div>
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
         <h3 class="text-lg font-semibold text-white">Rate Limits</h3>
-        <p class="mt-2 text-sm text-slate-300">Set <code class="text-indigo-200">API_RATE_LIMIT</code> and <code class="text-indigo-200">API_RATE_WINDOW</code> for API usage control.</p>
+        <p class="mt-2 text-sm text-slate-300">Set <code class="text-indigo-200">API_RATE_LIMIT</code> and <code class="text-indigo-200">API_RATE_WINDOW</code> for API usage control. Rate limit buckets persist under <code class="text-indigo-200">data/api_rate_limit.json</code>.</p>
       </div>
     </section>
 
     <section class="mt-10 rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
       <h2 class="text-xl font-semibold text-white">Quick Request</h2>
       <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
-        <code>curl -H "X-API-Key: your-key" http://localhost/api/v1/notes</code>
+        <code>curl -H "X-API-Key: your-key" http://localhost/api/v1/apihome</code>
       </div>
     </section>
   </main>

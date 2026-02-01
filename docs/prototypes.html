@@ -9,7 +9,7 @@
 <body class="bg-slate-950 text-slate-100">
   <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <a class="flex items-center gap-3" href="README.html">
+      <a class="flex items-center gap-3" href="index.html">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
         <div>
           <p class="text-lg font-semibold">JamilX</p>
@@ -23,6 +23,7 @@
         <a class="hover:text-white" href="routing.html">Routing</a>
         <a class="hover:text-white" href="services.html">Services</a>
         <a class="hover:text-white" href="cli.html">CLI</a>
+        <a class="hover:text-white" href="pricing.html">Pricing</a>
       </nav>
       <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="apps-and-modules.html">Next: Apps & Modules</a>
     </div>
@@ -45,9 +46,11 @@
         <p class="mt-3 text-sm text-slate-300">Call the helper directly inside Services or Actions.</p>
       </div>
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
-        <h2 class="text-lg font-semibold text-white">Usage</h2>
-        <pre class="mt-4 overflow-hidden rounded-xl bg-slate-950 p-4 text-xs text-slate-200"><code>$categories = blog_get_categories();</code></pre>
-        <p class="mt-3 text-sm text-slate-300">Keep query logic centralized for consistent reuse.</p>
+        <h2 class="text-lg font-semibold text-white">Prototype Class</h2>
+        <pre class="mt-4 overflow-hidden rounded-xl bg-slate-950 p-4 text-xs text-slate-200"><code>$users = new JX_Prototype('users');
+$users->insert(['name'], ['Ada']);
+$users->read(1);</code></pre>
+        <p class="mt-3 text-sm text-slate-300">The base prototype ships helpers like <code class="text-indigo-200">createTable</code>, <code class="text-indigo-200">insert</code>, <code class="text-indigo-200">read</code>, and <code class="text-indigo-200">delete</code>.</p>
       </div>
     </section>
 
