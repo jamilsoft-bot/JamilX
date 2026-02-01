@@ -9,7 +9,7 @@
 <body class="bg-slate-950 text-slate-100">
   <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <a class="flex items-center gap-3" href="README.html">
+      <a class="flex items-center gap-3" href="index.html">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
         <div>
           <p class="text-lg font-semibold">JamilX</p>
@@ -23,6 +23,7 @@
         <a class="hover:text-white" href="routing.html">Routing</a>
         <a class="hover:text-white" href="services.html">Services</a>
         <a class="hover:text-white" href="cli.html">CLI</a>
+        <a class="hover:text-white" href="pricing.html">Pricing</a>
       </nav>
       <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="cli.html">Next: CLI</a>
     </div>
@@ -38,13 +39,14 @@
     <section class="mt-10 grid gap-6 lg:grid-cols-2">
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
         <h2 class="text-lg font-semibold text-white">Apps</h2>
-        <p class="mt-2 text-sm text-slate-300">Each app has its own folder and <code class="text-indigo-200">conf.json</code> definition.</p>
+        <p class="mt-2 text-sm text-slate-300">Each app has its own folder and <code class="text-indigo-200">conf.json</code> definition. Installed apps are read from the <code class="text-indigo-200">apps</code> table and loaded during boot.</p>
         <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
           <code>Apps/MyApp/conf.json</code>
         </div>
         <ul class="mt-4 space-y-2 text-sm text-slate-300">
           <li>Install the app so it appears in the <code class="text-indigo-200">apps</code> table.</li>
-          <li>Apps load during boot via <code class="text-indigo-200">Apps->Get_Installed_Apps()</code>.</li>
+          <li>Bootstrapping includes <code class="text-indigo-200">Apps/&lt;app&gt;/&lt;app&gt;.php</code> for each installed entry.</li>
+          <li>App scaffolding creates folders like <code class="text-indigo-200">classes/</code>, <code class="text-indigo-200">services/</code>, <code class="text-indigo-200">containers/</code>, and <code class="text-indigo-200">assets/</code>.</li>
         </ul>
       </div>
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
@@ -53,7 +55,7 @@
         <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
           <code>php jamilx make:module Blog</code>
         </div>
-        <p class="mt-3 text-sm text-slate-300">The generator creates a Service, Action, Container, and Prototype wired together for you.</p>
+        <p class="mt-3 text-sm text-slate-300">The generator creates a Service, Action, Container, and Prototype under <code class="text-indigo-200">services/</code>, <code class="text-indigo-200">actions/</code>, <code class="text-indigo-200">containers/&lt;name&gt;/index.php</code>, and <code class="text-indigo-200">prototypes/</code>.</p>
       </div>
     </section>
 

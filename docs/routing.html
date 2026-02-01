@@ -9,7 +9,7 @@
 <body class="bg-slate-950 text-slate-100">
   <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <a class="flex items-center gap-3" href="README.html">
+      <a class="flex items-center gap-3" href="index.html">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
         <div>
           <p class="text-lg font-semibold">JamilX</p>
@@ -23,6 +23,7 @@
         <a class="hover:text-white" href="routing.html">Routing</a>
         <a class="hover:text-white" href="services.html">Services</a>
         <a class="hover:text-white" href="cli.html">CLI</a>
+        <a class="hover:text-white" href="pricing.html">Pricing</a>
       </nav>
       <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="services.html">Next: Services</a>
     </div>
@@ -38,23 +39,26 @@
     <section class="mt-10 grid gap-6 lg:grid-cols-2">
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
         <h2 class="text-lg font-semibold text-white">Rewrite Rule</h2>
-        <p class="mt-2 text-sm text-slate-300">All non-file requests become a route parameter.</p>
-        <pre class="mt-4 overflow-hidden rounded-xl bg-slate-950 p-4 text-xs text-slate-200"><code>index.php?route=&lt;path&gt;</code></pre>
+        <p class="mt-2 text-sm text-slate-300">All non-file requests are rewritten to <code class="text-indigo-200">index.php</code> with a <code class="text-indigo-200">route</code> query value.</p>
+        <pre class="mt-4 overflow-hidden rounded-xl bg-slate-950 p-4 text-xs text-slate-200"><code>RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)$ index.php?route=$1 [QSA,L]</code></pre>
         <p class="mt-3 text-sm text-slate-300">Ensure <code class="text-indigo-200">mod_rewrite</code> is enabled in Apache and that <code class="text-indigo-200">.htaccess</code> is respected.</p>
       </div>
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
         <h2 class="text-lg font-semibold text-white">Service Resolution</h2>
-        <p class="mt-2 text-sm text-slate-300">The first URL segment determines the Service class name.</p>
+        <p class="mt-2 text-sm text-slate-300">The first URL segment determines the Service class name. Multi-segment routes still map to the first segment.</p>
         <pre class="mt-4 overflow-hidden rounded-xl bg-slate-950 p-4 text-xs text-slate-200"><code>/dashboard → class Dashboard
 /blog → class blog</code></pre>
-        <p class="mt-3 text-sm text-slate-300">When the route is empty, JamilX falls back to the default Service index.</p>
+        <p class="mt-3 text-sm text-slate-300">When no route is provided, JX falls back to the default Service name (<code class="text-indigo-200">about</code>). A legacy rule maps <code class="text-indigo-200">/admin/blog</code> back to the <code class="text-indigo-200">blog</code> service.</p>
       </div>
     </section>
 
     <section class="mt-10 grid gap-6 lg:grid-cols-3">
       <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-6">
         <h3 class="text-lg font-semibold text-white">Actions</h3>
-        <p class="mt-2 text-sm text-slate-300">Use the <code class="text-indigo-200">action</code> query parameter to delegate to specific Actions within a Service.</p>
+        <p class="mt-2 text-sm text-slate-300">Use the <code class="text-indigo-200">action</code> query parameter to delegate to specific Actions within a Service (commonly read via <code class="text-indigo-200">$Url-&gt;get('action')</code>).</p>
         <div class="mt-4 rounded-xl bg-slate-950 p-4 text-sm text-slate-200">
           <code>/dashboard?action=home</code>
         </div>

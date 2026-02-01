@@ -9,7 +9,7 @@
 <body class="bg-slate-950 text-slate-100">
   <header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <a class="flex items-center gap-3" href="README.html">
+      <a class="flex items-center gap-3" href="index.html">
         <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 text-sm font-semibold">JX</div>
         <div>
           <p class="text-lg font-semibold">JamilX</p>
@@ -23,6 +23,7 @@
         <a class="hover:text-white" href="routing.html">Routing</a>
         <a class="hover:text-white" href="services.html">Services</a>
         <a class="hover:text-white" href="cli.html">CLI</a>
+        <a class="hover:text-white" href="pricing.html">Pricing</a>
       </nav>
       <a class="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 hover:bg-slate-200" href="deployment.html">Next: Deployment</a>
     </div>
@@ -59,6 +60,17 @@
         <li>Keep <code class="text-indigo-200">logs/errors.log</code> writable to capture runtime issues.</li>
         <li>Use <code class="text-indigo-200">php jamilx logs:tail</code> for live monitoring during deployments.</li>
         <li>Store sensitive credentials in <code class="text-indigo-200">.env</code> and keep it out of version control.</li>
+      </ul>
+    </section>
+
+    <section class="mt-10 rounded-3xl border border-slate-800 bg-slate-900/60 p-8">
+      <h2 class="text-xl font-semibold text-white">Security Checklist</h2>
+      <ul class="mt-4 space-y-3 text-sm text-slate-300">
+        <li>Confirm <code class="text-indigo-200">.env</code> exists and contains <code class="text-indigo-200">MODE</code>, DB credentials, and <code class="text-indigo-200">API_KEYS</code>.</li>
+        <li>Verify <code class="text-indigo-200">data/installed.lock</code> exists after installation to prevent re-running the installer.</li>
+        <li>Ensure <code class="text-indigo-200">logs/</code> and <code class="text-indigo-200">data/</code> remain writable for error logs and API rate-limit buckets.</li>
+        <li>Restrict API usage by configuring <code class="text-indigo-200">API_CORS_ALLOWLIST</code> and rotating API keys regularly.</li>
+        <li>Use <code class="text-indigo-200">MODE=maintainance</code> to render the maintenance screen during upgrades.</li>
       </ul>
     </section>
   </main>
