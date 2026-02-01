@@ -14,31 +14,29 @@ function installer_write_config(string $appRoot, array $dbConfig): string
     $dbuser = $dbConfig['dbuser'] ?? '';
     $dbport = $dbConfig['dbport'] ?? '';
 
-    $dbportLine = $dbport !== '' ? "    \"DB_Port\" => \"{$dbport}\",\n\n" : '';
+    $templatePath = $appRoot . '/.env.example';
+    $templateContents = file_get_contents($templatePath);
 
-    $output = <<<END
-<?php
-\$INDEX = "about";
-\$CONF_DIR = "core/configs";
-\$CONF_APPS_DIR = "Apps/";
-\$CONF_SETTING = "core/configs/setting.json";
-\$CONF_SERVICE_DIR = "services/";
+    if ($templateContents === false) {
+        return 'Unable to read .env.example template.';
+    }
 
-\$DB_Data = [
-    "DB_Host" => "{$dbhost}",
-    "DB_User" => "{$dbuser}",
-    "DB_Pass" => "{$dbpass}",
-    "DB_Name" => "{$dbname}",
-{$dbportLine}];
-END;
+    $updated = installer_update_env_value($templateContents, 'DB_HOST', $dbhost);
+    $updated = installer_update_env_value($updated, 'DB_USER', $dbuser);
+    $updated = installer_update_env_value($updated, 'DB_PASS', $dbpass);
+    $updated = installer_update_env_value($updated, 'DB_NAME', $dbname);
 
-    $configPath = $appRoot . '/conf.php';
+    if ($dbport !== '') {
+        $updated = installer_update_env_value($updated, 'DB_PORT', $dbport);
+    }
 
-    if (!file_put_contents($configPath, $output)) {
+    $configPath = $appRoot . '/.env';
+
+    if (!file_put_contents($configPath, $updated)) {
         return 'Unable to write configuration file.';
     }
 
-    return 'Database information saved successfully.';
+    return 'Environment configuration saved successfully.';
 }
 
 /**
@@ -56,6 +54,37 @@ function installer_validate_db(array $data): array
     }
 
     return $errors;
+}
+
+/**
+ * Update or add a key/value pair in a .env-style file.
+ */
+function installer_update_env_value(string $contents, string $key, string $value): string
+{
+    $escapedValue = addcslashes($value, "\\\"");
+    $line = sprintf('%s = "%s"', $key, $escapedValue);
+    $pattern = sprintf('/^%s\\s*=.*$/m', preg_quote($key, '/'));
+
+    if (preg_match($pattern, $contents)) {
+        return preg_replace($pattern, $line, $contents);
+    }
+
+    $suffix = substr($contents, -1) === "\n" ? '' : "\n";
+    return $contents . $suffix . $line . "\n";
+}
+
+/**
+ * Convert .env values into installer DB config array.
+ */
+function installer_db_from_env(array $env): array
+{
+    return [
+        'DB_Host' => (string) ($env['DB_HOST'] ?? ''),
+        'DB_User' => (string) ($env['DB_USER'] ?? ''),
+        'DB_Pass' => (string) ($env['DB_PASS'] ?? ''),
+        'DB_Name' => (string) ($env['DB_NAME'] ?? ''),
+        'DB_Port' => (string) ($env['DB_PORT'] ?? ''),
+    ];
 }
 
 /**

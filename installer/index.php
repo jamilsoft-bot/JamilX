@@ -51,14 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$isInstalled) {
             $currentStep = 'database';
             break;
         case 'run_install':
-            if (!file_exists($appRoot . '/conf.php')) {
-                installer_set_flash('error', 'Configuration file not found. Please complete the database step.');
+            if (!file_exists($appRoot . '/.env')) {
+                installer_set_flash('error', 'Environment configuration file not found. Please complete the database step.');
                 header('Location: ?step=database');
                 exit;
             }
 
-            include $appRoot . '/conf.php';
-            $result = installer_run_sql($installerSqlPath, $DB_Data);
+            $env = parse_ini_file($appRoot . '/.env');
+            $dbConfig = installer_db_from_env($env ?: []);
+            $result = installer_run_sql($installerSqlPath, $dbConfig);
 
             if (!empty($result['errors'])) {
                 installer_set_flash('error', $result['message'], $result['errors']);
@@ -72,11 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$isInstalled) {
         case 'save_company':
             $pageErrors = installer_validate_company($formValues);
             if (empty($pageErrors)) {
-                if (!file_exists($appRoot . '/conf.php')) {
-                    $pageErrors[] = 'Configuration file not found.';
+                if (!file_exists($appRoot . '/.env')) {
+                    $pageErrors[] = 'Environment configuration file not found.';
                 } else {
-                    include $appRoot . '/conf.php';
-                    $saveErrors = installer_save_company($formValues, $DB_Data);
+                    $env = parse_ini_file($appRoot . '/.env');
+                    $dbConfig = installer_db_from_env($env ?: []);
+                    $saveErrors = installer_save_company($formValues, $dbConfig);
                     if (!empty($saveErrors)) {
                         $pageErrors = $saveErrors;
                     } else {
@@ -91,11 +93,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$isInstalled) {
         case 'save_admin':
             $pageErrors = installer_validate_admin($formValues);
             if (empty($pageErrors)) {
-                if (!file_exists($appRoot . '/conf.php')) {
-                    $pageErrors[] = 'Configuration file not found.';
+                if (!file_exists($appRoot . '/.env')) {
+                    $pageErrors[] = 'Environment configuration file not found.';
                 } else {
-                    include $appRoot . '/conf.php';
-                    $saveErrors = installer_save_admin($formValues, $DB_Data);
+                    $env = parse_ini_file($appRoot . '/.env');
+                    $dbConfig = installer_db_from_env($env ?: []);
+                    $saveErrors = installer_save_admin($formValues, $dbConfig);
                     if (!empty($saveErrors)) {
                         $pageErrors = $saveErrors;
                     } else {
