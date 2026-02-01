@@ -1,6 +1,6 @@
 # JamilX Framework Documentation
 
-JamilX is a lightweight PHP SaaS framework that uses a Service/Action/Container/Prototype structure and a simple, file-based autoloading system. It runs directly from the repository root (no `public/` folder) and uses Apache rewrite rules to route every request through `index.php`.
+JamilX is a lightweight PHP SaaS framework that uses a Service/Action/Container/Prototype structure, modular Apps, and a simple, file-based autoloading system. It runs directly from the repository root (no `public/` folder) and uses Apache rewrite rules to route every request through `index.php`.
 
 > **Important:** JamilX does **not** use Composer. The framework loads classes by scanning `prototypes/`, `services/`, and `actions/` from `autoload.php`.
 
@@ -18,6 +18,8 @@ JamilX uses four core building blocks:
 | **Prototype** | Data helper / DB helper. | `prototypes/` |
 
 Source:  services/, actions/, containers/, prototypes/.
+
+JamilX also supports **Apps**, which are modular packages loaded from `Apps/<app>/` with their own services, actions, containers, and prototypes.
 
 ## 2) Quick Start
 
@@ -73,6 +75,7 @@ Source:  services/, actions/, containers/, prototypes/.
 | `Apps/` | Modular apps (installed via DB) |
 | `installer/` | Installer wizard |
 | `database/` | Migrations, seeders, SQL |
+| `docs/` | Static HTML documentation site |
 | `logs/` | Error log output |
 | `data/` | Runtime storage (lock, API data, etc.) |
 
@@ -182,19 +185,28 @@ Common commands:
 | Command | Description |
 | --- | --- |
 | `about` | Show framework and environment info |
+| `list` | List available commands |
+| `help` | Display help for a command |
 | `doctor` | Check requirements, permissions, DB |
 | `serve` | Start PHP built-in server |
+| `completion:bash` | Generate bash completion script |
+| `completion:zsh` | Generate zsh completion script |
 | `make:service` | Generate a Service |
 | `make:action` | Generate an Action |
 | `make:container` | Generate a Container |
 | `make:prototype` | Generate a Prototype |
 | `make:module` | Scaffold Service/Action/Container/Prototype |
 | `create:app` | Create an App under `Apps/` |
+| `App:service` | Generate a Service within an App |
+| `App:action` | Generate an Action within an App |
+| `App:container` | Generate a Container within an App |
+| `App:module` | Scaffold a module within an App |
 | `db:migrate` | Run migrations |
 | `db:seed` | Run seeders |
 | `db:status` | Migration status |
 | `db:rollback` | Roll back latest batch |
 | `logs:tail` | Tail `logs/errors.log` |
+| `cache:clear` | Clear framework cache directories |
 
 Source: jamilx, console/commands/*.
 
@@ -210,7 +222,7 @@ Source: core/configs/databases.php, installer/sql.sql, database/migrations, data
 ## 10) Security Notes
 
 - Sessions start in `session.php`.
-- API keys and CORS allowlist are enforced in the API service.
+- API keys, CORS allowlist, and rate limiting are enforced in the API service.
 - `installed.lock` blocks re-running the installer.
 
 Source: session.php, services/api.php, installer/index.php.
@@ -232,7 +244,19 @@ Source: .htaccess, console/commands/JX_CommandDoctor.php.
 
 <!-- Source: bootstrap/*.php, containers/needs/n001.php, installer/index.php. -->
 
-## 13) Contributing / License
+## 13) API Service
+
+- `/api` serves an API management UI and documentation.
+- `/api/v1` enforces API keys and responds with a JSON envelope.
+- `/api/v1/health` returns a health payload for monitoring.
+
+<!-- Source: services/api.php, containers/api/api.php. -->
+
+## 14) Documentation
+
+- The static documentation site lives in `docs/` (open `docs/index.html` in a browser).
+
+## 15) Contributing / License
 
 - Contributing guidelines: contact myakububauchi@gmail.com
 - License: Dual License 
