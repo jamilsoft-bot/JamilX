@@ -1,27 +1,21 @@
 <?php
 global $JX_db, $Me, $Url;
 $code2 = $Url->get('b');
-$sql = "SELECT * FROM `business` WHERE `code` ='$code2'";
+$sql = "SELECT * FROM `options` WHERE `name` ='cprofile'";
 
 $result = $JX_db->query($sql);
-
-$json = null;
+$rs = $result->fetch_assoc();
+$json = json_decode($rs['value']);
 $logo = null;
 
-if($result){
-    foreach($result as $r){
-        $json = json_decode($r['data']);
-        $logo = $r['logo'];
-}
-}else{
-    echo $JX_db->error;
-}
+
 
 
 ?>
 <div class="rounded-2xl border border-slate-200 bg-white shadow-sm">
     <header class="rounded-t-2xl bg-gradient-to-r from-blue-600 to-indigo-700 px-6 py-5 text-center text-white">
         <h1 class="text-xl font-semibold">Business Updator</h1>
+        <?php echo var_dump($json); ?>
     </header>
     <div class="p-6">
         <div class="flex items-center justify-end">
@@ -48,12 +42,7 @@ if($result){
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700">Business Industry</label>
-                <select name="industry" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200">
-                    <option>Health </option>
-                    <option>Education </option>
-                    <option>Technology </option>
-                    <option>Other </option>
-                </select>
+                <input type="text" value="<?php echo $json->industry;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="industry" placeholder="Type Business Industry">
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700">Business Street</label>
@@ -61,7 +50,7 @@ if($result){
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700">Business Country</label>
-                <select name="country" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" id="cid"></select>
+                <input type="text" value="<?php echo isset($json->country)?$json->country:null;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="country" placeholder="Nigeria">
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700">Business State/City</label>
@@ -85,19 +74,19 @@ if($result){
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700"><i class="fab fa-facebook"></i> Business facebook</label>
-                <input type="text" value="<?php echo $json->facebook;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="facebook" placeholder="https://fb.me/someone">
+                <input type="text" value="<?php echo isset($json->facebook)?$json->facebook: null ;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="facebook" placeholder="https://fb.me/someone">
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700"><i class="fab fa-twitter"></i> Business Twiter</label>
-                <input type="text" value="<?php echo $json->twitter;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="twitter" placeholder="https://t.co/someone ">
+                <input type="text" value="<?php echo isset($json->twitter)?$json->twitter:null;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="twitter" placeholder="https://t.co/someone ">
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700"><i class="fab fa-youtube"></i> Business Youtube</label>
-                <input type="text" value="<?php echo $json->youtube;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="youtube" placeholder="https://...">
+                <input type="text" value="<?php echo isset($json->youtube)?$json->youtube:null;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="youtube" placeholder="https://...">
             </div>
             <div>
                 <label class="text-sm font-semibold text-slate-700"><i class="fab fa-instagram"></i> Business Instagram</label>
-                <input type="text" value="<?php echo $json->instagram;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="instagram" placeholder="https://instagram.com/someone ">
+                <input type="text" value="<?php echo isset($json->instagram)?$json->instagram:null;?>" class="mt-2 w-full rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm text-slate-700 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" name="instagram" placeholder="https://instagram.com/someone ">
             </div>
         </div>
 

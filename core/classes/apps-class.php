@@ -50,13 +50,13 @@ class JS_APPS
 
     public function Uninstall($name)
     {
-        global $CONF_APPS_DIR, $db;
+        global $CONF_APPS_DIR, $JX_db;
 
-        $app = json_decode(file_get_contents("$CONF_APPS_DIR$name/conf.json")) or die("could not open the file");
+        $app = json_decode(file_get_contents("Apps/$name/conf.json")) or die("could not open the file");
 
         $sql = "DELETE FROM `apps` WHERE app_name = '$name'";
 
-        if ($db->Query($sql)) {
+        if ($JX_db->query($sql)) {
             return "uninstalled success";
         } else {
             return false;
