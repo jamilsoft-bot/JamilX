@@ -29,6 +29,9 @@ function appdevNavClass($actionName, $currentAction)
         <a href="?serve=appdev&action=home" class="<?php echo appdevNavClass('home', $currentAction); ?>">
             <i class="fas fa-home"></i> Overview
         </a>
+        <a href="?serve=appdev&action=studio" class="<?php echo appdevNavClass('studio', $currentAction); ?>">
+            <i class="fas fa-layer-group"></i> Studio
+        </a>
         <a href="?serve=appdev&action=list" class="<?php echo appdevNavClass('list', $currentAction); ?>">
             <i class="fas fa-th-large"></i> My Apps
         </a>
@@ -61,6 +64,11 @@ function appdevNavClass($actionName, $currentAction)
         <a href="?serve=appdev&action=home" class="<?php echo appdevNavClass('home', $currentAction); ?>">
             <i class="fas fa-home w-5"></i>
             <span>Overview</span>
+        </a>
+
+        <a href="?serve=appdev&action=studio" class="<?php echo appdevNavClass('studio', $currentAction); ?>">
+            <i class="fas fa-layer-group w-5"></i>
+            <span>Studio</span>
         </a>
 
         <a href="?serve=appdev&action=list" class="<?php echo appdevNavClass('list', $currentAction); ?>">
