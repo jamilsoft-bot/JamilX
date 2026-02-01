@@ -40,6 +40,9 @@
             case 'details':
                 include 'details.php';
                 break;
+            case 'studio':
+                include 'studio.php';
+                break;
             case 'settings':
                 include 'settings.php';
                 break;
