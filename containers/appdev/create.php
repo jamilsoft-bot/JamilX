@@ -4,6 +4,8 @@ global $Url;
 // Handle form submission (processed in service)
 if (isset($_POST['createBtn'])) {
     // Processing happens in appdev service
+                $this->processAppCreation();
+
 }
 ?>
 

@@ -36,7 +36,7 @@ class appdev extends JX_Serivce implements JX_service
     }
 
     // Create New App
-    public function create()
+    public function create() 
     {
         $this->setTitle("Create New App");
 
