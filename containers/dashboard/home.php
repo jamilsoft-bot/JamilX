@@ -29,11 +29,11 @@ if (isset($Apps)) {
                 Stay in control of your product suite, installed apps, and essential services from one unified dashboard built for speed and clarity.
             </p>
             <div class="mt-6 flex flex-wrap gap-3">
-                <a href="appdev/" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-200">
+                <a href="appdev" class="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-900 shadow-sm transition hover:bg-slate-200">
                     <i class="fas fa-rocket"></i>
                     Open AppDev
                 </a>
-                <a href="?action=myprofile" class="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white transition hover:border-white">
+                <a href="profile" class="inline-flex items-center gap-2 rounded-full border border-white/40 px-4 py-2 text-sm font-semibold text-white transition hover:border-white">
                     <i class="fas fa-user-circle"></i>
                     View Profile
                 </a>
@@ -48,9 +48,9 @@ if (isset($Apps)) {
             <p class="mt-2 text-2xl font-semibold">Your SaaS Stack</p>
             <p class="mt-2 text-sm text-slate-200">Jump into your most important services and keep momentum.</p>
             <div class="mt-4 flex flex-wrap gap-2">
-                <a href="billing/" class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-100">Billing</a>
-                <a href="forum/" class="rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-semibold text-indigo-100">Forum</a>
-                <a href="filemanager/" class="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-100">File Manager</a>
+                <a href="billing" class="rounded-full bg-emerald-500/20 px-3 py-1 text-xs font-semibold text-emerald-100">Billing</a>
+                <a href="forum" class="rounded-full bg-indigo-500/20 px-3 py-1 text-xs font-semibold text-indigo-100">Forum</a>
+                <a href="filemanager" class="rounded-full bg-amber-500/20 px-3 py-1 text-xs font-semibold text-amber-100">File Manager</a>
             </div>
         </div>
     </div>
@@ -74,7 +74,7 @@ if (isset($Apps)) {
             </div>
             <i class="fas fa-arrow-right ml-auto text-slate-300 group-hover:text-indigo-500"></i>
         </a>
-        <a href="appdev/" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-200 hover:shadow-lg">
+        <a href="appdev" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-200 hover:shadow-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-cyan-50 text-cyan-600">
                 <i class="fas fa-code"></i>
             </span>
@@ -84,7 +84,7 @@ if (isset($Apps)) {
             </div>
             <i class="fas fa-arrow-right ml-auto text-slate-300 group-hover:text-cyan-500"></i>
         </a>
-        <a href="blog/" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-purple-200 hover:shadow-lg">
+        <a href="blog" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-purple-200 hover:shadow-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-50 text-purple-600">
                 <i class="fas fa-blog"></i>
             </span>
@@ -94,7 +94,7 @@ if (isset($Apps)) {
             </div>
             <i class="fas fa-arrow-right ml-auto text-slate-300 group-hover:text-purple-500"></i>
         </a>
-        <a href="filemanager/" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-lg">
+        <a href="filemanager" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 text-amber-600">
                 <i class="fas fa-folder-open"></i>
             </span>
@@ -104,7 +104,7 @@ if (isset($Apps)) {
             </div>
             <i class="fas fa-arrow-right ml-auto text-slate-300 group-hover:text-amber-500"></i>
         </a>
-        <a href="billing/" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-lg">
+        <a href="billing" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-emerald-200 hover:shadow-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600">
                 <i class="fas fa-credit-card"></i>
             </span>
@@ -114,7 +114,7 @@ if (isset($Apps)) {
             </div>
             <i class="fas fa-arrow-right ml-auto text-slate-300 group-hover:text-emerald-500"></i>
         </a>
-        <a href="forum/" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-lg">
+        <a href="forum" class="group flex items-center gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-indigo-200 hover:shadow-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-indigo-50 text-indigo-600">
                 <i class="fas fa-comments"></i>
             </span>

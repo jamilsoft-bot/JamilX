@@ -15,7 +15,7 @@ $navLinks = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo blog_html($pageTitle); ?></title>
     <meta name="description" content="<?php echo blog_html($pageDescription); ?>">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/tailwindcss.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-900">
 <header class="bg-white border-b border-slate-200">

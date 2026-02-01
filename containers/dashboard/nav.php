@@ -44,31 +44,31 @@ function dashboardIconClass($actionName, $currentAction)
                 <i class="fas fa-user mr-3 text-slate-400"></i>
                 Profile
             </a>
-            <a href="apiservice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="apiservice" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-plug mr-3 text-slate-400"></i>
                 API Service
             </a>
-            <a href="invoice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="invoice" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-file-invoice-dollar mr-3 text-slate-400"></i>
                 Invoice
             </a>
-            <a href="forum/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="forum" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-comments mr-3 text-slate-400"></i>
                 Forum
             </a>
-            <a href="filemanager/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="filemanager" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-folder-open mr-3 text-slate-400"></i>
                 File Manager
             </a>
-            <a href="blog/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="blog" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-blog mr-3 text-slate-400"></i>
                 Blog
             </a>
-            <a href="appdev/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="appdev" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-code mr-3 text-slate-400"></i>
                 AppDev
             </a>
-            <a href="billing/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="billing" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-credit-card mr-3 text-slate-400"></i>
                 Billing
             </a>
@@ -86,35 +86,35 @@ function dashboardIconClass($actionName, $currentAction)
     <div class="flex-1 flex flex-col overflow-y-auto px-4">
         <nav class="flex-1 space-y-1">
             <p class="px-3 text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 mt-6">Services</p>
-            <a href="?action=myprofile" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="profile" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-user mr-3 text-slate-400"></i>
                 Profile
             </a>
-            <a href="apiservice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="apiservice" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-plug mr-3 text-slate-400"></i>
                 API Service
             </a>
-            <a href="invoice/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="invoice" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-file-invoice-dollar mr-3 text-slate-400"></i>
                 Invoice
             </a>
-            <a href="forum/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="forum" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-comments mr-3 text-slate-400"></i>
                 Forum
             </a>
-            <a href="filemanager/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="filemanager" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-folder-open mr-3 text-slate-400"></i>
                 File Manager
             </a>
-            <a href="blog/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="blog" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-blog mr-3 text-slate-400"></i>
                 Blog
             </a>
-            <a href="appdev/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="appdev" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-code mr-3 text-slate-400"></i>
                 AppDev
             </a>
-            <a href="billing/" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
+            <a href="billing" class="text-slate-700 hover:bg-slate-50 hover:text-slate-900 group flex items-center px-3 py-2 text-sm font-medium rounded-md w-full">
                 <i class="fas fa-credit-card mr-3 text-slate-400"></i>
                 Billing
             </a>

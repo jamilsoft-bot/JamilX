@@ -52,7 +52,7 @@
                         <h1 class="text-3xl font-bold leading-tight tracking-tight text-slate-900"><?php echo isset($getAction) ? $getAction->getTitle() : 'Dashboard'; ?></h1>
                     </div>
                     <div class="flex items-center gap-2">
-                        <a href="billing/" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm hover:border-blue-500 hover:text-blue-600">
+                        <a href="billing" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-slate-700 shadow-sm hover:border-blue-500 hover:text-blue-600">
                             <i class="fas fa-credit-card text-blue-500"></i>
                             Billing
                         </a>

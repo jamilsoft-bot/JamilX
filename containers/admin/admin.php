@@ -88,11 +88,11 @@ $navItemClass = function (string $action) use ($currentAction) {
                         <i class="fa fa-users"></i>
                         Users
                     </a>
-                    <a href="?action=createrole" class="<?php echo $navItemClass('createrole'); ?>">
+                    <a href="?action=roleadd" class="<?php echo $navItemClass('createrole'); ?>">
                         <i class="fa fa-star"></i>
                         Roles
                     </a>
-                    <a href="?action=readroles" class="<?php echo $navItemClass('readroles'); ?>">
+                    <a href="?action=roles" class="<?php echo $navItemClass('readroles'); ?>">
                         <i class="fa fa-list"></i>
                         Role List
                     </a>
@@ -116,7 +116,7 @@ $navItemClass = function (string $action) use ($currentAction) {
                         <i class="fa fa-umbrella"></i>
                         About
                     </a>
-                    <a href="jxdoc" class="<?php echo $navItemClass('help'); ?>">
+                    <a href="doc/" class="<?php echo $navItemClass('help'); ?>">
                         <i class="fa fa-question"></i>
                         Help Docs
                     </a>
