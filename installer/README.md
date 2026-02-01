@@ -6,7 +6,7 @@ This directory contains the refreshed installer wizard UI built with TailwindCSS
 
 1. **Welcome**: Intro screen with quick guidance.
 2. **Requirements**: Verifies PHP version, required extensions, and directory permissions.
-3. **Database**: Captures DB host, name, user, password, and optional port, then writes `conf.php` (same behavior as the legacy installer).
+3. **Database**: Captures DB host, name, user, password, and optional port, then writes `.env` from `.env.example`.
 4. **Install**: Executes `installer/sql.sql` to create tables.
 5. **Company Info**: Stores organization details in the `options` table (`cprofile` entry).
 6. **Admin Account**: Creates the primary admin user and writes the install lock file at `data/installed.lock`.
