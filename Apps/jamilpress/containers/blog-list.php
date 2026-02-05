@@ -5,11 +5,11 @@
 <div class="row">
     <?php
 
-$data = $plist->GetArray();
+$data = $blist->GetArray();
 
     foreach($data as $datum){
-         $name = $plist->getName($datum);
-         $summary = substr($plist->getSummary($datum),0,60);
+         $name = $blist->getName($datum);
+         $summary = substr($blist->getSummary($datum),0,60);
         // $author = $plist->getAuthor($datum);
         // $rdate = $plist->getDateAll($datum);
         // $id = $plist->getId($datum);
@@ -17,9 +17,9 @@ $data = $plist->GetArray();
         $url = $datum['url'];
         // $date = get_default_date($cdate);
         // $comment = $plist->getCommentNum($datum['id']);
-         $image = $plist->getImage($datum);
+         $image = $blist->getImage($datum);
         include("blog-card.php");
     }
-    ?>
+    ?> 
 </div>
 </div>

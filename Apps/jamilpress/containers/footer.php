@@ -1,6 +1,6 @@
 
 <div class="w3-container  w3-center" style="margin-top: 25pt;">
-                    <span class="w3-opacity">&copy; Microteams 2021 All Right Researved</span>
+                    <span class="w3-opacity">&copy; JamilX 2021-2026 All Right Researved</span>
             </div>
             <?php include "blogchooser.php";?>
 <script src="Apps/jamilpress/assets/lib/w3/w3.js"></script>

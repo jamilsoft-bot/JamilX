@@ -21,17 +21,17 @@
                   <a href="?action=postlist" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-user-edit"></i>Posts</a>
                   <a href="?action=pagelist" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-file"></i>Pages</a>
                   <a href="?action=catlist" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-edit"></i>Categories</a>
-                  <a href="post-list.html" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-envelope"></i>Feedbacks</a>
+                  <a href="#" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-envelope"></i>Feedbacks</a>
                   <a href="?action=stats" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-business-time"></i>Statistics</a>
                 </div>
             </div>
             <div class="w3-container w3-margin-top">
                 <div class="w3-bar-block w3-card">
                   <a href="#" class="w3-bar-item w3-blue w3-button">Tools</a>
-                  <a href="blog-info.html" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-search"></i>SEO</a>
-                  <a href="blog-edit.html" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-file-contract"></i>Themes</a>
+                  <a href="#" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-search"></i>SEO</a>
+                  <a href="#" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-file-contract"></i>Themes</a>
                   <a href="?action=info" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-info"></i>Blog Info</a>
-                  <a href="blog-setting.html" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-cogs"></i>Settings</a>
+                  <a href="#" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-cogs"></i>Settings</a>
                   <a href="?action=jpabout" class="w3-bar-item w3-button"><i class="w3-margin-right fa fa-copyright"></i>About</a>
                 </div>
             </div>

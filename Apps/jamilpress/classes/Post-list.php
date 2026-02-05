@@ -1,14 +1,17 @@
 <?php
 
 class JP_Postlist extends JXP_list implements JP_list{
-    private $_result;
+    private $_result, $filter;
     public function __construct($filter = null)
     {
         global $JX_db, $BLOG_URL;
 
+        $this->filter = $filter;
+
         if($filter !== null){
             $sql = "SELECT* FROM `posts` WHERE `type` = 'post' AND `status`= '$filter' AND `blog`='$BLOG_URL'";
             $this->_result = $JX_db->query($sql);
+            // echo var_dump($this->_result);
         }else{
             $sql = "SELECT* FROM `posts` WHERE `type` = 'post' AND `blog`='$BLOG_URL'";
             $this->_result = $JX_db->query($sql);
@@ -17,7 +20,17 @@ class JP_Postlist extends JXP_list implements JP_list{
     }
 
     public function GetArray(){
-        return $this->_result;
+        global $JX_db, $BLOG_URL;
+        
+       if($this->filter !== null){
+            $filter = $this->filter;
+            $sql = "SELECT* FROM `posts` WHERE `type` = 'post' AND `status`= '$filter' AND `blog`='$BLOG_URL'";
+            return $JX_db->query($sql);
+            // echo var_dump($this->_result);
+        }else{
+            $sql = "SELECT* FROM `posts` WHERE `type` = 'post' AND `blog`='$BLOG_URL'";
+            return $JX_db->query($sql);
+        }
     }
 
     public function getName($data){

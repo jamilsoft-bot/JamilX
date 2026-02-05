@@ -1,23 +1,38 @@
 <?php
 
 class JP_Bloglist extends JXP_list implements JP_list{
-    private $_result;
+    private $_result,$filter;
     public function __construct($filter = null)
     {
         global $JX_db, $Me;
             $user = $Me->username();
+                    $this->filter = $filter;
         if($filter !== null){
             $sql = "SELECT* FROM `blogs` WHERE `author`= '$user'";
-            $this->_result = $JX_db->query($sql);
+             $rs = $JX_db->query($sql);
+            $this->_result = $rs->fetch_assoc();
         }else{
             $sql = "SELECT* FROM `blogs` WHERE `author`= '$user'";
-            $this->_result = $JX_db->query($sql);
+            $rs = $JX_db->query($sql);
+            $this->_result = $rs->fetch_assoc();
        
         }
     }
 
-    public function GetArray(){
-        return $this->_result;
+    public function GetArray(){ 
+         global $JX_db, $Me;
+         $user = $Me->username();
+       if($this->filter !== null){
+            $filter = $this->filter;
+            $sql = "SELECT* FROM `blogs` WHERE `author`= '$user'";
+            return $JX_db->query($sql);
+            // echo var_dump($this->_result);
+        }else{
+            $sql = "SELECT* FROM `blogs` WHERE `author`= '$user'";
+            return $JX_db->query($sql);
+        }
+       
+
     }
 
     public function getName($data){

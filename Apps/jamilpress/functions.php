@@ -9,7 +9,7 @@ function get_total_visits(){
 
     $sql = "SELECT* FROM `statistics` WHERE `blog` = '$BLOG_URL'";
     $re = $JX_db->query($sql);
-    return $re->num_rows;
+    return 0;//$re->num_rows;
 }
 function get_Tv($dates){
     global $JX_db,$BLOG_URL;

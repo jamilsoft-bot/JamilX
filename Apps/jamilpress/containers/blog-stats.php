@@ -2,7 +2,7 @@
                 <span class="w3-bar-item w3-large">Statistics</span>
             </div>
             <div class="w3-container w3-margin-top">
-                <h1>Testing environment 
+                <h1>Statistic
                     
                 <?php 
                 $builtin = new JX_DateInterval();

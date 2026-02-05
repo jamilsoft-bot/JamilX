@@ -82,15 +82,19 @@ class CreatePost extends JP_Action implements JXP_Action{
             if($logo !== null){
                 $sql = "INSERT INTO `posts`(`title`,`type`,`cat`,`owner`,`author`,`content`,`summary`,`keywords`,`privacy`,`status`,`image`,`blog`)VALUES('$name','post','$cat','$owner','$author','$content','$summary','$keywords','$privacy','$status','$logo','$BLOG_URL')";
                 if($JX_db->query($sql)){
+                    echo "post created";
                     JP_Alert("Blog Alert","Your Post was Successfully Created","light-blue");
                 }else{
+                    echo "post not created";
+                    echo $JX_db->error;
                     JP_Alert("Blog Alert","We cannot create your Post at the right moment please try again later","light-blue");
                 }
+            }else{
+                JP_Alert("Blog Alert","You need to Upload Featured Image","light-blue");
             }
      }
      private function getData(){
             if(isset($_POST['create'])){
-               
                 $steps = count($this->stepper);
                 if(empty($_POST['content'])){
                     $this->contentError = "Post Content Cannot be empty";

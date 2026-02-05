@@ -52,7 +52,7 @@ class Postlist extends JP_Action implements JXP_Action{
        include "containers/main.php";
     }
 
-    public function getAction(){
+    public function getAction(){ 
        delete_item('posts');
        if($this->filter !== null){
          $plist = new JP_Postlist($this->filter);

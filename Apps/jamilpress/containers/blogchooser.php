@@ -10,7 +10,7 @@
               <div class="w3-container w3-margin-bottom">
                     <!--==========================-->
                         <?php 
-                         $plist = new JP_Bloglist();
+                         $blist = new JP_Bloglist();
                         include "blog-list.php";
                         
                         ?>
@@ -22,4 +22,4 @@
               </footer>
           
             </div>
-          </div>
+          </div> 

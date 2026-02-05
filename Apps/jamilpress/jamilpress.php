@@ -3,7 +3,7 @@ include "session.php";
 include "classes/global.php";
 include "blog-data.php";
 include "functions.php";
-include "services/global.php";
+include "actions/global.php";
 include "service.php";
 
 global $JXD_sidebar;
