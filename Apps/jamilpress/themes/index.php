@@ -75,7 +75,7 @@ include "view.php";
 }
 ?>
 <div class="w3-container w3-center w3-margin-top">
-    <p class="w3-opacity">Proudly Created By Jamilsoft &copy;Microteams 2021</p>
+    <p class="w3-opacity"> &copy;JamilX 2021 - 2026</p>
 </div>
 <script src="../Apps/jamilpress/assets/lib/w3/w3.js"></script>
 </body>

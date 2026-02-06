@@ -1,4 +1,4 @@
-<div class="">
+<!-- <div class="">
         <div class="w3-bar w3-blue ">
             <a class="w3-bar-item w3-button w3-hover-white w3-hide-medium w3-hide-large w3-right" onclick="w3.toggleShow('#navbar')"><i class="fa fa-bars"></i></a>
             <a class="w3-bar-item w3-text-white" style="text-decoration: none;font-weight: bolder;"><i class="fa fa-home"></i> Jamilsoft Technlogies</a>
@@ -24,4 +24,4 @@
             <a class="w3-bar-item w3-button w3-hover-white"><i class="fa fa-envelope"></i> Message</a>
             <a class="w3-bar-item w3-button w3-hover-white"><i class="fa fa-bell"></i> Notification</a>
         </div>
-    </div>
+    </div> -->

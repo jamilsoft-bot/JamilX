@@ -8,9 +8,9 @@
      $message = htmlspecialchars($_POST['text']);
 $sql = "INSERT INTO `comments`(`author`,`message`,`email`,`post_id`,`owner`)VALUES('$name','$message','$email','$id','$owner')";
 
-    global $db;
+    global $JX_db;
 
-     if($db->Query($sql)){
+     if($JX_db->query($sql)){
          echo "<script> alert('Comment added success')</script>";
      }else{
          echo "<script> alert('Comment not added! input error')</script>";

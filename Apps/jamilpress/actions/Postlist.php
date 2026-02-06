@@ -9,7 +9,7 @@ class Postlist extends JP_Action implements JXP_Action{
         $this->setText("Manage Your Posts");
     }
     public function main(){
-       include "containers/main.php";
+       include "Apps/jamilpress/containers/main.php";
     }
 
     public function getAction(){ 
@@ -17,11 +17,11 @@ class Postlist extends JP_Action implements JXP_Action{
        if($this->filter !== null){
          $plist = new JP_Postlist($this->filter);
          $updatelink = "updatepost";
-         include "containers/list.php";
+         include "Apps/jamilpress/containers/list.php";
        }else{
          $plist = new JP_Postlist();
          $updatelink = "updatepost";
-         include "containers/list.php";
+         include "Apps/jamilpress/containers/list.php";
        }
         
      }
