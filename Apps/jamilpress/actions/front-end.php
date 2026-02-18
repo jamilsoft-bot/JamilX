@@ -22,7 +22,7 @@ class Jblogs extends JX_Serivce implements JX_service{
      if($this->check_blog() == true){
          $blog = $this->blog;
          $theme = $blog->getTheme();
-         $themeIndex = "Apps/jamilpress/themes/index.php";
+         $themeIndex = "Apps/jamilpress/themes/modern/index.php";
          if(!is_null($theme)){
              $candidate = "Apps/jamilpress/themes/{$theme}/index.php";
              if(file_exists($candidate)){
