@@ -46,6 +46,14 @@
             case 'settings':
                 include 'settings.php';
                 break;
+            case 'editor':
+                if (class_exists('appdeveditor')) {
+                    $editor = new appdeveditor();
+                    $editor->getAction();
+                } else {
+                    include 'home.php';
+                }
+                break;
             default:
                 include 'home.php';
         }
