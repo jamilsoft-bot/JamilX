@@ -11,6 +11,16 @@ class appdev extends JX_Serivce implements JX_service
     // Default Action: Dashboard / Overview
     public function main()
     {
+        global $Url;
+
+        $action = $Url->get('action') ?? 'home';
+
+        if ($action === 'editor-api' && class_exists('appdeveditorapi')) {
+            $api = new appdeveditorapi();
+            $api->getAction();
+            return;
+        }
+
         include "containers/appdev/appdev.php";
     }
 
