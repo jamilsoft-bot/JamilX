@@ -131,6 +131,8 @@ function appdev_editor_normalize_path(string $path): ?string
 
 function appdev_editor_resolve_base(string $scope, string $category, ?string $app): array
 {
+    $projectRoot = rtrim(dirname(__DIR__), '/');
+
     $categories = appdev_editor_categories();
     if (!isset($categories[$category])) {
         return [null, 'Invalid category.'];
@@ -139,7 +141,7 @@ function appdev_editor_resolve_base(string $scope, string $category, ?string $ap
     $scope = strtolower(trim($scope));
 
     if ($scope === 'global') {
-        $base = __DIR__ . '/../' . $category;
+        $base = $projectRoot . '/' . $category;
         return [rtrim($base, '/'), null];
     }
 
@@ -154,7 +156,7 @@ function appdev_editor_resolve_base(string $scope, string $category, ?string $ap
             return [null, 'Invalid app name.'];
         }
 
-        $base = __DIR__ . '/../Apps/' . $app . '/' . $category;
+        $base = $projectRoot . '/Apps/' . $app . '/' . $category;
         if (!is_dir($base)) {
             return [null, 'Directory does not exist for this app/category.'];
         }
