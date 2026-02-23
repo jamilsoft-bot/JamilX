@@ -260,3 +260,13 @@ Source: .htaccess, console/commands/JX_CommandDoctor.php.
 
 - Contributing guidelines: contact myakububauchi@gmail.com
 - License: Dual License 
+
+
+## 16) What's New in v1.1
+
+- Added AppDev integrated code editor routes: `?serve=appdev&action=editor` and `?serve=appdev&action=editor-api`.
+- Added secure file operations with admin-only access, CSRF token checks, extension allowlist, and size limits for editable files.
+- Added commercial docs landing page for Jamilsoft online SaaS builder bundles (Personal, Enterprise, Education/School).
+- Added MIT license at repository root.
+
+See `RELEASE_NOTES_v1.1.md` for full release details.
