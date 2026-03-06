@@ -679,6 +679,27 @@ ALTER TABLE `user_passkeys`
 ALTER TABLE `user_passkeys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
+
+CREATE TABLE `webauthn_challenges` (
+  `id` int(11) NOT NULL,
+  `session_id` varchar(255) NOT NULL,
+  `challenge` varchar(255) NOT NULL,
+  `challenge_type` varchar(20) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `expires_at` datetime NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `webauthn_challenges`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `webauthn_challenges_challenge_unique` (`challenge`),
+  ADD KEY `webauthn_challenges_type_index` (`challenge_type`),
+  ADD KEY `webauthn_challenges_user_id_index` (`user_id`),
+  ADD KEY `webauthn_challenges_expires_at_index` (`expires_at`);
+
+ALTER TABLE `webauthn_challenges`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
