@@ -56,7 +56,7 @@ class passgate extends JX_Serivce implements JX_service{
     public function session(){
         global $Url;
         $uid = $Url->get('uid');
-        $resume = isset($_GET['resume'])?$_GET['resume']:'me';
+        $resume = $this->sanitizeResume(isset($_GET['resume']) ? $_GET['resume'] : 'me');
         //$rsm = is_null($resume)?$_SERVER['HOST']:$resume;
        
         echo "<script>";
@@ -66,32 +66,38 @@ class passgate extends JX_Serivce implements JX_service{
     public function logout(){
         global $Url;
         $uid = $Url->get('uid');
-        $resume = is_null($Url->get('resume'))?"login":$Url->get('resume');
+        $resume = $this->sanitizeResume(is_null($Url->get('resume')) ? 'login' : $Url->get('resume'));
         
         echo "<script>";
         echo "location.assign('?session=off&resume=$resume')";
         echo "</script>";
     }
     public function login(){
-            global $Url, $db,$users,$JX_db;
-            $user = $Url->post('username');
-            $pass = $Url->post('password');
-            $resume = isset($_POST['resume'])?$_POST['resume']:'dashboard';
-            
+            global $Url, $JX_db;
+            $user = trim((string) $Url->post('username'));
+            $pass = (string) $Url->post('password');
+            $resume = $this->sanitizeResume(isset($_POST['resume']) ? $_POST['resume'] : 'dashboard');
+
             $npass = null;
             $uid = null;
 
-            $record = $users->SelectByUser($user);
+            $stmt = $JX_db->prepare("SELECT `id`, `password` FROM `users` WHERE `username` = ? LIMIT 1");
+            if ($stmt) {
+                $stmt->bind_param('s', $user);
+                $stmt->execute();
+                $result = $stmt->get_result();
 
-            $result = $JX_db->query($record);
-
-
-            foreach($result as $r){
-                $npass =  $r['password'];
-                $uid = $r['id'];
+                if ($result) {
+                    $record = $result->fetch_assoc();
+                    if ($record) {
+                        $npass = $record['password'];
+                        $uid = $record['id'];
+                    }
+                }
+                $stmt->close();
             }
 
-            if(password_verify($pass,$npass)){
+            if(!is_null($npass) && password_verify($pass,$npass)){
                 echo "<script>";
                 echo "location.assign('passgate?action=session&uid=$uid&resume=$resume')";
                 echo "</script>";
@@ -108,7 +114,7 @@ class passgate extends JX_Serivce implements JX_service{
     }
 
     public function reg(){
-        global $Url,$users,$db;
+        global $Url,$users,$JX_db;
         $Pages = new JS_Pages();
         $pass = password_hash($Url->post('password'),PASSWORD_DEFAULT);
  
@@ -128,7 +134,32 @@ class passgate extends JX_Serivce implements JX_service{
        $users->address = Input_test('address');//isset($_POST['address'])? $_POST['address']: null;
        $users->state = Input_test('state');
 
-       if($db->Query($users->Insert())){
+       $stmt = $JX_db->prepare(
+        "INSERT INTO `users`( `username`, `password`, `role`, `city`, `country`, `email`, `phone`, `gender`, `address`, `state`, `bio`, `avatar`, `name`,`dob`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+       );
+
+       if($stmt){
+        $avatar = isset($users->avatar) ? $users->avatar : null;
+        $stmt->bind_param(
+            'ssssssssssssss',
+            $users->username,
+            $users->password,
+            $users->role,
+            $users->city,
+            $users->country,
+            $users->email,
+            $users->phone,
+            $users->gender,
+            $users->address,
+            $users->state,
+            $users->bio,
+            $avatar,
+            $users->name,
+            $users->dob
+        );
+       }
+
+       if($stmt && $stmt->execute()){
         echo $Pages->alert("User Operation","Registration success<br><a href='login'>Login</a>");
         $msg = "Username and Password doesnt matched";
                 echo "<script>";
@@ -138,9 +169,31 @@ class passgate extends JX_Serivce implements JX_service{
         echo $Pages->alert("User Operation","Something went wrong");
 
     }
+
+    if ($stmt) {
+        $stmt->close();
+    }
        
         
         
+    }
+
+    private function sanitizeResume($resume){
+        $resume = trim((string) $resume);
+
+        if ($resume === '') {
+            return 'dashboard';
+        }
+
+        if (strpos($resume, '://') !== false || strpos($resume, '//') === 0) {
+            return 'dashboard';
+        }
+
+        if (!preg_match('/^[a-zA-Z0-9_\-\/?=&]+$/', $resume)) {
+            return 'dashboard';
+        }
+
+        return $resume;
     }
 
 }
