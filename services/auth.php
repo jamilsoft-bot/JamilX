@@ -180,6 +180,9 @@ class auth extends JX_Serivce implements JX_service
             $stmt = $JX_db->prepare("SELECT `id` FROM `users` WHERE `username` = ? OR `email` = ? LIMIT 1");
             if ($stmt) {
                 $stmt->bind_param('ss', $username, $username);
+            $stmt = $JX_db->prepare("SELECT `id` FROM `users` WHERE `username` = ? LIMIT 1");
+            if ($stmt) {
+                $stmt->bind_param('s', $username);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 if ($result) {
@@ -367,26 +370,16 @@ class auth extends JX_Serivce implements JX_service
 
         $expiresAt = date('Y-m-d H:i:s', time() + 300);
         $sessionId = session_id();
+        $uid = is_null($userId) ? 0 : intval($userId);
 
-        if (is_null($userId)) {
-            $stmt = $JX_db->prepare(
-                "INSERT INTO `webauthn_challenges` (`session_id`, `challenge`, `challenge_type`, `expires_at`) VALUES (?, ?, ?, ?)"
-            );
-            if ($stmt) {
-                $stmt->bind_param('ssss', $sessionId, $challenge, $type, $expiresAt);
-                $stmt->execute();
-                $stmt->close();
-            }
-        } else {
-            $uid = intval($userId);
-            $stmt = $JX_db->prepare(
-                "INSERT INTO `webauthn_challenges` (`session_id`, `challenge`, `challenge_type`, `user_id`, `expires_at`) VALUES (?, ?, ?, ?, ?)"
-            );
-            if ($stmt) {
-                $stmt->bind_param('sssis', $sessionId, $challenge, $type, $uid, $expiresAt);
-                $stmt->execute();
-                $stmt->close();
-            }
+        $stmt = $JX_db->prepare(
+            "INSERT INTO `webauthn_challenges` (`session_id`, `challenge`, `challenge_type`, `user_id`, `expires_at`) VALUES (?, ?, ?, ?, ?)"
+        );
+
+        if ($stmt) {
+            $stmt->bind_param('sssis', $sessionId, $challenge, $type, $uid, $expiresAt);
+            $stmt->execute();
+            $stmt->close();
         }
 
         $cleanup = $JX_db->prepare("DELETE FROM `webauthn_challenges` WHERE `expires_at` < NOW()");
@@ -404,25 +397,23 @@ class auth extends JX_Serivce implements JX_service
             return false;
         }
 
-        $sessionId = session_id();
-
         if (is_null($userId)) {
             $stmt = $JX_db->prepare(
-                "SELECT `id` FROM `webauthn_challenges` WHERE `session_id` = ? AND `challenge` = ? AND `challenge_type` = ? AND `expires_at` > NOW() ORDER BY `id` DESC LIMIT 1"
+                "SELECT `id` FROM `webauthn_challenges` WHERE `challenge` = ? AND `challenge_type` = ? AND `expires_at` > NOW() ORDER BY `id` DESC LIMIT 1"
             );
             if (!$stmt) {
                 return false;
             }
-            $stmt->bind_param('sss', $sessionId, $challenge, $type);
+            $stmt->bind_param('ss', $challenge, $type);
         } else {
             $uid = intval($userId);
             $stmt = $JX_db->prepare(
-                "SELECT `id` FROM `webauthn_challenges` WHERE `session_id` = ? AND `challenge` = ? AND `challenge_type` = ? AND `user_id` = ? AND `expires_at` > NOW() ORDER BY `id` DESC LIMIT 1"
+                "SELECT `id` FROM `webauthn_challenges` WHERE `challenge` = ? AND `challenge_type` = ? AND `user_id` = ? AND `expires_at` > NOW() ORDER BY `id` DESC LIMIT 1"
             );
             if (!$stmt) {
                 return false;
             }
-            $stmt->bind_param('sssi', $sessionId, $challenge, $type, $uid);
+            $stmt->bind_param('ssi', $challenge, $type, $uid);
         }
 
         $stmt->execute();
