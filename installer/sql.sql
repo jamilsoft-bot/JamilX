@@ -654,6 +654,31 @@ ALTER TABLE `notifications`
 
 ALTER TABLE `payments`
   ADD CONSTRAINT `fk_payment_escrow` FOREIGN KEY (`escrow_id`) REFERENCES `escrows` (`id`) ON DELETE CASCADE;
+
+
+CREATE TABLE `user_passkeys` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `credential_id` varchar(512) NOT NULL,
+  `public_key_cose` mediumtext NOT NULL,
+  `sign_count` bigint(20) UNSIGNED NOT NULL DEFAULT 0,
+  `transports` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`transports`)),
+  `aaguid` varchar(64) DEFAULT NULL,
+  `device_name` varchar(255) DEFAULT NULL,
+  `last_used_at` datetime DEFAULT NULL,
+  `revoked_at` datetime DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+ALTER TABLE `user_passkeys`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_passkeys_credential_id_unique` (`credential_id`),
+  ADD KEY `user_passkeys_user_id_index` (`user_id`);
+
+ALTER TABLE `user_passkeys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
