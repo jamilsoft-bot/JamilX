@@ -19,6 +19,8 @@ class auth extends JX_Serivce implements JX_service
             'webauthnRegisterVerify',
             'webauthnLoginOptions',
             'webauthnLoginVerify',
+            'webauthnList',
+            'webauthnRevoke',
         ];
 
         if (!in_array($action, $allowed, true) || !method_exists($this, $action)) {
@@ -38,6 +40,8 @@ class auth extends JX_Serivce implements JX_service
                 'webauthnRegisterVerify',
                 'webauthnLoginOptions',
                 'webauthnLoginVerify',
+                'webauthnList',
+                'webauthnRevoke',
             ],
         ]);
     }
@@ -126,6 +130,16 @@ class auth extends JX_Serivce implements JX_service
         $challenge = is_array($decodedClientData) && isset($decodedClientData['challenge'])
             ? (string) $decodedClientData['challenge']
             : '';
+        $origin = is_array($decodedClientData) && isset($decodedClientData['origin'])
+            ? (string) $decodedClientData['origin']
+            : '';
+        $type = is_array($decodedClientData) && isset($decodedClientData['type'])
+            ? (string) $decodedClientData['type']
+            : '';
+
+        if ($type !== 'webauthn.create' || $origin !== JX_WebAuthn::origin()) {
+            return JX_WebAuthn::json(['ok' => false, 'error' => 'Client data validation failed'], 422);
+        }
 
         if (!$this->consumeChallenge($challenge, 'register', $uid)) {
             return JX_WebAuthn::json(['ok' => false, 'error' => 'Challenge validation failed'], 422);
@@ -163,6 +177,9 @@ class auth extends JX_Serivce implements JX_service
 
         $uid = null;
         if ($username !== '') {
+            $stmt = $JX_db->prepare("SELECT `id` FROM `users` WHERE `username` = ? OR `email` = ? LIMIT 1");
+            if ($stmt) {
+                $stmt->bind_param('ss', $username, $username);
             $stmt = $JX_db->prepare("SELECT `id` FROM `users` WHERE `username` = ? LIMIT 1");
             if ($stmt) {
                 $stmt->bind_param('s', $username);
@@ -230,6 +247,16 @@ class auth extends JX_Serivce implements JX_service
         $challenge = is_array($decodedClientData) && isset($decodedClientData['challenge'])
             ? (string) $decodedClientData['challenge']
             : '';
+        $origin = is_array($decodedClientData) && isset($decodedClientData['origin'])
+            ? (string) $decodedClientData['origin']
+            : '';
+        $type = is_array($decodedClientData) && isset($decodedClientData['type'])
+            ? (string) $decodedClientData['type']
+            : '';
+
+        if ($type !== 'webauthn.get' || $origin !== JX_WebAuthn::origin()) {
+            return JX_WebAuthn::json(['ok' => false, 'error' => 'Client data validation failed'], 422);
+        }
 
         if (!$this->consumeChallenge($challenge, 'login', null)) {
             return JX_WebAuthn::json(['ok' => false, 'error' => 'Challenge validation failed'], 422);
@@ -271,6 +298,70 @@ class auth extends JX_Serivce implements JX_service
             'resume' => $resume,
             'redirect' => $resume,
         ]);
+    }
+
+    public function webauthnList()
+    {
+        global $JX_db;
+
+        $uid = isset($_SESSION['uid']) ? intval($_SESSION['uid']) : 0;
+        if ($uid <= 0) {
+            return JX_WebAuthn::json(['ok' => false, 'error' => 'Unauthorized'], 401);
+        }
+
+        $items = [];
+        $stmt = $JX_db->prepare("SELECT `id`, `credential_id`, `device_name`, `created_at`, `last_used_at` FROM `user_passkeys` WHERE `user_id` = ? AND `revoked_at` IS NULL ORDER BY `id` DESC");
+        if ($stmt) {
+            $stmt->bind_param('i', $uid);
+            $stmt->execute();
+            $res = $stmt->get_result();
+            if ($res) {
+                while ($row = $res->fetch_assoc()) {
+                    $items[] = [
+                        'id' => intval($row['id']),
+                        'credential_id' => (string) $row['credential_id'],
+                        'device_name' => $row['device_name'] ?: 'Passkey',
+                        'created_at' => $row['created_at'],
+                        'last_used_at' => $row['last_used_at'],
+                    ];
+                }
+            }
+            $stmt->close();
+        }
+
+        return JX_WebAuthn::json(['ok' => true, 'items' => $items]);
+    }
+
+    public function webauthnRevoke()
+    {
+        global $JX_db;
+
+        $uid = isset($_SESSION['uid']) ? intval($_SESSION['uid']) : 0;
+        if ($uid <= 0) {
+            return JX_WebAuthn::json(['ok' => false, 'error' => 'Unauthorized'], 401);
+        }
+
+        $body = JX_WebAuthn::getJsonBody();
+        $id = isset($body['id']) ? intval($body['id']) : 0;
+        if ($id <= 0) {
+            return JX_WebAuthn::json(['ok' => false, 'error' => 'Invalid passkey id'], 422);
+        }
+
+        $stmt = $JX_db->prepare("UPDATE `user_passkeys` SET `revoked_at` = NOW() WHERE `id` = ? AND `user_id` = ?");
+        if (!$stmt) {
+            return JX_WebAuthn::json(['ok' => false, 'error' => 'Database error'], 500);
+        }
+
+        $stmt->bind_param('ii', $id, $uid);
+        $stmt->execute();
+        $affected = $stmt->affected_rows;
+        $stmt->close();
+
+        if ($affected < 1) {
+            return JX_WebAuthn::json(['ok' => false, 'error' => 'Passkey not found'], 404);
+        }
+
+        return JX_WebAuthn::json(['ok' => true]);
     }
 
     private function storeChallenge($challenge, $type, $userId = null)

@@ -95,6 +95,13 @@
                         </button>
                     </div>
 
+                    <div>
+                        <button type="button" id="passkey-login-btn" class="w-full mt-3 flex justify-center py-3 px-4 border border-slate-200 rounded-xl shadow-sm text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200">
+                            <i class="fa-solid fa-fingerprint mr-2"></i>
+                            Sign in with passkey
+                        </button>
+                    </div>
+
                     <!-- <div class="relative mt-6">
                         <div class="absolute inset-0 flex items-center">
                             <div class="w-full border-t border-slate-200"></div>
@@ -169,6 +176,82 @@
                 }
             });
         });
+
+        const toBase64Url = bytes => {
+            const str = String.fromCharCode(...new Uint8Array(bytes));
+            return btoa(str).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+        };
+
+        const fromBase64Url = input => {
+            const base64 = input.replace(/-/g, '+').replace(/_/g, '/');
+            const pad = base64.length % 4 ? '='.repeat(4 - (base64.length % 4)) : '';
+            const raw = atob(base64 + pad);
+            const bytes = new Uint8Array(raw.length);
+            for (let i = 0; i < raw.length; i++) bytes[i] = raw.charCodeAt(i);
+            return bytes.buffer;
+        };
+
+        const passkeyBtn = document.getElementById('passkey-login-btn');
+        if (passkeyBtn) {
+            if (!window.PublicKeyCredential || !navigator.credentials) {
+                passkeyBtn.classList.add('hidden');
+            } else {
+                passkeyBtn.addEventListener('click', async () => {
+                    try {
+                        passkeyBtn.disabled = true;
+                        const username = document.getElementById('userid') ? document.getElementById('userid').value.trim() : '';
+                        const resumeInput = document.querySelector('input[name="resume"]');
+                        const resume = resumeInput ? resumeInput.value : 'dashboard';
+
+                        const optionsResp = await fetch('auth?action=webauthnLoginOptions', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ username })
+                        });
+                        const optionsData = await optionsResp.json();
+                        if (!optionsData.ok) throw new Error(optionsData.error || 'Unable to start passkey login.');
+
+                        const publicKey = optionsData.publicKey;
+                        publicKey.challenge = fromBase64Url(publicKey.challenge);
+                        if (Array.isArray(publicKey.allowCredentials)) {
+                            publicKey.allowCredentials = publicKey.allowCredentials.map(item => ({
+                                ...item,
+                                id: fromBase64Url(item.id)
+                            }));
+                        }
+
+                        const assertion = await navigator.credentials.get({ publicKey });
+                        if (!assertion) throw new Error('No passkey assertion received.');
+
+                        const payload = {
+                            id: assertion.id,
+                            type: assertion.type,
+                            rawId: toBase64Url(assertion.rawId),
+                            response: {
+                                clientDataJSON: toBase64Url(assertion.response.clientDataJSON),
+                                authenticatorData: toBase64Url(assertion.response.authenticatorData),
+                                signature: toBase64Url(assertion.response.signature),
+                                userHandle: assertion.response.userHandle ? toBase64Url(assertion.response.userHandle) : null
+                            },
+                            resume
+                        };
+
+                        const verifyResp = await fetch('auth?action=webauthnLoginVerify', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        const verifyData = await verifyResp.json();
+                        if (!verifyData.ok) throw new Error(verifyData.error || 'Passkey login failed.');
+
+                        location.assign(verifyData.redirect || 'dashboard');
+                    } catch (err) {
+                        alert(err.message || 'Passkey login failed.');
+                        passkeyBtn.disabled = false;
+                    }
+                });
+            }
+        }
     </script>
 </body>
 
