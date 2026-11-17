@@ -8,7 +8,7 @@ class JX_Route{
     {
         global $Url, $INDEX;
         $this->_urls = $Url->get_paths();
-        $this->_serve = isset($_GET['route'])? $_GET['route']: "about";
+        $this->_serve = isset($_GET['route'])? $_GET['route']: "kamalerp";
         $this->_action = isset($_GET['action'])? $_GET['action']: 'main';
         
      
